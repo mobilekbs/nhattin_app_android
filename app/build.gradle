@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "vn.ntlogistics.app.shipper"
-        minSdkVersion 19
+        minSdkVersion 17
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -35,9 +35,18 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
     //Firebase
     compile 'com.google.firebase:firebase-messaging:10.2.4'
+
+    compile files('libs/mail.jar')
+    compile files('libs/activation.jar')
+    compile files('libs/additionnal.jar')
+    //TODO: ACRA - report bug to mail
+    compile('ch.acra:acra:4.5.0') {
+        exclude group: 'org.json'
+    }
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'

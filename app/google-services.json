@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "317840255929",
-    "firebase_url": "https://nhattin-f60e9.firebaseio.com",
-    "project_id": "nhattin-f60e9",
-    "storage_bucket": "nhattin-f60e9.appspot.com"
+    "project_number": "543963681008",
+    "firebase_url": "https://nhat-tin.firebaseio.com",
+    "project_id": "nhat-tin",
+    "storage_bucket": "nhat-tin.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:317840255929:android:4d5f5d3aeb0ca7b8",
+        "mobilesdk_app_id": "1:543963681008:android:4d5f5d3aeb0ca7b8",
         "android_client_info": {
           "package_name": "vn.ntlogistics.app.shipper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "317840255929-fit2aaqmpkamoophgpvm3e85mrv4jp32.apps.googleusercontent.com",
+          "client_id": "543963681008-8lshethg5ifmf6ndrjapbqfjd7jo3688.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD7f4fv1kJ-d52ZTijUy5Yhd_Rg2avFnBw"
+          "current_key": "AIzaSyARCIlFOypjjSqXIP7wgV4bJ82wStkHW9g"
         }
       ],
       "services": {

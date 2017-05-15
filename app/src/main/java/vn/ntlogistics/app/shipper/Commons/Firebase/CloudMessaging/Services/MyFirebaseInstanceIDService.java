@@ -4,9 +4,10 @@ import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
-import com.oneshipglobal.app.oneshippro.API.Bean.Singleton.SCurrentUser;
-import com.oneshipglobal.app.oneshippro.API.Connect.UpdateFCMTokenAPI;
-import com.oneshipglobal.app.oneshippro.Util.Sqlite.SqliteManager;
+
+import vn.ntlogistics.app.shipper.Commons.Singleton.SCurrentUser;
+import vn.ntlogistics.app.shipper.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.shipper.Models.ConnectAPIs.Connect.UpdateFCMTokenAPI;
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     public MyFirebaseInstanceIDService() {

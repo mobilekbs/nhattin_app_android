@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/lnThongBao"
+    android:background="@drawable/custom_dialog">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_size"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/note_dialog"
+            android:id="@+id/tvTextTitle"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textsize_toolbar"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnNoteDialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/note"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textsize_title" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvNotiDialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGrayGray"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvmessage"
+            android:textSize="@dimen/textsize_body"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnok"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="@dimen/textsize_title"
+            android:textStyle="bold"
+            android:textColor="@drawable/bg_text_dialog"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCancel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="@dimen/textsize_title"
+            android:textStyle="bold"
+            android:textColor="@drawable/bg_text_dialog"
+            android:background="?android:attr/selectableItemBackground" />
+    </LinearLayout>
+    </LinearLayout>
+    <!--<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_size"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/note_dialog"
+            android:id="@+id/tvTextTitle"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textsize_toolbar" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large Text"
+            android:id="@+id/tvmessage"
+            android:textSize="@dimen/textsize_body"
+            android:textColor="@android:color/black" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/abc_action_button_min_height_material"
+            android:text="@string/try_again"
+            android:id="@+id/btnok"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_button"
+            android:textColor="@color/colorWhite"
+            android:layout_weight="1"
+            android:layout_margin="10dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/abc_action_button_min_height_material"
+            android:text="@string/out_dialog"
+            android:id="@+id/btnCancel"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_overlook"
+            android:textColor="@color/colorWhite"
+            android:layout_weight="1"
+            android:layout_margin="10dp" />
+    </LinearLayout>-->
+</RelativeLayout>

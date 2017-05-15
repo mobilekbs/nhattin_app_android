@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#006fb4</color>
+    <color name="colorPrimaryDark">#015589</color>
+    <color name="colorAccent">#f8c60f</color>
+    <color name="colorGreen">#01a358</color>
+    <color name="colorGreenDark">#02894b</color>
+    <color name="colorGreenGreen">#45a479</color>
+    <color name="colorBG">#efefef</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorRed">#ef2a33</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorOrange">#f24900</color>
+    <color name="colorOrangeP">#ff7e47</color>
+    <color name="colorGrayText">#666666</color>
+    <color name="colorGrayTrangsperant">#82cccccc</color>
+    <color name="colorBlackTrangsperant">#32000000</color>
+    <color name="colorGrayGray">#fafafa</color>
+    <color name="colorGray">#bfbfbf</color>
+    <color name="colorBlackGray">#d2ccc9c9</color>
+    <color name="colorGrayCC">#cccccc</color>
+
+    <!--TODO: color button -->
+    <color name="colorGreenBtn">#01a358</color>
+    <color name="colorBtnFB">#3B5997</color>
+    <color name="colorBtnGG">#DB4E41</color>
+    <color name="colorBtnFBPress">#4e6cab</color>
+    <color name="colorBtnGGPress">#e65f52</color>
+    <color name="colorHeaderHub">#015589</color>
+    <color name="colorHeaderShipK">#da6c0b</color>
+
+    <!--TODO: Color text toolbar-->
+    <color name="colorTitleToolbar">#ffffff</color>
+
+    <color name="colorBGPlaceStop">#a1ffffff</color>
+    <color name="colorTextHub">#f59f9f9f</color>
+
+    <!--TODO: Switch Button-->
+    <color name="ksw_md_ripple_normal">#1E000000</color>
+    <color name="ksw_md_ripple_checked">#33019285</color>
+
+    <color name="ksw_md_solid_shadow">#33000000</color>
+
+    <!--TODO: Draw line path-->
+    <color name="line_path">#7ba676e2</color>
+
+    <color name="ksw_md_solid_normal">#ECECEC</color>
+    <color name="ksw_md_solid_checked">#019285</color>
+    <color name="ksw_md_solid_disable">#FFFFFF</color>
+    <color name="ksw_md_solid_checked_disable">#aaaaaa</color>
+
+    <!--TODO: Order Detail Hub Activity-->
+    <color name="hub_text_color">#212121</color>
+    <color name="hub_background_color">#f2f2f2</color>
+    <color name="hub_background_color_sub">#cccccc</color>
 </resources>

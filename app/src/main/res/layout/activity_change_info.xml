@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="vn.ntlogistics.app.shipper.ViewModels.MyProfileVMs.ChangeInfoActivityViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        tools:context="com.oneshipglobal.app.oneshippro.Views.Activities.ChangeInfoActivity">
+
+        <LinearLayout
+            android:id="@+id/layoutMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    style="@style/AppTheme.Widget.TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/changed_info"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textsize_toolbar" />
+            </LinearLayout>
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/name"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <EditText
+                            android:id="@+id/etName"
+                            style="@style/AppTheme.Widget.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:background="@color/colorBG"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPersonName"
+                            android:maxLength="80"
+                            android:padding="5dp"
+                            android:text="@{viewModel.textName}"
+                            android:onTextChanged="@{viewModel::onTextChangeName}"
+                            android:error="@{viewModel.errorName}"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/sex"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <RadioGroup
+                                android:id="@+id/rgSex"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/rbMale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="@{viewModel.isMale}"
+                                    android:text="@string/male" />
+
+                                <RadioButton
+                                    android:id="@+id/rbFemale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="@{!viewModel.isMale}"
+                                    android:text="@string/female" />
+                            </RadioGroup>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/birthday"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <LinearLayout
+                            android:id="@+id/btnBirthDay"
+                            android:onClick="@{viewModel::onClickBirthday}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/tvBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:hint="@string/not_yet"
+                                android:text="@{viewModel.textBirthday}"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_body" />
+
+                            <ImageView
+                                android:id="@+id/iv_birthday"
+                                android:layout_width="@dimen/design_fab_image_size"
+                                android:layout_height="@dimen/design_fab_image_size"
+                                android:layout_weight="0"
+                                android:src="@android:drawable/ic_menu_my_calendar" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/address_house"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <EditText
+                            android:id="@+id/etAddress"
+                            style="@style/AppTheme.Widget.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:background="@color/colorBG"
+                            android:hint="@string/not_yet"
+                            android:text="@{viewModel.textAddress}"
+                            android:onTextChanged="@{viewModel::onTextChangeAddress}"
+                            android:imeOptions="actionDone"
+                            android:maxLength="180"
+                            android:padding="5dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/phone_number"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <EditText
+                            android:id="@+id/etPhone"
+                            style="@style/AppTheme.Widget.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:background="@color/colorBG"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:padding="5dp"
+                            android:singleLine="true" />
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/email_address"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <EditText
+                            android:id="@+id/etMail"
+                            style="@style/AppTheme.Widget.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:background="@color/colorBG"
+                            android:hint="@string/not_yet"
+                            android:text="@{viewModel.textEmail}"
+                            android:onTextChanged="@{viewModel::onTextChangeEmail}"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="40"
+                            android:padding="5dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/vehicles"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <Spinner
+                            android:id="@+id/sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/license_plates"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/textsize_body" />
+
+                        <EditText
+                            android:id="@+id/etPlateNo"
+                            style="@style/AppTheme.Widget.EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:background="@color/colorBG"
+                            android:imeOptions="actionDone"
+                            android:maxLength="15"
+                            android:padding="5dp"
+                            android:text="@{viewModel.textPlateNo}"
+                            android:onTextChanged="@{viewModel::onTextChangePlaceNo}"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/btnUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_button"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:onClick="@{viewModel::onClickUpdate}"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@mipmap/ic_edit_white" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/update_dh"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/textsize_title" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btnBack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_overlook"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:onClick="@{viewModel::onClickBack}"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@mipmap/ic_undo_white" />
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/back"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/textsize_title" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
