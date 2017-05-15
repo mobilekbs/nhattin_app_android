@@ -1,4 +1,4 @@
-package vn.ntlogistics.nhattin;
+package vn.ntlogistics.app.shipper;
 
 import org.junit.Test;
 

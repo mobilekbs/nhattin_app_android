@@ -1,4 +1,4 @@
-package vn.ntlogistics.nhattin;
+package vn.ntlogistics.app.shipper;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("vn.ntlogistics.nhattin", appContext.getPackageName());
+        assertEquals("vn.ntlogistics.app.shipper", appContext.getPackageName());
     }
 }
