@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:paddingBottom="10dp">
 
-        <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+        <vn.ntlogistics.app.shipper.Commons.CustomViews.HeaderLayout
             android:id="@+id/headerSend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

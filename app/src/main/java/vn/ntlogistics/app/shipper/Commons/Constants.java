@@ -20,7 +20,7 @@ public class Constants {
     //public static final String OUR_PHONE_NUMBER = "";
     //TODO: Load my order
     public static final int NUMBER_ITEM_LOAD = 20;
-    public static final int STATUS_NEW_ORDER = 26;
+    //public static final int STATUS_NEW_ORDER = 26;
     public static final int STATUS_UNCOMPLETED = 27;
     public static final int STATUS_COMPLETED = 28;
     public static final int STATUS_CANCEL_ORDER = 10;
@@ -29,7 +29,7 @@ public class Constants {
     public static final int STATUS_RESTED_USER = 31;
 
     //TODO: Params ShipK
-    public static final int TYPE_SHIP_K = 3;
+    //public static final int TYPE_SHIP_K = 3;
     public static final int TYPE_SHIP_CARGO = 0;
     public static final int JOB_SHIP_K = 8;
 

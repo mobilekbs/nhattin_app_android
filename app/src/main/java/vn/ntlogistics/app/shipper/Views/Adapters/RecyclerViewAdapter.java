@@ -179,7 +179,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.lnCODItem.setVisibility(View.VISIBLE);
             //Create Hub
             createItemHub(holder, order);
-        } else if (order.getOrderType() == Constants.TYPE_SHIP_K
+        } /*else if (order.getOrderType() == Constants.TYPE_SHIP_K
                 && order.getJobType() == Constants.JOB_SHIP_K) { //Mua hang sieu thi = 3
             holder.tvShipFeeItem.setText(context.getString(R.string.total_fee_shipk));
             holder.lnAdvanceItem.setVisibility(View.GONE);
@@ -193,7 +193,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             } else {
                 holder.lnLocationItemList.setVisibility(View.GONE);
             }
-        }
+        }*/
         else {
             holder.lnMainStopPlace.setVisibility(View.GONE);
             holder.lnAdvanceItem.setVisibility(View.VISIBLE);
@@ -226,20 +226,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.tvDay.setText(Commons.timeStampToDateNotYear(stamp));
             holder.tvTime.setText(order.getCategoryTitle());
         }
-        if (order.getOrderType() != Constants.TYPE_SHIP_K) {
-            if (order.getCodAmount() == 0) { //Nếu COD = 0 thì cho hiện advance fee dù cho nó bằng 0
-                holder.lnCODItem.setVisibility(View.GONE);
+        if (order.getCodAmount() == 0) { //Nếu COD = 0 thì cho hiện advance fee dù cho nó bằng 0
+            holder.lnCODItem.setVisibility(View.GONE);
+            holder.lnAdvanceItem.setVisibility(View.VISIBLE);
+            holder.tvAdvanceItem.setText(Commons.DinhDangChuoiTien(order.getAdvanceCodAmount()) + context.getString(R.string.unit));
+        } else if (order.getCodAmount() > 0) { // nếu COD > 0 thì cho hiện và advanceFee sẽ hiện nếu > 0
+            holder.lnCODItem.setVisibility(View.VISIBLE);
+            holder.tvCODItem.setText(Commons.DinhDangChuoiTien(order.getCodAmount()) + context.getString(R.string.unit));
+            if (order.getAdvanceCodAmount() > 0) {
                 holder.lnAdvanceItem.setVisibility(View.VISIBLE);
                 holder.tvAdvanceItem.setText(Commons.DinhDangChuoiTien(order.getAdvanceCodAmount()) + context.getString(R.string.unit));
-            } else if (order.getCodAmount() > 0) { // nếu COD > 0 thì cho hiện và advanceFee sẽ hiện nếu > 0
-                holder.lnCODItem.setVisibility(View.VISIBLE);
-                holder.tvCODItem.setText(Commons.DinhDangChuoiTien(order.getCodAmount()) + context.getString(R.string.unit));
-                if (order.getAdvanceCodAmount() > 0) {
-                    holder.lnAdvanceItem.setVisibility(View.VISIBLE);
-                    holder.tvAdvanceItem.setText(Commons.DinhDangChuoiTien(order.getAdvanceCodAmount()) + context.getString(R.string.unit));
-                } else {
-                    holder.lnAdvanceItem.setVisibility(View.GONE);
-                }
+            } else {
+                holder.lnAdvanceItem.setVisibility(View.GONE);
             }
         }
         holder.tvStop.setText(Commons.DinhDangChuoiTien(order.getShipperAmount()) + context.getString(R.string.unit));
@@ -276,26 +274,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 setEnabledButton(v);
-                if (status != Constants.STATUS_NEW_ORDER) {
-                    callButtonReceieOrder(order,holder.iTag,null);
-                    /*try {
-                        JSOrderDetail data = new JSOrderDetail(context);
-                        data.setShippingCode(order.getShippingCode().toString());
-                        data.setStatusId(status + "");
-                        data.setJobType(order.getJobType() + "");
-
-                        String json = new Gson().toJson(data);
-                        new OrderDetailAPI(
-                                context,
-                                json,
-                                order,
-                                status,
-                                holder.iTag,
-                                false
-                        ).execute();
-                    } catch (Exception e) {
-                    }*/
-                }
+                callButtonReceieOrder(order,holder.iTag,null);
             }
         });
 
@@ -304,10 +283,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     private void setupButtonReceieOrder(final DataObjectHolder holder, final Order order) {
-        if (status != Constants.STATUS_NEW_ORDER) {
-            holder.lnBtnReceiveItem.setVisibility(View.GONE);
-        } else
-            holder.lnBtnReceiveItem.setVisibility(View.VISIBLE);
+        holder.lnBtnReceiveItem.setVisibility(View.GONE);
 
         holder.btnReceiveOrderItem.setOnClickListener(new View.OnClickListener() {
             @Override

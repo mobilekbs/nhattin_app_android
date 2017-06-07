@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
-        tools:context="com.oneshipglobal.app.oneshippro.Views.Activities.ChangeInfoActivity">
+        tools:context=".Views.Activities.ChangeInfoActivity">
 
         <LinearLayout
             android:id="@+id/layoutMain"

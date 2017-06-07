@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/com.oneshipglobal.app.oneshippro.Utils.CustomViewGroup"
+    xmlns:custom="http://schemas.android.com/apk/vn.ntlogistics.app.shipper.Commons.CustomViews"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:background="?android:attr/selectableItemBackground">
 
-        <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+        <vn.ntlogistics.app.shipper.Commons.CustomViews.HeaderLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

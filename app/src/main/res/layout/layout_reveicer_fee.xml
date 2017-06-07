@@ -10,7 +10,7 @@
         android:background="@color/colorWhite"
         android:orientation="vertical">
 
-        <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+        <vn.ntlogistics.app.shipper.Commons.CustomViews.HeaderLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="normal"

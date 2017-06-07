@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/status_height"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_status_cycle"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_status_header">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="#1"
+                android:id="@+id/tvHeader"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/textsize_toolbar"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvBLCode"
+                android:padding="3dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/textsize_body"
+                android:textColor="@color/colorGreenDark"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvJob"
+                android:padding="3dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/textsize_body"
+                android:textColor="@color/colorBlack"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvStatus"
+                android:padding="3dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/textsize_body"
+                android:textColor="@color/colorBlack"
+                android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

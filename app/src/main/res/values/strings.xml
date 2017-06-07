@@ -449,5 +449,6 @@
     <string name="finish_cap">HOÀN THÀNH</string>
     <string name="cancel_cap">HUỶ</string>
 
-    <!--TODO: Update status-->
+    <!--TODO: Pin Input-->
+    <string name="pin_content_desc">PIN input field</string>
 </resources>

@@ -53,4 +53,10 @@
     <color name="hub_text_color">#212121</color>
     <color name="hub_background_color">#f2f2f2</color>
     <color name="hub_background_color_sub">#cccccc</color>
+
+    <!--TODO: Code Input - Nhập OTP-->
+    <color name="underline_default_color">#CCCCCC</color>
+    <color name="underline_selected_color">#000</color>
+    <color name="hintColor">#CCCCCC</color>
+    <color name="textColor">#000</color>
 </resources>

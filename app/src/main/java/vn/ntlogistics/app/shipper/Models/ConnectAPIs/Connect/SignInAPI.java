@@ -14,6 +14,7 @@ import vn.ntlogistics.app.shipper.Models.ConnectAPIs.BaseConnect.BaseConnectAPI;
 import vn.ntlogistics.app.shipper.Models.ConnectAPIs.BaseConnect.Method;
 import vn.ntlogistics.app.shipper.Models.ConstantURLs;
 import vn.ntlogistics.app.shipper.R;
+import vn.ntlogistics.app.shipper.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.shipper.Views.Activities.LoginActivity;
 import vn.ntlogistics.app.shipper.Views.Activities.MainActivity;
 
@@ -21,9 +22,10 @@ import vn.ntlogistics.app.shipper.Views.Activities.MainActivity;
  * Created by Zanty on 23/06/2016.
  */
 public class SignInAPI extends BaseConnectAPI {
-    String token, phone;
-    SqliteManager db;
-    public SignInAPI(Context context, String data) {
+    String          token, phone;
+    SqliteManager   db;
+    ViewModel       viewModel;
+    public SignInAPI(Context context, String data, ViewModel viewModel) {
         super(context, ConstantURLs.URL_SIGN_IN, data, false, Method.POST);
         phone = SCurrentUser.getCurrentUser(context).getPhoneNo();
         JsonObject json = SApiKey.getJsonApiKey();
@@ -32,6 +34,7 @@ public class SignInAPI extends BaseConnectAPI {
         json.addProperty("otp",data);
         this.data = json.toString();
         db = new SqliteManager(context);
+        this.viewModel = viewModel;
     }
 
     @Override
@@ -69,11 +72,19 @@ public class SignInAPI extends BaseConnectAPI {
             ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_right);
         }
         else {
+            if(viewModel != null)
+                viewModel.loadSuccess(null);
             Message.showToast(
                     context,
                     context.getResources().getString(R.string.toast_otp)
             );
         }
+    }
+
+    @Override
+    public void onError() {
+        if(viewModel != null)
+            viewModel.loadSuccess(null);
     }
 
     @Override

@@ -85,6 +85,7 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public void loadSuccess(List<Order> mList) {
-
+        if(viewModel != null)
+            viewModel.loadSuccess(mList);
     }
 }

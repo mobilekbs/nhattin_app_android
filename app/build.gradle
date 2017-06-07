@@ -28,17 +28,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
 
     //Firebase
-    compile 'com.google.firebase:firebase-messaging:10.2.4'
+    
 
     compile files('libs/mail.jar')
     compile files('libs/activation.jar')
@@ -47,6 +39,15 @@ dependencies {
     compile('ch.acra:acra:4.5.0') {
         exclude group: 'org.json'
     }
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+    compile 'com.google.firebase:firebase-messaging:10.2.4'
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'

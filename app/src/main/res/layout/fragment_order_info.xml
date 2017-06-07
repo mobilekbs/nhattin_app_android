@@ -1,0 +1,1050 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.Fragments.OrderDetail.OrderInfoFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/sv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/lnBody"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/lnShippingOrder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/colorGreenGreen"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/tvTitleShipFee"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ship_60_minute"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/textsize_body"
+                                android:gravity="center" />
+
+                            <TextView
+                                android:id="@+id/tvFeeShip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="2dp"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/textsize_toolbar" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0.7dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorWhite" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/colorGreenGreen"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/fee_cod"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/textsize_body" />
+
+                            <TextView
+                                android:id="@+id/tvFeeCod"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="2dp"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/textsize_toolbar" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lnShipU"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorGreenGreen"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="@dimen/size_image_icon"
+                            android:layout_height="@dimen/size_image_icon"
+                            android:id="@+id/imageView10"
+                            android:layout_marginRight="10dp"
+                            android:src="@mipmap/ic_money_white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:id="@+id/tvShippingFeeU"
+                            android:textSize="@dimen/textsize_toolbar"
+                            android:textColor="@color/colorWhite" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                        android:id="@+id/headerSend"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
+                        app:showCheckbox="false"
+                        app:showConfirmCode="true"
+                        app:tvTitle="@string/point_start"
+                        app:tvTitleConfirm="@string/confirm_code_delivery" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/lnName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_name" />
+
+                                <TextView
+                                    android:id="@+id/tvNameSend"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+                            android:background="@color/colorGray" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:layout_margin="10dp"
+                                    android:src="@mipmap/ic_phone" />
+
+                                <TextView
+                                    android:id="@+id/tvPhoneSend"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+
+                                <LinearLayout
+                                    android:id="@+id/btnCall"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="wrap_content"
+                                        android:src="@mipmap/ic_phone_blue" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/call"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="@dimen/textsize_body" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_location" />
+
+                                <TextView
+                                    android:id="@+id/tvAddressSend"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnTimeSend"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_alarm_clock_gray" />
+
+                                <TextView
+                                    android:id="@+id/tvTimeSend"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnCodSend"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_cod" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="@dimen/textsize_body"
+                                    android:text="@string/cod_sender" />
+                                <TextView
+                                    android:id="@+id/tvCodSend"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnNote"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_note" />
+
+                                <TextView
+                                    android:id="@+id/tvNoteSend"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/material_grey_300" />
+
+                        <LinearLayout
+                            android:id="@+id/lnTrustUntrustSend"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:id="@+id/btnTrustSend"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true">
+
+                                    <TextView
+                                        android:id="@+id/tvTrustSend"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/custom_trusted_taixe"
+                                        android:gravity="center"
+                                        android:text="@string/trust_number"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textColor="@color/colorWhite"
+                                        android:textSize="@dimen/so_25" />
+
+                                    <TextView
+                                        android:id="@+id/tvTSend"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="@string/trust"
+                                        android:textColor="@color/colorBlack" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="35dp"
+                                android:background="@color/material_grey_300" />
+
+                            <RelativeLayout
+                                android:id="@+id/btnUnTrustSend"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true">
+
+                                    <TextView
+                                        android:id="@+id/tvUntrustSend"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:background="@drawable/custom_untrusted_taixe"
+                                        android:gravity="center"
+                                        android:text="@string/trust_number"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:textColor="@color/colorWhite"
+                                        android:textSize="@dimen/so_25" />
+
+                                    <TextView
+                                        android:id="@+id/tvUSend"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="@string/untrust"
+                                        android:textColor="@color/colorBlack" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnReveicerInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    android:id="@+id/lnCuratorInfo">
+
+                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                        android:id="@+id/headerCurator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
+                        app:showCheckbox="false"
+                        app:showConfirmCode="false"
+                        app:tvTitle="@string/title_curator"
+                        app:tvTitleConfirm="@string/confirm_code_delivery" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_name" />
+
+                                <TextView
+                                    android:id="@+id/tvNameCurator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:layout_margin="10dp"
+                                    android:src="@mipmap/ic_phone" />
+
+                                <TextView
+                                    android:id="@+id/tvPhoneCurator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+
+                                <LinearLayout
+                                    android:id="@+id/btnCallCurator"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="wrap_content"
+                                        android:src="@mipmap/ic_phone_blue" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/call"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="@dimen/textsize_body" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/material_grey_300" />
+
+                        <!--<LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lnTrustUntrustShip">
+
+                            <RelativeLayout
+                                android:id="@+id/btnTrustShip"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true">
+
+                                    <TextView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:background="@drawable/custom_trusted_taixe"
+                                        android:text="@string/trust_number"
+                                        android:textColor="@color/colorWhite"
+                                        android:layout_gravity="center"
+                                        android:textSize="@dimen/so_25"
+                                        android:gravity="center"
+                                        android:id="@+id/tvTrustShip" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center"
+                                        android:text="@string/trust"
+                                        android:layout_marginLeft="5dp"
+                                        android:textColor="@color/colorBlack"
+                                        android:id="@+id/tvTShip" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="35dp"
+                                android:background="@color/material_grey_300" />
+
+                            <RelativeLayout
+                                android:id="@+id/btnUnTrustShip"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true">
+
+                                    <TextView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:background="@drawable/custom_untrusted_taixe"
+                                        android:text="@string/trust_number"
+                                        android:textSize="@dimen/so_25"
+                                        android:gravity="center"
+                                        android:textColor="@color/colorBG"
+                                        android:id="@+id/tvUntrustShip" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center"
+                                        android:text="@string/untrust"
+                                        android:layout_marginLeft="5dp"
+                                        android:textColor="@color/colorBlack"
+                                        android:id="@+id/tvUShip" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>-->
+                    </LinearLayout>
+                </LinearLayout>
+                <!--<LinearLayout
+                    android:id="@+id/lnShipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                        android:id="@+id/headerShip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
+                        app:showCheckbox="false"
+                        app:showConfirmCode="true"
+                        app:tvTitle="@string/shipper_info"
+                        app:tvTitleConfirm="@string/confirm_code_delivery" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/lnNameShip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_company_gray" />
+
+                                <TextView
+                                    android:id="@+id/tvNameShip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnAddressShip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_location" />
+
+                                <TextView
+                                    android:id="@+id/tvAddressShip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnCuratorShip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_name" />
+
+                                <TextView
+                                    android:id="@+id/tvCuratorShip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnPhoneShip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:layout_margin="10dp"
+                                    android:src="@mipmap/ic_phone" />
+
+                                <TextView
+                                    android:id="@+id/tvPhoneShip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lnEmailShip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.3dp"
+                                android:background="@color/colorGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/size_image_icon"
+                                    android:layout_height="@dimen/size_image_icon"
+                                    android:src="@mipmap/ic_email_gray" />
+
+                                <TextView
+                                    android:id="@+id/tvEmailShip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/material_grey_300" />
+
+                        &lt;!&ndash;<LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lnTrustUntrustShip">
+
+                            <RelativeLayout
+                                android:id="@+id/btnTrustShip"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true">
+
+                                    <TextView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:background="@drawable/custom_trusted_taixe"
+                                        android:text="@string/trust_number"
+                                        android:textColor="@color/colorWhite"
+                                        android:layout_gravity="center"
+                                        android:textSize="@dimen/so_25"
+                                        android:gravity="center"
+                                        android:id="@+id/tvTrustShip" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center"
+                                        android:text="@string/trust"
+                                        android:layout_marginLeft="5dp"
+                                        android:textColor="@color/colorBlack"
+                                        android:id="@+id/tvTShip" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="0.5dp"
+                                android:layout_height="35dp"
+                                android:background="@color/material_grey_300" />
+
+                            <RelativeLayout
+                                android:id="@+id/btnUnTrustShip"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true">
+
+                                    <TextView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:textAppearance="?android:attr/textAppearanceLarge"
+                                        android:background="@drawable/custom_untrusted_taixe"
+                                        android:text="@string/trust_number"
+                                        android:textSize="@dimen/so_25"
+                                        android:gravity="center"
+                                        android:textColor="@color/colorBG"
+                                        android:id="@+id/tvUntrustShip" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:layout_gravity="center"
+                                        android:text="@string/untrust"
+                                        android:layout_marginLeft="5dp"
+                                        android:textColor="@color/colorBlack"
+                                        android:id="@+id/tvUShip" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>&ndash;&gt;
+                    </LinearLayout>
+                </LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorBG"
+                            android:orientation="horizontal">
+
+                            <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                                android:id="@+id/headerSend1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textStyle="normal"
+                                app:showCheckbox="false"
+                                app:showConfirmCode="false"
+                                app:tvTitle="@string/map"
+                                app:tvTitleConfirm="@string/confirm_code_delivery" />
+
+                            <LinearLayout
+                                android:id="@+id/lnViewMap"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_alignParentRight="true"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/design_fab_image_size"
+                                    android:layout_height="@dimen/design_fab_image_size"
+                                    android:src="@mipmap/ic_marker_blue" />
+
+                                <TextView
+                                    android:id="@+id/textView5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/view_map"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/textsize_body" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <!--<RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.CustomMapView
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/mapView"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp" />
+
+                    </RelativeLayout>-->
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+        <!--<ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_centerInParent="true" />-->
+    </RelativeLayout>
+</FrameLayout>

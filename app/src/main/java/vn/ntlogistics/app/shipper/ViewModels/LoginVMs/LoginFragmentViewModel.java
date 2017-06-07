@@ -15,11 +15,9 @@ import java.util.List;
 import vn.ntlogistics.app.shipper.Commons.AbstractClass.BaseFragment;
 import vn.ntlogistics.app.shipper.Commons.Commons;
 import vn.ntlogistics.app.shipper.Models.ConnectAPIs.Connect.SendOTPAPI;
-import vn.ntlogistics.app.shipper.Models.Enums.ELogin;
 import vn.ntlogistics.app.shipper.R;
 import vn.ntlogistics.app.shipper.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.shipper.Views.Activities.ConfirmCodeActivity;
-import vn.ntlogistics.app.shipper.Views.Activities.LoginActivity;
 
 /**
  * Created by minhtan2908 on 1/12/17.
@@ -30,11 +28,6 @@ public class LoginFragmentViewModel extends ViewModel {
 
     private Context         context;
     private BaseFragment    fragment;
-    //private FragmentLoginBinding binding;
-
-    //TODO: Connect API
-    //private Subscription subscription;
-    private SendOTPAPI api;
 
     private ObservableField<String> textPhone = new ObservableField<>();
 
@@ -84,7 +77,7 @@ public class LoginFragmentViewModel extends ViewModel {
             );
             // Chạy hàm kết nối api
             connectAPI(api);*/
-            new SendOTPAPI(context, textPhone.get(),1, fragment).execute();
+            new SendOTPAPI(context, textPhone.get(), 1, fragment).execute();
             /**
              * subscription đã được khai báo ở class ViewModel
              * Đã gọi huỷ đăng ký trong onDestroy nên phải khai báo
@@ -94,7 +87,10 @@ public class LoginFragmentViewModel extends ViewModel {
     }
 
     public void onClickRegister(View view) {
-        ((LoginActivity) context).loadFragment(ELogin.REGISTER);
+        //((LoginActivity) context).loadFragment(ELogin.REGISTER);
+        Intent i = new Intent(context, ConfirmCodeActivity.class);
+        i.putExtra("status", 1);
+        ((Activity)context).startActivity(i);
     }
 
     @Override

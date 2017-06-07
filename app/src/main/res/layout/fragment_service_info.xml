@@ -1,0 +1,338 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.ServiceInfoFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lnGoods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/lnSizeWeight">
+
+                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                        android:id="@+id/headerReceive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
+                        app:showCheckbox="false"
+                        app:showTime="false"
+                        app:tvTitle="@string/goods_size" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginRight="7dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="2dp"
+                                    android:text="@string/number"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body"
+                                    android:layout_gravity="center_vertical" />
+
+                                <TextView
+                                    android:id="@+id/tvCargoNumber"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="2dp"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorGrayText"
+                                    android:textSize="@dimen/textsize_body"
+                                    android:layout_gravity="center_vertical" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="2dp"
+                                    android:text="@string/total_size"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body"
+                                    android:layout_gravity="center_vertical" />
+
+                                <TextView
+                                    android:id="@+id/tvTotalSize"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="2dp"
+                                    android:textColor="@color/colorGrayText"
+                                    android:textSize="@dimen/textsize_body"
+                                    android:layout_gravity="center_vertical" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginRight="7dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="2dp"
+                                android:text="@string/size"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/textsize_body"
+                                android:layout_gravity="center_vertical" />
+
+                            <TextView
+                                android:id="@+id/tvSizeDetail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="2dp"
+                                android:textColor="@color/colorGrayText"
+                                android:textSize="@dimen/textsize_body"
+                                android:layout_gravity="center_vertical" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                        android:id="@+id/HeaderShip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
+                        app:showCheckbox="false"
+                        app:showTime="false"
+                        app:tvTitle="@string/added_service" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginRight="7dp"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_margin="2dp"
+                                    android:layout_weight="0"
+                                    android:text="@string/ship_service_type"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tvTypeDelivery"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="5dp"
+                                    android:textColor="@color/colorGrayText"
+                                    android:textSize="@dimen/textsize_body" />
+
+                            </LinearLayout>
+
+<!--                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/textView6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="2dp"
+                                    android:text="@string/packing"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/textsize_body"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPacking"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal">
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/packing_box"
+                                            android:textColor="@color/colorBlack"
+                                            android:textSize="@dimen/textsize_body" />
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton3"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/packing_stoke"
+                                            android:textColor="@color/colorBlack"
+                                            android:textSize="@dimen/textsize_body" />
+
+                                        <RadioButton
+                                            android:id="@+id/radioButton2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="@string/packaging"
+                                            android:textColor="@color/colorBlack"
+                                            android:textSize="@dimen/textsize_body" />
+                                    </RadioGroup>
+                                </LinearLayout>
+
+                            </LinearLayout>-->
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginRight="7dp"
+                            android:orientation="horizontal">
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rvInsurance"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <RelativeLayout
+                            android:id="@+id/viewPagerIndicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone">
+
+                            <android.support.v4.view.ViewPager
+                                android:id="@+id/pager_introduction"
+                                android:layout_width="match_parent"
+                                android:layout_height="300dp"
+                                tools:listitem="@layout/item_page_image" />
+
+                            <LinearLayout
+                                android:id="@+id/viewPagerCountDots"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:orientation="horizontal"
+                                android:gravity="center"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="30dp" />
+
+                            <ImageButton
+                                android:id="@+id/btn_next"
+                                android:layout_width="42dip"
+                                android:layout_height="42dip"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/btn_round_semitransperant"
+                                android:src="@drawable/ic_keyboard_arrow_right_white_24dp"
+                                android:layout_centerVertical="true" />
+
+                            <ImageButton
+                                android:id="@+id/btn_finish"
+                                android:layout_width="42dip"
+                                android:layout_height="42dip"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/btn_round_semitransperant"
+                                android:src="@drawable/ic_keyboard_arrow_left_white_24dp"
+                                android:layout_centerVertical="true" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</FrameLayout>

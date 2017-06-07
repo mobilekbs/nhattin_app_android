@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -134,7 +136,11 @@ public class MainActivity extends BaseActivity
             .into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                    binding.navHeaderMain.ivAvatar.setImageBitmap(resource);
+                    RoundedBitmapDrawable circularBitmapDrawable =
+                            RoundedBitmapDrawableFactory.create(
+                                    getResources(), resource);
+                    circularBitmapDrawable.setCircular(true);
+                    binding.navHeaderMain.ivAvatar.setImageDrawable(circularBitmapDrawable);
                 }
 
                 @Override
@@ -163,7 +169,7 @@ public class MainActivity extends BaseActivity
         JSOrderDetail data = new JSOrderDetail(
                 this,
                 order.getShippingCode(),
-                Constants.STATUS_NEW_ORDER + "",
+                order.getStatus(),
                 order.getJobType() + ""
         );
         String json = new Gson().toJson(data);
@@ -171,7 +177,7 @@ public class MainActivity extends BaseActivity
                 this,
                 json,
                 order,
-                Constants.STATUS_NEW_ORDER,
+                Integer.parseInt(order.getStatus()),
                 -1,
                 false
         ).execute();

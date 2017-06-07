@@ -63,15 +63,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:checked="true"
-                    app:kswAnimationDuration="300"
+                    android:onCheckedChanged="@{viewModel::onCheckedChanged}"
+                    app:kswAnimationDuration="200"
                     app:kswBackDrawable="@drawable/ios_back_drawable"
                     app:kswBackMeasureRatio="1.4"
                     app:kswThumbDrawable="@drawable/ios_thumb_selector"
                     app:kswThumbMarginBottom="-5dp"
                     app:kswThumbMarginLeft="-5dp"
                     app:kswThumbMarginRight="-5dp"
-                    app:kswThumbMarginTop="-5.5dp"
-                    android:onCheckedChanged="@{viewModel::onCheckedChanged}"/>
+                    app:kswThumbMarginTop="-5.5dp" />
             </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.AppBarLayout>

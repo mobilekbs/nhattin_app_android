@@ -2,26 +2,20 @@ package vn.ntlogistics.app.shipper.ViewModels.ConfirmVMs;
 
 import android.app.Activity;
 import android.content.Context;
-import android.databinding.ObservableField;
 import android.os.CountDownTimer;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 
 import java.util.List;
 
 import vn.ntlogistics.app.shipper.Commons.Commons;
-import vn.ntlogistics.app.shipper.Commons.Message;
-import vn.ntlogistics.app.shipper.Commons.Singleton.SApiKey;
+import vn.ntlogistics.app.shipper.Commons.CustomViews.CodeInput.PinInput;
 import vn.ntlogistics.app.shipper.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.shipper.Models.ConnectAPIs.Connect.RegisterAPI;
 import vn.ntlogistics.app.shipper.Models.ConnectAPIs.Connect.SendOTPAPI;
 import vn.ntlogistics.app.shipper.Models.ConnectAPIs.Connect.SignInAPI;
 import vn.ntlogistics.app.shipper.Models.Inputs.JSRegister;
-import vn.ntlogistics.app.shipper.Models.Outputs.User.User;
 import vn.ntlogistics.app.shipper.R;
 import vn.ntlogistics.app.shipper.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.shipper.databinding.ActivityConfirmCodeBinding;
@@ -39,20 +33,21 @@ public class ConfirmActivityViewModel extends ViewModel {
 
     //TODO: Params
     private int                         status = 0; //TODO: 0: SignIn - 1: Register
-    private JSRegister reg;
-    private ActivityConfirmCodeBinding binding;
+    private JSRegister                  reg;
+    private ActivityConfirmCodeBinding  binding;
 
     CountDownTimer                      mCountDownTimer;
     int                                 i = 0;
 
-    private ObservableField<String>     confirmCode = new ObservableField<>();
+    //private ObservableField<String>     confirmCode = new ObservableField<>();
 
     public ConfirmActivityViewModel(Context context, int status, JSRegister reg, ActivityConfirmCodeBinding b) {
         this.context = context;
         this.status = status;
         this.reg = reg;
         this.binding = b;
-        this.confirmCode.set("");
+        //this.confirmCode.set("");
+        initConfirmCode();
         mCountDownTimer = new CountDownTimer(20000, 200) {
 
             @Override
@@ -73,32 +68,41 @@ public class ConfirmActivityViewModel extends ViewModel {
         mCountDownTimer.start();
     }
 
-    private void handleConfirm(){
-        if (status == 1){ //Sign In
-            if (confirmCode.get().length() < 1)
+    private void initConfirmCode(){
+        binding.inputConfirmCode.setInputListener(new PinInput.OnInputListener() {
+            @Override
+            public void finish(String result) {
+                handleConfirm(result);
+            }
+        });
+    }
+
+    private void handleConfirm(String confirmCode){
+        /*if (status == 1){ //Sign In
+            *//*if (confirmCode.get().length() < 1)
                 Message.showToast(context, context.getResources().getString(R.string.toast_otp_valid));
             else if(confirmCode.get().length() < 4){
                 Message.showToast(context, context.getResources().getString(R.string.toast_otp_valid_4));
             }
-            else
-                callSignInAPI();
-        }
-        else if(status == 0){ //Register
+            else*//*
+                callSignInAPI(confirmCode);
+        }*/
+        callSignInAPI(confirmCode);
+        /*else if(status == 0){ //Register
             registerNewAccount();
-        }
+        }*/
     }
 
-    public void onClickConfirm(View v){
+    /*public void onClickConfirm(View v){
         Commons.setEnabledButton(v);
-        handleConfirm();
-    }
+    }*/
 
-    public boolean onEditorSend(TextView v, int actionId, KeyEvent event) {
+    /*public boolean onEditorSend(TextView v, int actionId, KeyEvent event) {
         if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
             handleConfirm();
         }
         return false;
-    }
+    }*/
 
     public void onClickResend(View view){
         Commons.setEnabledButton(view);
@@ -120,12 +124,12 @@ public class ConfirmActivityViewModel extends ViewModel {
         ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    /*public void onTextChanged(CharSequence s, int start, int before, int count) {
         if(!confirmCode.get().equalsIgnoreCase(s.toString()))
             confirmCode.set(s.toString());
-    }
+    }*/
 
-    private void registerNewAccount() {
+    /*private void registerNewAccount() {
         //TODO: Create json form object class JSRegister, using toJson form Gson() parse to String
         User user = SCurrentUser.getCurrentUser(context);
         reg.setApiKey(SApiKey.getOurInstance().getApiKey());
@@ -155,7 +159,7 @@ public class ConfirmActivityViewModel extends ViewModel {
             reg.setFacePhoto1(Commons.convertPathToBase64WithResize(reg.getFacePhoto1()));
         if(reg.getFacePhoto2()!=null)
             reg.setFacePhoto2(Commons.convertPathToBase64WithResize(reg.getFacePhoto2()));
-        /*reg.setVehicleType();
+        *//*reg.setVehicleType();
         reg.setPlateNo();
         reg.setVehiclePhoto1();
         reg.setVehiclePhoto2();
@@ -164,7 +168,7 @@ public class ConfirmActivityViewModel extends ViewModel {
         reg.setCmndPhoto1();
         reg.setCmndPhoto2();
         reg.setLicensePhoto1();
-        reg.setLicensePhoto2();*/
+        reg.setLicensePhoto2();*//*
         try {
             reg.setAvatarPhoto(SCurrentUser.getCurrentUser(context).getUrlPhoto());
         } catch (Exception e) {
@@ -172,16 +176,16 @@ public class ConfirmActivityViewModel extends ViewModel {
         }
         reg.setOtp(confirmCode.get());
         callRegisterAPI();
-        /*String json = new Gson().toJson(reg);
-        new RegisterAPI(this,json).execute();*/
-    }
+        *//*String json = new Gson().toJson(reg);
+        new RegisterAPI(this,json).execute();*//*
+    }*/
 
     //TODO: Call API ----------------
-    private void callSignInAPI(){
+    private void callSignInAPI(String confirmCode){
         /*SignInAPI api = new SignInAPI(context, confirmCode.get());
         // Chạy hàm kết nối api
         connectAPI(api);*/
-        new SignInAPI(context, confirmCode.get()).execute();
+        new SignInAPI(context, confirmCode, this).execute();
     }
 
     private void callRegisterAPI(){
@@ -211,6 +215,13 @@ public class ConfirmActivityViewModel extends ViewModel {
 
     @Override
     public void loadSuccess(List<?> mList) {
+        if(mList == null){ //opt không đúng
+            binding.inputConfirmCode.restart();
+        }
+    }
+
+    @Override
+    public void showControls(boolean check, int action) {
 
     }
 }
