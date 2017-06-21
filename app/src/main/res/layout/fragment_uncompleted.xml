@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="vn.ntlogistics.app.shipper.ViewModels.MyOrderVMs.UncompletedViewModel"/>
+            type="vn.ntlogistics.app.ordermanagement.ViewModels.MyOrderVMs.UncompletedViewModel"/>
     </data>
     <FrameLayout
         android:layout_width="match_parent"
@@ -29,19 +29,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <CheckBox
+                    <android.support.v7.widget.AppCompatCheckBox
                         android:id="@+id/cbAll1"
+                        style="@style/Base.Widget.AppCompat.CompoundButton.CheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
                         android:checked="@{viewModel.checkAll}"
                         android:onClick="@{viewModel::onClickCheckAll}"
-                        android:layout_weight="1" />
+                        app:buttonTint="@color/colorAccent" />
 
-                    <Spinner
+                    <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/spinner"
-                        style="@style/Widget.AppCompat.Spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -49,12 +50,16 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
+                        style="@style/Spinner"
                         android:prompt="@string/sp_filter"
                         android:spinnerMode="dialog" />
-
-                    <Spinner
+                    <View
+                        android:layout_width="0.2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"/>
+                    <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/spinner1"
-                        style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+                        style="@style/Spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -73,7 +78,6 @@
                 android:layout_height="match_parent"
                 android:layout_above="@+id/l2"
                 android:layout_below="@+id/l1"
-                android:setOnRefreshListener="@{viewModel.onRefresh}"
                 android:layout_weight="1">
 
                 <android.support.v7.widget.RecyclerView
@@ -107,7 +111,7 @@
                         android:layout_height="22dp"
                         android:layout_gravity="center_vertical"
                         android:padding="2dp"
-                        android:src="@mipmap/ic_edit_white" />
+                        android:src="@mipmap/ic_edit_black" />
 
                     <TextView
                         android:id="@+id/textView53213"
@@ -117,7 +121,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="0"
                         android:text="@string/update_now"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@android:color/black"
                         android:textSize="@dimen/textsize_title" />
                 </LinearLayout>
 

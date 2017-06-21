@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.ServiceFeeFragment">
+    tools:context=".Views.Fragments.OrderDetail.ServiceFeeFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimarySub">
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -19,199 +20,203 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/lnSenderFee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
                     android:orientation="vertical"
-                    android:paddingBottom="10dp"
-                    android:id="@+id/lnSenderFee">
-                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                    android:paddingBottom="10dp">
+
+                    <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.HeaderLayout
+                        android:id="@+id/headerSend"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="normal"
-                        app:tvTitleConfirm="@string/total"
-                        app:tvTitle="@string/collecting_sender"
-                        app:showConfirmCode="true"
                         app:showCheckbox="false"
-                        android:id="@+id/headerSend" />
+                        app:showConfirmCode="true"
+                        app:tvTitle="@string/collecting_sender"
+                        app:tvTitleConfirm="@string/total" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="5dp"
                         android:orientation="vertical"
-                        android:padding="5dp"
-                        android:layout_margin="5dp">
+                        android:padding="5dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/freight_fee"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tvFreightFeeReciver"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/added_service_fee"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tvAddedServiceFeeReciver"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cod_fee"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                style="@style/AppTheme.Widget.TextView"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tvCODFeeSend"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/total_revenue"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tvColectingRevenueReciver"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/freight_fee"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tvFreightFeeReciver"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/added_service_fee"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tvAddedServiceFeeReciver"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/AppTheme.Widget.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/cod_fee"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tvCODFeeSend"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/total_revenue"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tvColectingRevenueReciver"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
                             android:visibility="gone">
 
                             <TextView
+                                style="@style/AppTheme.Widget.TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/vat"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
+                                android:layout_gravity="center_vertical"
                                 android:layout_margin="2dp"
-                                style="@style/AppTheme.Widget.TextView"
-                                android:layout_gravity="center_vertical" />
+                                android:layout_weight="1"
+                                android:text="@string/vat"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
 
                             <TextView
+                                android:id="@+id/tvVATSend"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="New Text"
-                                android:id="@+id/tvVATSend"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
                                 android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
+                                android:text="New Text"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/extra_fee"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
                                 style="@style/AppTheme.Widget.TextView"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/extra_fee"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
                                 android:id="@+id/tvExtraFeeSend"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
                                 android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
                         </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
+                    android:id="@+id/lnRevenueSender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lnRevenueSender"
                     android:orientation="vertical">
 
                 </LinearLayout>
@@ -219,214 +224,215 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
                     android:orientation="vertical"
                     android:paddingBottom="10dp">
 
-                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                    <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.HeaderLayout
+                        android:id="@+id/headerFee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="normal"
-                        app:tvTitle="@string/fee_detail"
-                        app:showConfirmCode="true"
                         app:showCheckbox="false"
-                        app:tvTitleConfirm="@string/total"
-                        android:id="@+id/headerFee" />
+                        app:showConfirmCode="true"
+                        app:tvTitle="@string/fee_detail"
+                        app:tvTitleConfirm="@string/total" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="5dp"
                         android:orientation="vertical"
-                        android:padding="5dp"
-                        android:layout_margin="5dp">
+                        android:padding="5dp">
 
                         <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/main_fee"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tv1"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/sub_fee"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tv2"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/added_service_fee3"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tv3"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/total_revenue4"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tv4"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/total_fee"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/tvTotal"
-                                android:layout_weight="1"
-                                android:gravity="right"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/main_fee"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tv1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/sub_fee"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tv2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/added_service_fee3"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tv3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/total_revenue4"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tv4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:text="@string/total_fee"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+
+                            <TextView
+                                android:id="@+id/tvTotal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
                             android:visibility="gone">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1"
                                 android:text="@string/vat"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="New Text"
                                 android:id="@+id/tvVAT"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
                                 android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
+                                android:text="New Text"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
                         </LinearLayout>
+
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/total_revenue"
-                                android:layout_weight="1"
-                                android:textColor="@color/colorBlack"
-                                android:textSize="@dimen/textsize_body"
+                                android:layout_gravity="center_vertical"
                                 android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical" />
+                                android:layout_weight="1"
+                                android:text="@string/total_revenue"
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
 
                             <TextView
+                                android:id="@+id/tvTotalFee"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/tvTotalFee"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="2dp"
                                 android:layout_weight="1"
                                 android:gravity="right"
-                                android:textSize="@dimen/textsize_body"
-                                android:layout_margin="2dp"
-                                android:layout_gravity="center_vertical"
-                                android:textColor="@color/colorGrayText" />
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
                         </LinearLayout>
                     </LinearLayout>
 

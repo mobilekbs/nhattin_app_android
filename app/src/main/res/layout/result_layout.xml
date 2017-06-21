@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/rGroupBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="#15d4b2"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/original"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/icdefaultblack"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/imgDefault"
+            android:textColor="#606060"
+            android:textSize="13dp"
+            android:textStyle="normal" />
+
+        <RadioButton
+            android:id="@+id/superMagicColor"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/icmagicblack"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/imgLamnet"
+            android:textColor="#606060"
+            android:textSize="13dp"
+            android:textStyle="normal" />
+
+        <RadioButton
+            android:id="@+id/magicColor"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/iclightblack"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/imgLamsang"
+            android:textColor="#606060"
+            android:textSize="13dp"
+            android:textStyle="normal" />
+
+        <RadioButton
+            android:id="@+id/grayMode"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/icgrayblack"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/imgAnhxam"
+            android:textColor="#606060"
+            android:textSize="13dp"
+            android:textStyle="normal" />
+
+        <RadioButton
+            android:id="@+id/BWMode"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/icbwblack"
+            android:gravity="bottom|center_horizontal"
+            android:text="@string/imgDentrang"
+            android:textColor="#606060"
+            android:textSize="13dp"
+            android:textStyle="normal" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="3dp"
+        android:background="@drawable/button_design1"
+        android:orientation="horizontal"
+        android:padding="@dimen/bottom_bar_padding"
+        android:text="@string/hoanThanh"
+        android:textStyle="bold" >
+    </Button>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/doneButton"
+        android:layout_below="@id/rGroupBtn"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/scanPadding" >
+
+        <ImageView
+            android:id="@+id/scannedImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/scanPadding" />
+    </FrameLayout>
+
+</RelativeLayout>

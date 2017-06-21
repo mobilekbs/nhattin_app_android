@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.ntlogistics.app.shipper.Views.Fragments.MyOrders.CompletedFragment">
+    tools:context=".Views.Fragments.MyOrders.CompletedFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,41 +18,42 @@
             <LinearLayout
                 android:id="@+id/lnSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:weightSum="2">
 
-                <CheckBox
+                <!--<CheckBox
                     android:id="@+id/cbAll1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"/>-->
 
-                <Spinner
+                <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinner"
-                    style="@style/Widget.AppCompat.Spinner"
-                    android:layout_width="wrap_content"
+                    style="@style/Spinner"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog"
-                    android:layout_marginLeft="10dp"
-                    android:prompt="@string/sp_filter" />
+                    android:prompt="@string/sp_filter"
+                    android:spinnerMode="dialog" />
+                <View
+                    android:layout_width="0.2dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary"/>
 
-                <Spinner
+                <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinner1"
-                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
-                    android:layout_width="wrap_content"
+                    style="@style/Spinner"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog"
-                    android:layout_marginLeft="10dp"
-                    android:prompt="@string/sp_job" />
+                    android:prompt="@string/sp_job"
+                    android:spinnerMode="dialog" />
             </LinearLayout>
         </LinearLayout>
 

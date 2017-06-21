@@ -4,21 +4,22 @@
     android:layout_gravity="center"
     android:layout_height="match_parent"
     android:id="@+id/lnBody">
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:gravity="center"
         android:layout_centerInParent="true"
-        android:textSize="@dimen/textsize_sub_title" />
+        android:gravity="center"
+        android:text="New Text"
+        android:textAppearance="@style/MyCustomTabTextAppearance" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
         android:id="@+id/tvBadge"
-        android:textColor="@color/colorWhite"
+        android:textColor="@android:color/white"
         android:textSize="8sp"
         android:background="@drawable/bg_badge"
         android:paddingLeft="2dp"

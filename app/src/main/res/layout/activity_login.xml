@@ -3,17 +3,158 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/main_content"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="vn.ntlogistics.app.ordermanagement.ViewModels.LoginVMs.LoginActivityVM" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/loMainLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:context=".Views.Activities.LoginActivity">
+        tools:context="vn.ntlogistics.app.ordermanagement.Views.Activities.LoginActivity">
 
-        <vn.ntlogistics.app.shipper.Commons.CustomViews.NonSwipeableViewPager
-            android:id="@+id/nonSwipeVP"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/bg_login" />
 
-    </android.support.design.widget.CoordinatorLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="30dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/nhattin_white" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvInfo"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/lnActiveAccountLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edtKeyPublic"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/editextmain_design"
+                    android:hint="@{viewModel.flag == 0 ? @string/your_key : @string/password}"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccentSub1"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/btnKeyPublic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:onClick="@{viewModel::onClickActive}">
+
+                    <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.ClearTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:freezesText="true"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="@{viewModel.flag == 0 ? @string/create_account : @string/login}"
+                        android:textSize="@dimen/textsize_button"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnCreatePwLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edtPass"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/editextmain_design"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="@color/colorAccentSub1"
+                    android:textColorHint="@color/colorAccentSub1" />
+
+                <EditText
+                    android:id="@+id/edtPassConfirm"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/editextmain_design"
+                    android:hint="@string/confirm_password"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textColor="@color/colorAccentSub1"
+                    android:textColorHint="@color/colorAccentSub1" />
+
+                <LinearLayout
+                    android:id="@+id/btnSetPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:onClick="@{viewModel::onClickSetPw}">
+
+                    <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.ClearTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:freezesText="true"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="@string/create_account"
+                        android:textSize="@dimen/textsize_button"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tvInfo"
+            style="@style/AppTheme.Widget.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="@string/about_us"
+            android:textColor="@color/colorAccent"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </layout>

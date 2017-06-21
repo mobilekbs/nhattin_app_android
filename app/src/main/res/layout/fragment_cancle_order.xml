@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.ntlogistics.app.shipper.Views.Fragments.MyOrders.CancelOrderFragment">
+    tools:context=".Views.Fragments.MyOrders.CancelOrderFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,39 +20,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <CheckBox
+                <!--<CheckBox
                     android:id="@+id/cbAll1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"/>-->
 
-                <Spinner
+                <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinner"
-                    style="@style/Widget.AppCompat.Spinner"
-                    android:layout_width="wrap_content"
+                    style="@style/Spinner"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog"
-                    android:layout_marginLeft="10dp"
-                    android:prompt="@string/sp_filter" />
+                    android:prompt="@string/sp_filter"
+                    android:spinnerMode="dialog" />
+                <View
+                    android:layout_width="0.2dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary"/>
 
-                <Spinner
+                <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinner1"
-                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
-                    android:layout_width="wrap_content"
+                    style="@style/Spinner"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:spinnerMode="dialog"
-                    android:layout_marginLeft="10dp"
-                    android:prompt="@string/sp_job" />
+                    android:prompt="@string/sp_job"
+                    android:spinnerMode="dialog" />
             </LinearLayout>
         </LinearLayout>
 
@@ -71,7 +71,7 @@
                 android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/l2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                         android:textSize="@dimen/textsize_title" />
                 </LinearLayout>
             </LinearLayout>
-            <!--<LinearLayout
+            &lt;!&ndash;<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -174,8 +174,8 @@
                         android:textColor="@color/background_floating_material_light"
                         android:textSize="@dimen/textsize_title" />
                 </LinearLayout>
-            </LinearLayout>-->
-        </LinearLayout>
+            </LinearLayout>&ndash;&gt;
+        </LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/lnDialog"

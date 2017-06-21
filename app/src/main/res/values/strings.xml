@@ -1,95 +1,40 @@
 <resources>
-    <string name="app_name">Shipper</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_settings">Settings</string>
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+    <string name="app_name">NT Logistics</string>
+    <string name="about_us">©2015 Designed By HDSoft</string>
 
+
+    <string name="confirm_code_delivery">Mã xác thực</string>
+    <string name="menu_my_order">Đơn hàng của tôi</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
     </string>
 
-    <!--TODO: hotline-->
-    <string name="hotline">1900 636 908</string>
+    <!--TODO: Main Title-->
+    <string name="title_main_activity">Chức năng</string>
+    <string name="title_order_management">Quản lý đơn hàng</string>
+    <string name="title_activity_info_product">Thông tin sản phẩm</string>
+    <string name="title_activity_input_management">Quản lý nhập xuất</string>
+    <string name="title_activity_change_pass">Tài khoản</string>
+    <string name="title_activity_my_crop_image">Danh sách vận đơn</string>
+    <string name="title_activity_zoom_img">Ảnh</string>
+    <string name="title_activity_bill_do">Bill DO</string>
+    <string name="title_activity_bill_fail">Vận đơn chưa gửi được</string>
+    <string name="title_activity_manager_bill_white">Nhập liên trắng</string>
 
-    <string name="unit">đ</string>
+    <!--TODO: Layout Content Goods-->
+    <string name="goods_type">Loại hàng hóa</string>
+    <string name="goods_value">Giá trị hàng</string>
+    <string name="content">Nội dung</string>
 
-    <!--TODO: Title toolbar-->
-    <string name="title_donhang">ĐƠN HÀNG CỦA TÔI</string>
-    <string name="title_updatedonhang">CẬP NHẬT ĐƠN HÀNG</string>
-    <string name="title_taixe">HỒ SƠ CỦA TÔI</string>
-    <string name="title_notify">THÔNG BÁO</string>
-    <string name="title_money">VÍ CỦA TÔI</string>
-    <string name="title_refer_code">MÃ GIỚI THIỆU</string>
-
-    <!--TODO: Login-->
-    <string name="inputNotComplete">Vui lòng nhập số điện thoại</string>
-    <string name="alert_title_login">ĐĂNG NHẬP</string>
-    <string name="alert_message_login">Bạn có muốn đăng ký với số điện thoại này không?</string>
-    <string name="copy_right">Copyright by <b>One Ship JSC</b></string>
-
-    <!--TODO: Register-->
-    <string name="register">ĐĂNG KÝ THAM GIA</string>
-    <string name="name">Họ tên</string>
-    <string name="phone">Số điện thoại</string>
-    <string name="phone_login">Mời nhập số điện thoại</string>
-    <string name="invite_code">Mã giới thiệu (nếu có)</string>
-    <string name="term_header">Bằng việc đăng ký, tôi đồng ý với </string>
-    <string name="link_term"><font color="blue">điều khoản sử dụng</font> của <b>One Ship JSC</b></string>
-    <string name="title_term">ĐIỀU KHOẢN SỬ DỤNG</string>
-    <string name="noti_register">Cảm ơn bạn đã đăng kí trở thành tài xế của 1Ship.\n 1Ship sẽ liên hệ với bạn trong thời gian sớm nhất.\n Hotline: 1900 636 908</string>
-    <!--TODO: register Validation-->
-    <string name="reg_invalid">Chưa điền thông tin!</string>
-    <string name="text_invalid">Biển số xe không có ký tự đặt biệt!</string>
-    <string name="min_phone_invalid">Điền ít nhất 10 số!</string>
-    <string name="email_invalid">Email không hợp lệ!</string>
-    <string name="check_email_invalid">Email đã tồn tại trong hệ thống!</string>
-
-
-    <!--TODO: Add information-->
-    <string name="add_information">Bổ sung thông tin</string>
-    <string name="add_information_note">Để xác nhận tài khoản đăng kí lái xe là hợp  pháp, xin vui lòng cung cấp những hình ảnh sau để chứng thực tài khoản</string>
-    <string name="vehicles">Loại phương tiện</string>
-    <string name="license_plates">Biển số xe</string>
-    <string name="vehicle_photos">Ảnh xe</string>
-    <string name="vehicle_photos_note">(Chụp ảnh xe rõ biển số)</string>
-    <string name="your_photos">Ảnh của bạn</string>
-    <string name="your_photos_note">(Hình ảnh rõ ràng, chụp thẳng mặt)</string>
-    <string name="license">Bằng lái</string>
-    <string name="license_note">(Chụp rõ tên &amp; số bằng)</string>
-    <string name="identity_card">Chứng minh thư</string>
-    <string name="identity_card_note">(Chụp rõ tên &amp; dấu vân tay)</string>
-
-    <!--TODO: Enter confirm code-->
-    <string name="confirm">Xác nhận</string>
-    <string name="confirm_note">Mã xác nhận đã được gửi qua tin nhắn của bạn, điền mã số để tiếp tục</string>
-    <string name="confirm_code">Mã xác nhận</string>
-    <string name="activated">Kích hoạt</string>
-    <string name="mess_not_received">Chưa nhận được tin nhắn?</string>
-
-    <!--TODO: Button-->
-    <string name="btLogin">ĐĂNG NHẬP</string>
-    <string name="btRegister">Chưa có tài khoản? Đăng ký ngay</string>
-    <string name="btNext">TIẾP TỤC</string>
-    <string name="btFinish">XONG</string>
-    <string name="btFaceBook">Đăng ký qua Facebook</string>
-    <string name="btGoogle">Đăng ký qua Google</string>
-    <string name="message_dialog_update_now">Bạn có chắc đã hoàn thành công việc của các đơn hàng được chọn không?</string>
-
-    <!--TODO: Datetime-->
-    <string name="ago">trước</string>
-    <string name="day">ngày</string>
-    <string name="days">ngày</string>
-    <string name="month">tháng</string>
-    <string name="months">tháng</string>
-    <string name="year">năm</string>
-    <string name="years">năm</string>
-    <string name="hour">giờ</string>
-    <string name="hours">giờ</string>
-    <string name="minute">phút</string>
-    <string name="minutes">phút</string>
-    <string name="second">giây</string>
-    <string name="seconds">giây</string>
+    <!--TODO: Orders Detial Activity-->
+    <string name="orderdetail_tab1">Thông tin giao nhận</string>
+    <string name="orderdetail_tab2">Hàng hóa/dịch vụ</string>
+    <string name="orderdetail_tab3">Tổng chi phí</string>
+    <string name="orderdetail_tab4">Tình trạng</string>
 
     <!--TODO:don hang moi fragment-->
+    <string name="receive_fragment">Nhận</string>
+    <string name="return_fragment">Trả</string>
     <string name="toggle_on">On</string>
     <string name="toggle_off">Off</string>
     <string name="receive">NHẬN</string>
@@ -102,191 +47,18 @@
     <string name="refuse">TỪ CHỐI</string>
     <string name="edit_dh">CHỈNH SỬA</string>
     <string name="stop">điểm dừng</string>
-    <string name="order">ĐƠN HÀNG #</string>
+    <string name="bill">ĐƠN HÀNG #</string>
     <string name="twice_back">Nhấn BACK 2 lần để thoát</string>
     <string name="totle_fee">Tổng tiền: </string>
     <string name="delete">XÓA</string>
 
-    <!--TODO: title view pager-->
-    <string name="donhang_tab1">Đơn hàng mới</string>
-    <string name="donhang_tab2">Chưa hoàn thành</string>
-    <string name="donhang_tab3">Đã hoàn thành</string>
-    <string name="donhang_tab4">Đã hủy</string>
-
-    <!--TODO: Update don hang-->
-    <string name="work">CÔNG VIỆC</string>
-    <string name="image">HÌNH ẢNH</string>
-    <string name="note">GHI CHÚ</string>
-    <string name="note_mutiline">Ghi chú...</string>
-    <string name="finish">Hoàn thành</string>
-    <string name="unfinished">Chưa hoàn thành</string>
-    <string name="add_image">THÊM HÌNH</string>
-    <string name="change">THAY ĐỔI</string>
-    <string name="done">XONG</string>
-    <string name="reason_mutiltext">Lý do...</string>
-    <string name="btnOk">Ok</string>
-    <string name="btnCancle">Hủy</string>
-    <string name="message_remove_image">Bạn muốn xóa hình này chứ?</string>
-    <string name="other">Khác</string>
-    <string name="error_not_status">Bạn chưa chọn trạng thái!</string>
-
-
-    <!--TODO: Orders Detial Activity-->
-    <string name="orderdetail_tab1">Thông tin giao nhận</string>
-    <string name="orderdetail_tab2">Hàng hóa/dịch vụ</string>
-    <string name="orderdetail_tab3">Tổng chi phí</string>
-    <string name="orderdetail_tab4">Tình trạng</string>
-    <string name="start">Start</string>
-
-    <!--TODO: Status-->
-    <string name="item_result">Kết quả</string>
-    <string name="item_place">Địa điểm</string>
-    <string name="item_work">Công việc</string>
-    <string name="item_order_code">Bill</string>
-
-
-    <!--TODO: Delivery Fragment in B/L Detail-->
-    <string name="trust">TRUST</string>
-    <string name="untrust">UNTRUST</string>
-    <string name="sender_info">THÔNG TIN NGƯỜI GỬI</string>
-    <string name="reveicer_info">THÔNG TIN NGƯỜI NHẬN</string>
-    <string name="shipper_info">THÔNG TIN NGƯỜI VẬN CHUYỂN</string>
-    <string name="map">BẢN ĐỒ</string>
-    <string name="confirm_code_delivery">Mã xác thực</string>
-    <string name="call">Gọi</string>
-    <string name="adress">Địa chỉ</string>
-    <string name="intend_time_send">Thời gian dự kiến gửi</string>
-    <string name="intend_time_receive">Thời gian dự kiến nhận</string>
-    <string name="shipper">Người vận chuyển</string>
-    <string name="email">Địa chỉ email</string>
-    <string name="curator">Người phụ trách</string>
-    <string name="id_shipper">ID</string>
-    <string name="view_map">Xem lộ trình</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="fee_ship">Tiền ship:</string>
-    <string name="fee_cod">Tiền ứng trước(COD)</string>
-
-    <!--TODO: Service information fragment-->
-    <string name="goods_content">NỘI DUNG HÀNG HÓA</string>
-    <string name="goods_size">KÍCH THƯỚC/KHỐI LƯỢNG</string>
-    <string name="added_service">DỊCH VỤ GIA TĂNG</string>
-    <string name="goods_type">Loại hàng hóa</string>
-    <string name="goods_value">Giá trị hàng</string>
-    <string name="content">Nội dung</string>
-    <string name="number">Số lượng</string>
-    <string name="total_size">Tổng khối lượng</string>
-    <string name="size">Kích thước (D x R x C) (cm)</string>
-    <string name="ship_service_type">Loại dịch vụ vận chuyển</string>
-    <string name="packing">Đóng gói</string>
-    <string name="packing_box">Đóng thùng</string>
-    <string name="packing_stoke">Đóng kiện</string>
-    <string name="packaging">Bao bì</string>
-    <string name="insurrance">Bảo hiểm</string>
-
-    <!--TODO: Order info-->
-    <string name="point_start">ĐIỂM BẮT ĐẦU</string>
-    <string name="point_stop">ĐIỂM DỪNG</string>
-    <string name="point_end">ĐIỂM KẾT THÚC</string>
-    <string name="ship_60_minute">Ship 60 phút</string>
-    <string name="s60_minute">60 phút</string>
-    <string name="ship_in_day">Ship trong ngày</string>
-    <string name="in_day">Trong ngày</string>
-    <string name="distance">Khoảng cách:</string>
-    <string name="cod_sender">Thu người gửi:</string>
-    <string name="cod_receiver">Thu người nhận:</string>
-
-    <!--TODO: service fee fragment-->
-    <string name="collecting_receiver">THU NGƯỜI NHẬN</string>
-    <string name="collecting_sender">THU NGƯỜI GỬI</string>
-    <string name="fee_detail">CHI TIẾT CƯỚC</string>
-    <string name="freight_fee">Cước vận chuyển</string>
-    <string name="added_service_fee">Cước dịch vụ cộng thêm</string>
-    <string name="total_revenue">Số tiền thu hộ</string>
-    <string name="main_fee">Cước chính (1)</string>
-    <string name="sub_fee">Phụ phí (2)</string>
-    <string name="cod_fee">Phí thu hộ</string>
-    <string name="extra_fee">Chi phí khác</string>
-    <string name="added_service_fee3">Cước dịch vụ cộng thêm (3)</string>
-    <string name="total_revenue4">Cước thu hộ (4)</string>
-    <string name="total_fee">Tổng cước (1 + 2 + 3 + 4)</string>
-    <string name="vat">VAT</string>
-    <string name="total">Tổng thu</string>
-    <string name="total_fee_shipk">Tổng tiền</string>
-
-    <!--TODO: Ho So Tai Xe Activity-->
-    <string name="toolbar_hoso">HỒ SƠ CỦA TÔI</string>
-    <string name="driver_name">Họ tên</string>
-    <string name="male">Nam</string>
-    <string name="female">Nữ</string>
-    <string name="old">34 tuổi</string>
-    <string name="district">Quận 10</string>
-    <string name="statistic">99</string>
-    <string name="complete_order">Đơn hàng hoàn thành</string>
-    <string name="level_member">Cấp độ thành viên</string>
-    <string name="score">Điểm thưởng</string>
-    <string name="trust_number">25</string>
-    <string name="trusted">TRUSTED</string>
-    <string name="Untrusted">UNTRUSTED</string>
-    <string name="change_text">THAY ĐỔI</string>
-    <string name="address_house">Địa chỉ cư ngụ</string>
-    <string name="phone_number">Số điện thoại</string>
-    <string name="account_number">Số TK ngân hàng</string>
-    <string name="email_address">Địa chỉ email</string>
-    <string name="chung_minh_thu">Chứng minh thư</string>
-    <string name="drive_car">Bằng lái xe</string>
-    <string name="moto_insurance">Giấy bảo hiểm xe</string>
-    <string name="vehicle">Phương tiện</string>
-    <string name="exit">ĐĂNG XUẤT</string>
-    <string name="changed_imagecmnd">Thay đổi</string>
-    <string name="changed_info">THAY ĐỔI THÔNG TIN</string>
-    <string name="back">QUAY LẠI</string>
-    <string name="not_yet">Chưa có</string>
-    <string name="sex">Giới tính</string>
-    <string name="birthday">Ngày sinh</string>
-    <string name="update_myprofile_success">Cập nhật hồ sơ thành công</string>
-
-
-    <!--TODO: Ho So Tai Xe Activity-->
-    <string name="account_info">THÔNG TIN TÀI KHOẢN</string>
-    <string name="choose_image">Chọn ảnh</string>
-    <string name="vehicle_title">PHƯƠNG TIỆN</string>
-    <string name="age">tuổi</string>
-    <!--TODO: Google enable server-side API-->
-    <string name="server_client_id">412382726414-crbs376n4ptumq1m930lo93l5f4rh3id.apps.googleusercontent.com</string>
-
-    <!--TODO: Error Message-->
-    <string name="error_connect">Không thể kết nối với Server!</string>
-    <string name="error_phone">Số điện thoại chưa đăng ký!</string>
-    <string name="message_turnon_gps">Vui lòng mở GPS để sử dụng ứng dụng!</string>
-
-    <!--TODO: Splash Screen-->
-    <string name="loading">Đang tải dữ liệu...</string>
-    <string name="not_internet">Không có mạng! <br /> Hãy kiểm tra lại đường truyền!</string>
-
-    <!--TODO: Dialog-->
-    <string name="note_dialog">THÔNG BÁO</string>
-    <string name="try_again">THỬ LẠI</string>
-    <string name="out_dialog">THOÁT</string>
-    <string name="setting_dialog">CÀI ĐẶT</string>
-    <string name="update">Cập nhật</string>
-
-    <!--TODO: Menu navigation main-->
-    <string name="menu_my_page">Hồ sơ của tôi</string>
-    <string name="menu_follow_order">Theo dõi đơn hàng</string>
-    <string name="menu_need_ship">Cần ship hàng</string>
-    <string name="menu_my_order">Đơn hàng của tôi</string>
-    <string name="menu_note">Thông báo</string>
-    <string name="menu_hotline">Hotline</string>
-    <string name="menu_setting">Cài đặt</string>
-    <string name="menu_about_us">Về chúng tôi</string>
-    <string name="menu_tutorial">Hướng dẫn sử dụng</string>
-    <string name="menu_other_info">Thông tin khác</string>
-    <string name="menu_contract">Liên hệ</string>
-    <string name="menu_money">Ví của tôi</string>
-    <string name="menu_code">Mã giới thiệu</string>
-    <string name="menu_out">Thoát ra</string>
-    <string name="yes">Có</string>
-    <string name="no">Không</string>
+    <!--TODO: spinner-->
+    <string name="sp_neworder">Mới nhất</string>
+    <string name="sp_nearly">Gần nhất</string>
+    <string name="totle_work">Tất cả công việc</string>
+    <string name="sp_ship">Giao hàng</string>
+    <string name="sp_job">Công việc</string>
+    <string name="sp_filter">Sắp xếp</string>
 
     <!--TODO: Job-->
     <string name="job_take_order">Lấy hàng</string>
@@ -344,111 +116,221 @@
     <string name="job_status_44">Đơn hàng hoàn thành</string>
     <string name="job_status_45">Mua hàng thành công</string>
 
-    <!--TODO: spinner-->
-    <string name="sp_neworder">Mới nhất</string>
-    <string name="sp_nearly">Gần nhất</string>
-    <string name="totle_work">Tất cả công việc</string>
-    <string name="sp_ship">Giao hàng</string>
-    <string name="sp_job">Công việc</string>
-    <string name="sp_filter">Sắp xếp</string>
+    <!--TODO: title view pager-->
+    <string name="donhang_tab2">Chưa hoàn thành</string>
+    <string name="donhang_tab3">Đã hoàn thành</string>
+    <string name="donhang_tab4">Đã hủy</string>
 
-    <!--TODO: Message -->
-    <!--Maps -->
-    <string name="pb_dialog_message_location">Đang vẽ đường đi...</string>
-    <!--Register, Add information-->
-    <string name="toast_register">Vui lòng nhập thông tin đầy đủ và thử lại</string>
-    <!--OTP-->
-    <string name="toast_otp_valid">Chưa điền mã xác thực</string>
-    <string name="toast_otp_valid_4">Mã xác thực ít nhất 4 ký tự!</string>
-    <string name="toast_otp">Mã OTP chưa đúng, xin vui lòng thử lại</string>
-    <!--Login-->
-    <string name="toast_login">Số điện thoại của bạn chưa được đăng ký</string>
-    <!--New Order-->
-    <string name="dialog_not_receiver">Bạn có chắc không nhận những đơn hàng này không?</string>
-    <!--Completed-->
-    <string name="dialog_completed">Bạn có chắc là muốn xoá những đơn hàng đã chọn khỏi danh sách</string>
-    <!--Order Detail - New Order-->
-    <string name="toast_deny">Đã hủy</string>
-    <string name="toast_received">Đã nhận</string>
-    <string name="dialog_have_received">Đơn hàng đã được người khác nhận</string>
-    <string name="dialog_receive_button">Bạn có chắc muốn nhận đơn hàng này không?</string>
-    <string name="dialog_not_receive_button">Bạn có chắc không nhận đơn hàng này không?</string>
-    <string name="dialog_new_order">Bấm nút \"Nhận\" để xem chi tiết.</string>
-    <!--Order Detail - Uncompleted-->
-    <string name="dialog_start_order">Bạn có chắc muốn bất đầu đơn hàng này không?</string>
-    <string name="dialog_start_success">Đơn hàng đã bất đầu</string>
-    <string name="dialog_refuse_1">Bạn có chắc từ chối đơn hàng này không?</string>
-    <string name="dialog_refuse_2">Bạn có chắc từ chối đơn hàng này vào phút chót không?</string>
-    <!--Update Order-->
-    <string name="toast_update_success">Cập nhật đơn hàng thành công</string>
-    <!--Toggle On/Off-->
-    <string name="dialog_toggle_on">Bạn đã sẵn sàng nhận đơn hàng</string>
-    <string name="dialog_toggle_off">Tạm dừng nhận đơn hàng</string>
-    <!--Signout-->
-    <string name="dialog_signout">Bạn có chắc là muốn thoát khỏi ứng dụng</string>
-    <!--Hồ sơ của tôi-->
-    <string name="toast_not_change">Bạn chưa thay đổi thông tin. Vui lòng kiểm tra lại!</string>
-    <string name="dialog_check_change">Thông tin đã được thay đổi. Bạn có muốn cập nhật không?</string>
-    <string name="dialog_update_my_profile">Bạn có chắc muốn cập nhật không?</string>
-    <string name="dialog_not_info">Thông tin đang được cập nhật</string>
-    <string name="turn_off">Tắt</string>
-    <string name="toast_order_null">Không tìm thấy đơn hàng!</string>
-    <string name="toast_compare_job">Bạn phải chọn 1 loại công việc để cập nhật nhanh</string>
+    <!--TODO: Dialog-->
+    <string name="note_dialog">THÔNG BÁO</string>
+    <string name="try_again">THỬ LẠI</string>
+    <string name="out_dialog">THOÁT</string>
+    <string name="setting_dialog">CÀI ĐẶT</string>
+    <string name="update">Cập nhật</string>
+    <string name="note">GHI CHÚ</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
 
-    <!--TODO: Chọn BLCode update-->
-    <string name="dialog_choose_blcode">Chọn điểm cập nhật</string>
-    <string name="dialog_choose_all">Tất cả</string>
-    <!--TODO: Title marker draw direction in maps-->
-    <string name="place_stop">Điểm dừng</string>
-    <string name="place_stop_end">Điểm cuối</string>
-    <string name="place_stop_start">Điểm bắt đầu</string>
-    <string name="place_stop_start_hub">Bắt đầu</string>
-    <string name="place_stop_end_hub">Kết thúc</string>
-
-    <!--TODO: Money Fragmen-->
-    <string name="btn_add_monye">THÊM TIỀN VÀO TÀI KHOẢN</string>
-    <string name="main">Chính</string>
-    <string name="promotion">Khuyến mãi</string>
-    <string name="account">TÀI KHOẢN</string>
-    <string name="transfer_history">LỊCH SỬ GIAO DỊCH</string>
-
-    <!--TODO: Add money-->
-    <string name="title_add_money">Chọn số tiền bạn muốn thêm vào tài khoản</string>
-    <string name="radio_100">100.000đ</string>
-    <string name="radio_200">200.000đ</string>
-    <string name="radio_400">400.000đ</string>
-    <string name="radio_500">500.000đ</string>
-
-    <!--TODO: Referral Code-->
-    <string name="referral_title">Với mỗi tài khoản đăng kí cùng với mã giới thiệu của bạn, chúng tôi sẽ thưởng cho bạn và người được giới thiệu.</string>
-    <string name="your_referral_code">Mã giới thiệu của bạn</string>
-    <string name="send_referral_code">GỬI MÃ GIỚI THIỆU</string>
-    <string name="send_app">GIỚI THIỆU TÀI XẾ THAM GIA DỊCH VỤ</string>
-
-    <!--TODO: Shared Text and Url-->
-    <string name="share_referral_code">Mã giới thiệu của tôi là: </string>
-    <string name="share_app">Mời bạn tham gia vào ứng dụng với tôi</string>
-
-    <!--TODO: Order Detail Hub Activity-->
-    <string name="hub_distance">Khoảng cách</string>
-    <string name="hub_stop_place">Điểm dừng</string>
-    <string name="hub_shipping_fee">Phí ship</string>
-    <string name="hub_total_fee_cod">Tổng tiền thu hộ</string>
-    <string name="success">THÀNH CÔNG</string>
-    <string name="failed">THẤT BẠI</string>
-    <string name="route_menu">XEM LỘ TRÌNH</string>
-    <string name="refuse_menu">Từ chối</string>
-    <string name="completed">HOÀN THÀNH</string>
-    <string name="failed_detail">Thất bại</string>
-    <string name="cod">Tiền thu hộ:</string>
-    <string name="title_curator">NGƯỜI PHỤ TRÁCH</string>
+    <!--TODO: Item List-->
+    <string name="fee_ship">Tiền ship:</string>
+    <string name="fee_cod">Tiền ứng trước(COD)</string>
     <string name="advance_fee">Tiền ứng:</string>
-    <string name="hub_cod">(Thu người nhận)</string>
-    <string name="hub_advance">(Thu người gửi)</string>
-    <string name="status">Tình trạng</string>
-    <string name="finish_cap">HOÀN THÀNH</string>
-    <string name="cancel_cap">HUỶ</string>
+    <string name="cod">Tiền thu hộ:</string>
+    <string name="distance">Khoảng cách:</string>
+    <string name="unit">đ</string>
 
-    <!--TODO: Pin Input-->
-    <string name="pin_content_desc">PIN input field</string>
+    <!--TODO: Delivery Fragment in B/L Detail-->
+    <string name="trust">TRUST</string>
+    <string name="untrust">UNTRUST</string>
+    <string name="sender_info">THÔNG TIN NGƯỜI GỬI</string>
+    <string name="reveicer_info">THÔNG TIN NGƯỜI NHẬN</string>
+    <string name="shipper_info">THÔNG TIN NGƯỜI VẬN CHUYỂN</string>
+    <string name="map">BẢN ĐỒ</string>
+    <string name="call">Gọi</string>
+    <string name="adress">Địa chỉ</string>
+    <string name="intend_time_send">Thời gian dự kiến gửi</string>
+    <string name="intend_time_receive">Thời gian dự kiến nhận</string>
+    <string name="shipper">Người vận chuyển</string>
+    <string name="email">Địa chỉ email</string>
+    <string name="curator">Người phụ trách</string>
+    <string name="id_shipper">ID</string>
+    <string name="view_map">Xem lộ trình</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!--TODO: Service information fragment-->
+    <string name="goods_content">NỘI DUNG HÀNG HÓA</string>
+    <string name="goods_size">KÍCH THƯỚC/KHỐI LƯỢNG</string>
+    <string name="added_service">DỊCH VỤ GIA TĂNG</string>
+    <string name="number">Số lượng</string>
+    <string name="total_size">Tổng khối lượng</string>
+    <string name="size">Kích thước (D x R x C) (cm)</string>
+    <string name="ship_service_type">Loại dịch vụ vận chuyển</string>
+    <string name="packing">Đóng gói</string>
+    <string name="packing_box">Đóng thùng</string>
+    <string name="packing_stoke">Đóng kiện</string>
+    <string name="packaging">Bao bì</string>
+    <string name="insurrance">Bảo hiểm</string>
+
+    <!--TODO: Bill info-->
+    <string name="point_start">ĐIỂM BẮT ĐẦU</string>
+    <string name="point_stop">ĐIỂM DỪNG</string>
+    <string name="point_end">ĐIỂM KẾT THÚC</string>
+    <string name="ship_60_minute">Ship 60 phút</string>
+    <string name="s60_minute">60 phút</string>
+    <string name="ship_in_day">Ship trong ngày</string>
+    <string name="in_day">Trong ngày</string>
+    <string name="cod_sender">Thu người gửi:</string>
+    <string name="cod_receiver">Thu người nhận:</string>
+
+    <!--TODO: service fee fragment-->
+    <string name="collecting_receiver">THU NGƯỜI NHẬN</string>
+    <string name="collecting_sender">THU NGƯỜI GỬI</string>
+    <string name="fee_detail">CHI TIẾT CƯỚC</string>
+    <string name="freight_fee">Cước vận chuyển</string>
+    <string name="added_service_fee">Cước dịch vụ cộng thêm</string>
+    <string name="total_revenue">Số tiền thu hộ</string>
+    <string name="main_fee">Cước chính (1)</string>
+    <string name="sub_fee">Phụ phí (2)</string>
+    <string name="cod_fee">Phí thu hộ</string>
+    <string name="extra_fee">Chi phí khác</string>
+    <string name="added_service_fee3">Cước dịch vụ cộng thêm (3)</string>
+    <string name="total_revenue4">Cước thu hộ (4)</string>
+    <string name="total_fee">Tổng cước (1 + 2 + 3 + 4)</string>
+    <string name="vat">VAT</string>
+    <string name="total">Tổng thu</string>
+    <string name="total_fee_shipk">Tổng tiền</string>
+
+    <!--TODO: Message-->
+    <string name="toast_bill_off_send">Bạn đã gửi hết vận đơn.</string>
+    <string name="toast_get_bill_off_null">Bạn không có vận đơn nào chưa hoàn thành.</string>
+    <string name="toast_save_bill_off">Không có kết nối Internet.\nVận đơn của bạn đã được lưu lại, vui lòng gửi lại sau!</string>
+    <string name="toast_error_id_customer">Mã khách hàng không hợp lệ.</string>
+    <string name="toast_error_info">Lỗi thông tin!</string>
+    <string name="toast_error_bill_null">Vận đơn không tồn tại.</string>
+    <string name="toast_error_bill_confirmed">Vận đơn đã được xác nhận trước đó.</string>
+    <string name="toast_success_update">Cập nhật thành công.</string>
+    <string name="toast_success_update_bill_1">Vận đơn đã được nhập liệu.</string>
+    <string name="toast_success_update_bill">Vận đơn đã được cập nhật.</string>
+    <string name="toast_success_send">Gửi thành công. Bạn được cộng 300đ vào tài khoản.</string>
+    <string name="toast_success_send_100">Gửi thành công. Bạn được cộng 100đ vào tài khoản.</string>
+    <string name="toast_error_id_customer_stamp">Đây là mã khách vãng lai!</string>
+    <string name="toast_error_min_id_customer">Mã khách hàng tối thiểu 5 ký tự!</string>
+    <string name="toast_error_input_id">Mã khách hàng không hợp lệ!</string>
+    <string name="toast_error_null_id_customer">Bạn chưa nhập mã khách hàng!</string>
+    <string name="toast_error_null_name_customer">Bạn chưa nhập tên khách hàng!</string>
+    <string name="toast_error_null_id_bill">Bạn chưa nhập số vận đơn!</string>
+    <string name="toast_error_key_api">Lỗi sai khóa!</string>
+    <string name="toast_error">Lỗi..! Vui lòng thử lại sau!</string>
+    <string name="message_dialog_update_now">Bạn có chắc đã hoàn thành công việc của các đơn hàng được chọn không?</string>
+    <string name="toast_compare_job">Bạn phải chọn 1 loại công việc để cập nhật nhanh</string>
+    <string name="message_turnon_gps">Vui lòng mở GPS để sử dụng ứng dụng!</string>
+    <string name="not_internet">Không có mạng! <br /> Hãy kiểm tra lại đường truyền!</string>
+    <string name="dialog_completed">Bạn có chắc là muốn xoá những đơn hàng đã chọn khỏi danh sách</string>
+    <string name="completed">HOÀN THÀNH</string>
+    <!--TODO: Change Pass Activity-->
+    <string name="error_old_password_not_correct">Mật khẩu cũ không đúng.</string>
+
+    <!--TODO: DO Bill Activity-->
+    <string name="error_do_number_null">Bạn chưa nhập số DO.</string>
+    <string name="error_weight_null">Bạn chưa nhập trọng lượng.</string>
+    <string name="error_number_null">Bạn chưa nhập số lượng kiểm đếm.</string>
+    <string name="error_number_package_null">Bạn chưa nhập số lượng kiểm đếm.</string>
+    <string name="error_system">Lỗi hệ thống.</string>
+
+    <!--TODO: Bill Detail -->
+    <string name="title_curator">NGƯỜI PHỤ TRÁCH</string>
+
+    <!--TODO: Status-->
+    <string name="item_result">Kết quả</string>
+    <string name="item_place">Địa điểm</string>
+    <string name="item_work">Công việc</string>
+    <string name="item_order_code">Bill</string>
+    <string name="create_account">Tạo tài khoản</string>
+    <string name="login">Đăng nhập</string>
+    <string name="open_account">Mở tài khoản</string>
+    <string name="password">Mật khẩu</string>
+    <string name="confirm_password">Xác nhận mật khẩu</string>
+    <string name="success">Thành công</string>
+
+    <!--TODO: Validates Fields-->
+    <string name="val_your_key_null">Vui lòng nhập khóa!</string>
+    <string name="val_pass_null">Vui lòng nhập mật khẩu!</string>
+    <string name="val_pass">Sai mật khẩu! Vui lòng nhập lại!</string>
+    <string name="val_pass_4_char">Mật khẩu ít nhất 4 ký tự!</string>
+    <string name="val_pass_equals">Mật khẩu xác nhận chưa đúng!</string>
+
+    <!--TODO: Loading-->
+    <string name="checking">Đang kiểm tra...</string>
+
+    <!--TODO: Toast-->
+    <string name="error_block_account">Tài khoản của bạn đã bị khóa!</string>
+    <string name="error_null_field">Vui lòng điền thông tin!</string>
+    <string name="error_key_not_exist">Khóa không tồn tại!</string>
+    <string name="error_key_activated">Khóa đã được kích hoạt!</string>
+    <string name="error_save_key">Lỗi lưu khóa kích hoạt!</string>
+    <string name="your_key">Khóa của bạn</string>
+    <string name="pricing">Tính giá</string>
+    <string name="pricing_loading">Đang tính giá...</string>
+    <string name="service">Dịch vụ</string>
+    <string name="from">Từ</string>
+    <string name="to">Đến</string>
+    <string name="number_of_count">SL kiểm đếm</string>
+    <string name="number_of_package">Số kiện</string>
+    <string name="weight_kg">Trọng lượng(kg)*</string>
+    <string name="weight_change">TL quy đổi(kg)</string>
+    <string name="lenght">Dài (cm)</string>
+    <string name="width">Rộng (cm)</string>
+    <string name="height">Cao (cm)</string>
+    <string name="from_city">Chọn thành phố đi</string>
+    <string name="to_city">Chọn thành phố đến</string>
+    <string name="from_district">Chọn quận/huyện đi</string>
+    <string name="to_district">Chọn quận/huyện đến</string>
+    <string name="not_connect">Không có kết nối Internet</string>
+    <string name="send">Gửi</string>
+    <string name="id_staff">Mã nhân viên</string>
+    <string name="cod_1">Tiền thu hộ</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="main_fee_1">Cước chính</string>
+    <string name="suburban">Ngoại thành xa</string>
+    <string name="packing_fee">Phí đóng gói</string>
+    <string name="up_down_fee">Phí nâng hạ</string>
+    <string name="insurrance_fee">Phí bảo hiểm</string>
+    <string name="other_fee">Phí khác</string>
+    <string name="httt">HTTT</string>
+    <string name="reciever_address">Địa chỉ trả hàng</string>
+    <string name="enter_bill_number">Nhập số bill</string>
+    <string name="reciever">Người nhận</string>
+    <string name="apollo_money" >Tiền Apollo</string>
+    <string name="take_photo_bill">Chụp ảnh vận đơn</string>
+    <string name="refresh">refresh</string>
+    <string name="sending">Đang gửi...</string>
+
+    <!--TODO: Scan library-->
+    <string name="scanning">Scanning</string>
+    <string name="done">Done</string>
+    <string name="scan">Scan</string>
+    <string name="cantCrop">Cant crop the image, change the points</string>
+    <string name="ok">Ok</string>
+    <string name="notRetacleg">Không tìm thấy hình</string>
+    <string name="imgDefault">Mặc định</string>
+    <string name="imgLamnet">Làm nét</string>
+    <string name="imgLamsang">Làm sáng</string>
+    <string name="imgAnhxam">Ảnh xám</string>
+    <string name="imgDentrang">Đen trắng</string>
+    <string name="hoanThanh">Hoàn thành</string>
+    <string name="imgSave">Đã lưu ảnh</string>
+    <string name="reName">Đổi tên</string>
+    <string name="myShare">Chia sẻ</string>
+    <string name="myScanandShare">Quét mã vạch và đổi tên</string>
+    <string name="catting">Đang cắt ảnh...</string>
+    <string name="id_customer">Mã KH</string>
+    <string name="weight">Trọng lượng</string>
+    <string name="number_of_count_1">Số lượng kiểm đếm</string>
+    <string name="weight_change_1">Trọng lượng quy đổi</string>
+    <string name="enter_white_bill">Nhập liên trắng</string>
+    <string name="enter_pink_bill">Nhập liên hồng</string>
+    <string name="enter_do_bill">Nhập liên DO</string>
+    <string name="old_password">Mật khẩu cũ</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
 </resources>

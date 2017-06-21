@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimarySub">
 
         <ScrollView
             android:id="@+id/sv"
@@ -28,14 +29,12 @@
                         android:id="@+id/lnShippingOrder"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorWhite"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@color/colorGreenGreen"
                             android:gravity="center_horizontal"
                             android:orientation="vertical"
                             android:padding="5dp">
@@ -44,18 +43,18 @@
                                 android:id="@+id/tvTitleShipFee"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:gravity="center"
                                 android:text="@string/ship_60_minute"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/textsize_body"
-                                android:gravity="center" />
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
 
                             <TextView
                                 android:id="@+id/tvFeeShip"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="2dp"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/textsize_toolbar" />
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
                         </LinearLayout>
 
                         <View
@@ -67,26 +66,25 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@color/colorGreenGreen"
+                            android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="5dp"
-                            android:gravity="center">
+                            android:padding="5dp">
 
                             <TextView
                                 android:id="@+id/textView13"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/fee_cod"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/textsize_body" />
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
 
                             <TextView
                                 android:id="@+id/tvFeeCod"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="2dp"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/textsize_toolbar" />
+                                android:textColor="@color/colorTextValueDetail"
+                                android:textSize="@dimen/textsize_body_order_detail" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -95,35 +93,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/colorGreenGreen"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:gravity="center"
                         android:visibility="gone">
 
                         <ImageView
+                            android:id="@+id/imageView10"
                             android:layout_width="@dimen/size_image_icon"
                             android:layout_height="@dimen/size_image_icon"
-                            android:id="@+id/imageView10"
                             android:layout_marginRight="10dp"
                             android:src="@mipmap/ic_money_white" />
 
                         <TextView
+                            android:id="@+id/tvShippingFeeU"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:id="@+id/tvShippingFeeU"
-                            android:textSize="@dimen/textsize_toolbar"
-                            android:textColor="@color/colorWhite" />
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/textsize_body_order_detail" />
                     </LinearLayout>
                 </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
                     android:orientation="vertical">
 
-                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                    <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.HeaderLayout
                         android:id="@+id/headerSend"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,7 +133,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorWhite"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -162,8 +158,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
                             </LinearLayout>
                             android:background="@color/colorGray" />
                         </LinearLayout>
@@ -196,8 +192,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
 
                                 <LinearLayout
                                     android:id="@+id/btnCall"
@@ -211,14 +207,14 @@
                                     <ImageView
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@mipmap/ic_phone_blue" />
+                                        android:src="@mipmap/ic_phone" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/call"
-                                        android:textColor="@color/colorPrimary"
-                                        android:textSize="@dimen/textsize_body" />
+                                        android:textColor="@color/colorTextValueDetail"
+                                        android:textSize="@dimen/textsize_body_order_detail" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -252,8 +248,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_weight="1"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
                             </LinearLayout>
 
 
@@ -263,8 +259,7 @@
                             android:id="@+id/lnTimeSend"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:visibility="gone">
+                            android:orientation="vertical">
 
                             <View
                                 android:layout_width="match_parent"
@@ -289,8 +284,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_weight="1"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -300,10 +295,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
+
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="0.3dp"
                                 android:background="@color/colorGray" />
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -315,20 +312,22 @@
                                     android:layout_width="@dimen/size_image_icon"
                                     android:layout_height="@dimen/size_image_icon"
                                     android:src="@mipmap/ic_cod" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="@dimen/textsize_body"
-                                    android:text="@string/cod_sender" />
+                                    android:text="@string/cod_sender"
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
+
                                 <TextView
                                     android:id="@+id/tvCodSend"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
 
 
                             </LinearLayout>
@@ -338,8 +337,7 @@
                             android:id="@+id/lnNote"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:visibility="gone">
+                            android:orientation="vertical">
 
                             <View
                                 android:layout_width="match_parent"
@@ -364,107 +362,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_weight="1"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
 
                             </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0"
-                        android:orientation="vertical">
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:background="@color/material_grey_300" />
-
-                        <LinearLayout
-                            android:id="@+id/lnTrustUntrustSend"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone">
-
-                            <RelativeLayout
-                                android:id="@+id/btnTrustSend"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true">
-
-                                    <TextView
-                                        android:id="@+id/tvTrustSend"
-                                        android:layout_width="25dp"
-                                        android:layout_height="25dp"
-                                        android:layout_gravity="center"
-                                        android:background="@drawable/custom_trusted_taixe"
-                                        android:gravity="center"
-                                        android:text="@string/trust_number"
-                                        android:textAppearance="?android:attr/textAppearanceLarge"
-                                        android:textColor="@color/colorWhite"
-                                        android:textSize="@dimen/so_25" />
-
-                                    <TextView
-                                        android:id="@+id/tvTSend"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerInParent="true"
-                                        android:layout_gravity="center"
-                                        android:layout_marginLeft="5dp"
-                                        android:text="@string/trust"
-                                        android:textColor="@color/colorBlack" />
-                                </LinearLayout>
-                            </RelativeLayout>
-
-                            <View
-                                android:layout_width="0.5dp"
-                                android:layout_height="35dp"
-                                android:background="@color/material_grey_300" />
-
-                            <RelativeLayout
-                                android:id="@+id/btnUnTrustSend"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true">
-
-                                    <TextView
-                                        android:id="@+id/tvUntrustSend"
-                                        android:layout_width="25dp"
-                                        android:layout_height="25dp"
-                                        android:background="@drawable/custom_untrusted_taixe"
-                                        android:gravity="center"
-                                        android:text="@string/trust_number"
-                                        android:textAppearance="?android:attr/textAppearanceLarge"
-                                        android:textColor="@color/colorWhite"
-                                        android:textSize="@dimen/so_25" />
-
-                                    <TextView
-                                        android:id="@+id/tvUSend"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerInParent="true"
-                                        android:layout_gravity="center"
-                                        android:layout_marginLeft="5dp"
-                                        android:text="@string/untrust"
-                                        android:textColor="@color/colorBlack" />
-                                </LinearLayout>
-                            </RelativeLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -477,14 +378,13 @@
                     android:orientation="vertical"></LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lnCuratorInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
                     android:orientation="vertical"
-                    android:visibility="visible"
-                    android:id="@+id/lnCuratorInfo">
+                    android:visibility="visible">
 
-                    <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                    <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.HeaderLayout
                         android:id="@+id/headerCurator"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -497,7 +397,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorWhite"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -522,8 +421,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
                             </LinearLayout>
 
 
@@ -556,8 +455,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/textsize_body" />
+                                    android:textColor="@color/colorTextValueDetail"
+                                    android:textSize="@dimen/textsize_body_order_detail" />
 
                                 <LinearLayout
                                     android:id="@+id/btnCallCurator"
@@ -571,14 +470,14 @@
                                     <ImageView
                                         android:layout_width="20dp"
                                         android:layout_height="wrap_content"
-                                        android:src="@mipmap/ic_phone_blue" />
+                                        android:src="@mipmap/ic_phone" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/call"
-                                        android:textColor="@color/colorPrimary"
-                                        android:textSize="@dimen/textsize_body" />
+                                        android:textColor="@color/colorTextValueDetail"
+                                        android:textSize="@dimen/textsize_body_order_detail" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -967,7 +866,7 @@
                     </LinearLayout>
                 </LinearLayout>-->
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
@@ -985,7 +884,7 @@
                             android:background="@color/colorBG"
                             android:orientation="horizontal">
 
-                            <com.oneshipglobal.app.oneshippro.Util.CustomViewGroup.HeaderLayout
+                            <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.HeaderLayout
                                 android:id="@+id/headerSend1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -1022,7 +921,7 @@
 
                     </LinearLayout>
 
-                    <!--<RelativeLayout
+                    &lt;!&ndash;<RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1034,9 +933,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="300dp" />
 
-                    </RelativeLayout>-->
+                    </RelativeLayout>&ndash;&gt;
 
-                </LinearLayout>
+                </LinearLayout>-->
 
             </LinearLayout>
         </ScrollView>

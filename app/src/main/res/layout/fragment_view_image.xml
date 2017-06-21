@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.ntlogistics.app.shipper.Views.Fragments.Image.ViewImageFragment">
-    <vn.ntlogistics.app.shipper.Commons.CustomViews.ImageViewPager.photoview.PhotoView
+    tools:context="vn.ntlogistics.app.ordermanagement.Views.Fragments.Image.ViewImageFragment">
+    <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.ImageViewPager.photoview.PhotoView
         android:id="@+id/imgViewImage"
 
         android:layout_width="match_parent"

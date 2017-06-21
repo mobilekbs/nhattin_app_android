@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.scanvandon.MyMenu" >
+
+    <item
+        android:id="@+id/acChangePass"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Tài khoản"/>
+    <item
+        android:id="@+id/mnBillFail"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Vận đơn chưa hoàn thành"/>
+    <item
+        android:id="@+id/mnTTSP"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Thông tin sản phẩm"/>
+
+</menu>

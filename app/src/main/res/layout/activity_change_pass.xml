@@ -1,0 +1,134 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context=".Olds.Activities.ChangePassActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarChangePass"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextAppearance="@style/AppTheme.Toolbar.TextAppearance" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/frame"
+            android:orientation="vertical"
+            tools:context="com.example.myAcount.ChangePass">
+
+            <TextView
+                android:id="@+id/tvshowMoney"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="50dp"
+                android:gravity="left"
+                android:text="Bạn có 300000 đồng trong TK."
+                android:textColor="#FFD800"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnChangeKo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_design1"
+                android:gravity="center"
+                android:text="Đổi mật khẩu"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtOldPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/editextmain_design"
+                android:hint="@string/old_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/colorAccentSub1"
+                android:textColorHint="@color/colorAccentSub2"
+                android:textSize="@dimen/textsize_body_2"
+                android:visibility="invisible" />
+
+            <EditText
+                android:id="@+id/edtNewPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/editextmain_design"
+                android:hint="@string/new_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/colorAccentSub1"
+                android:textColorHint="@color/colorAccentSub2"
+                android:textSize="@dimen/textsize_body_2"
+                android:visibility="invisible" />
+
+            <EditText
+                android:id="@+id/edtConfirmNewPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/editextmain_design"
+                android:hint="@string/confirm_new_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/colorAccentSub1"
+                android:textColorHint="@color/colorAccentSub2"
+                android:textSize="@dimen/textsize_body_2"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btnChangeNow"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_design1"
+                android:gravity="center"
+                android:text="OK"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

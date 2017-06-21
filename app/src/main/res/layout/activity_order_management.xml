@@ -6,18 +6,48 @@
     <data>
         <variable
             name="viewModel"
-            type="vn.ntlogistics.app.shipper.Communications.OrderManagementVM"/>
+            type="vn.ntlogistics.app.ordermanagement.ViewModels.OrderManagementVMs.OrderManagementActivityVM"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="vn.ntlogistics.app.shipper.Communications.OrderManagementActivity">
+        tools:context="vn.ntlogistics.app.ordermanagement.Views.Activities.OrderManagementActivity">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-        <vn.ntlogistics.app.shipper.Commons.CustomViews.NonSwipeableViewPager
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarMainAct"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_toolbar"
+                android:background="?attr/colorPrimary"
+                android:gravity="end"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/title_order_management"
+                    android:textColor="@color/colorTitleToolbar"
+                    android:textSize="@dimen/textsize_toolbar"
+                    android:textStyle="bold" />
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.NonSwipeableViewPager
             android:id="@+id/vpOrderManagement"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimarySub" />
     </LinearLayout>
 </layout>

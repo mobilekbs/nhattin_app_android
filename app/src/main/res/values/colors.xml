@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#006fb4</color>
-    <color name="colorPrimaryDark">#015589</color>
-    <color name="colorAccent">#f8c60f</color>
+
+    <color name="colorPrimaryDark">#131311</color>
+    <color name="colorPrimary">#242520</color>
+    <color name="colorPrimarySub">#303030</color>
+    <color name="colorAccent">#ffff01</color>
+    <color name="colorAccentSub1">#e8cd0e</color>
+    <color name="colorAccentSub2">#a6961c</color>
+
     <color name="colorGreen">#01a358</color>
     <color name="colorGreenDark">#02894b</color>
     <color name="colorGreenGreen">#45a479</color>
-    <color name="colorBG">#efefef</color>
+    <color name="colorBG">#292927</color>
     <color name="colorBlack">#000000</color>
     <color name="colorRed">#ef2a33</color>
     <color name="colorWhite">#ffffff</color>
@@ -30,7 +35,7 @@
     <color name="colorHeaderShipK">#da6c0b</color>
 
     <!--TODO: Color text toolbar-->
-    <color name="colorTitleToolbar">#ffffff</color>
+    <color name="colorTitleToolbar">#FFFF01</color>
 
     <color name="colorBGPlaceStop">#a1ffffff</color>
     <color name="colorTextHub">#f59f9f9f</color>
@@ -49,7 +54,7 @@
     <color name="ksw_md_solid_disable">#FFFFFF</color>
     <color name="ksw_md_solid_checked_disable">#aaaaaa</color>
 
-    <!--TODO: Order Detail Hub Activity-->
+    <!--TODO: Bill Detail Hub Activity-->
     <color name="hub_text_color">#212121</color>
     <color name="hub_background_color">#f2f2f2</color>
     <color name="hub_background_color_sub">#cccccc</color>
@@ -59,4 +64,19 @@
     <color name="underline_selected_color">#000</color>
     <color name="hintColor">#CCCCCC</color>
     <color name="textColor">#000</color>
+
+    <!--TODO: New-->
+    <color name="colorTextBodyItem">#a6961c</color>
+    <color name="colorTextValueDetail">#ffffff</color>
+    <color name="colorSuccess">#40c92b</color>
+
+    <!--TODO: Scan library-->
+    <color name="blue">#ff59a9ff</color>
+    <color name="orange">#ffff900d</color>
+    <color name="bottom_background_color">#ffc4c2bc</color>
+
+    <color name="polygonViewCircleStrokeColor">#ff59a9ff</color>
+    <color name="polygonViewCircleBackground">#90e5f8ff</color>
+    <color name="colorBgrItemBill">#bc000000</color>
+    <color name="colorPink">#ff41ac</color>
 </resources>

@@ -8,21 +8,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_size"
-        android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/note_dialog"
-            android:id="@+id/tvTextTitle"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/textsize_toolbar"
-            android:textStyle="bold" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_size"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/note_dialog"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/textsize_toolbar"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/lnNoteDialog"
@@ -56,13 +58,13 @@
         android:padding="10dp">
 
         <TextView
+            android:id="@+id/tvmessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvmessage"
-            android:textSize="@dimen/textsize_body"
-            android:textColor="@android:color/black"
             android:layout_gravity="center"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_sub_title" />
 
 
     </LinearLayout>
@@ -72,28 +74,28 @@
         android:paddingTop="5dp">
 
         <TextView
+            android:id="@+id/btnok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnok"
             android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
             android:padding="10dp"
+            android:textColor="@color/colorAccentSub1"
             android:textSize="@dimen/textsize_title"
-            android:textStyle="bold"
-            android:textColor="@drawable/bg_text_dialog"
-            android:background="?android:attr/selectableItemBackground" />
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/btnCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCancel"
             android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
             android:padding="10dp"
+            android:textColor="@color/colorGray"
             android:textSize="@dimen/textsize_title"
-            android:textStyle="bold"
-            android:textColor="@drawable/bg_text_dialog"
-            android:background="?android:attr/selectableItemBackground" />
+            android:textStyle="bold" />
     </LinearLayout>
     </LinearLayout>
     <!--<LinearLayout

@@ -25,19 +25,19 @@
                 android:id="@+id/tvTitleToolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/order"
+                android:text="@string/bill"
                 android:textColor="@color/colorTitleToolbar"
                 android:textSize="@dimen/textsize_toolbar" />
+
             <ImageView
+                android:id="@+id/ivHideShowList"
                 android:layout_width="@dimen/size_image_icon"
                 android:layout_height="@dimen/size_image_icon"
                 android:layout_gravity="right"
                 android:layout_marginRight="5dp"
                 android:background="?android:attr/selectableItemBackground"
-                app:srcCompat="@mipmap/ic_list_white"
-                android:id="@+id/ivHideShowList"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:srcCompat="@mipmap/ic_list_white" />
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
@@ -53,6 +53,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimarySub"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v4.view.ViewPager
@@ -65,154 +66,81 @@
             android:id="@+id/lnButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
-            android:orientation="vertical"
-            android:layout_alignParentBottom="true">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/btnReceiveBL"
+                    android:id="@+id/btnEdit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_button"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:visibility="gone">
+                    android:background="?android:selectableItemBackground">
 
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@mipmap/ic_accept_white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="@string/receive"
-                        android:textColor="@color/colorWhite" />
+                        android:layout_weight="1"
+                        android:background="@color/colorAccentSub1"
+                        android:gravity="center"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@mipmap/ic_edit_black" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="@string/edit_dh"
+                            android:textColor="@android:color/black" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/btnDismissBL"
+                    android:id="@+id/btnCompleted"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/button_overlook"
+                    android:background="?android:selectableItemBackground"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:visibility="gone">
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@mipmap/ic_bin_white" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="01dp"
+                        android:background="@color/colorPrimary" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="@string/not_receiver"
-                        android:textColor="@color/colorWhite" />
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@mipmap/ic_accept_white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="@string/completed"
+                            android:textColor="@color/colorWhite" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/btnUpdateBL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_button"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@mipmap/ic_edit_white" />
-
-                    <TextView
-                        android:id="@+id/tvBtnUpdate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="@string/update_dh"
-                        android:textColor="@color/colorWhite" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/btnRefuseBL"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_overlook"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:src="@mipmap/ic_bin_white" />
-
-                    <TextView
-                        android:id="@+id/tvDismiss"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="@string/refuse"
-                        android:textColor="@color/colorWhite" />
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
-
-
-        <!--<FrameLayout
-            android:id="@+id/fbStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/lnButton"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="bottom|right"
-            android:background="?android:attr/selectableItemBackground"
-            android:visibility="gone"
-            android:layout_margin="10dp">
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:id="@+id/fb" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:elevation="16dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@mipmap/ic_start_white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/start"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/textsize_sub_title" />
-            </LinearLayout>
-        </FrameLayout>-->
 
         <ProgressBar
             android:id="@+id/progressBar"

@@ -1,48 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="vn.ntlogistics.app.ordermanagement.Views.Activities.MainActivity">
     <data>
         <variable
             name="viewModel"
-            type="vn.ntlogistics.app.shipper.ViewModels.MainVMs.MainActivityViewModel"/>
+            type="vn.ntlogistics.app.ordermanagement.ViewModels.MainVMs.MainActivityVM"/>
     </data>
-
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        android:background="@color/colorPrimarySub"
+        android:orientation="vertical">
 
-        <include
-            android:id="@+id/appBarMain"
-            layout="@layout/app_bar_main"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.design.widget.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true">
-
-            <LinearLayout
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarMain"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:titleTextAppearance="@style/AppTheme.Toolbar.TextAppearance" />
 
-                <include
-                    android:id="@+id/navHeaderMain"
-                    layout="@layout/nav_header_main" />
+        </android.support.design.widget.AppBarLayout>
 
-                <include
-                    android:id="@+id/menuNavMain"
-                    layout="@layout/menu_nav_main" />
-            </LinearLayout>
-        </android.support.design.widget.NavigationView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-    </android.support.v4.widget.DrawerLayout>
+
+            <ImageButton
+                android:id="@+id/btnOrderMain"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{viewModel::onClickOrder}"
+                android:scaleType="fitXY"
+                android:src="@drawable/nhapxuat" />
+
+            <ImageButton
+                android:id="@+id/btnPricingMain"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{viewModel::onClickPricing}"
+                android:scaleType="fitXY"
+                android:src="@drawable/nhantra" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnRecieveMain"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{viewModel::onClickReceive}"
+                android:scaleType="fitXY"
+                android:src="@drawable/nhan" />
+
+            <ImageButton
+                android:id="@+id/btnReturnMain"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="?android:selectableItemBackground"
+                android:onClick="@{viewModel::onClickReturn}"
+                android:scaleType="fitXY"
+                android:src="@drawable/tra" />
+        </LinearLayout>
+
+    </LinearLayout>
 </layout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="vn.ntlogistics.app.shipper">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="vn.ntlogistics.app.ordermanagement">
 
     <uses-feature
         android:name="android.hardware.location"
@@ -8,6 +9,9 @@
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="true" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,18 +23,27 @@
     <!-- TODO: Get current location -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- sdk 23 -->
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
+    <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
+
 
     <application
         android:name=".Views.Application.MainApplication"
         android:allowBackup="true"
-        android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_logo"
+        android:icon="@mipmap/logonhattin"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_logo_round"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".Views.Activities.SplashScreenActivity"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <activity android:name=".Views.Activities.SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -42,46 +55,103 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Views.Activities.MainActivity"
+        <activity android:name=".Views.Activities.OrderManagementActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".Views.Activities.LoginActivity"
+        <activity android:name=".Views.Activities.ViewImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".Views.Activities.ConfirmCodeActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/confirm"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dialog.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".Views.Activities.ChangeInfoActivity"
+        <activity android:name=".Views.Activities.OrderDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity
-            android:name=".Views.Activities.WebViewActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".Views.Activities.LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            <!--android:windowSoftInputMode="adjustResize" />-->
+        <activity android:name=".Views.Activities.MainActivity"
+            android:label="@string/title_main_activity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".Views.Activities.PricingActivity"
+            android:label="@string/pricing"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <!--TODO: Old Activities-->
+        <activity android:name=".Olds.Activities.MyCropImage"
+            android:label="@string/title_activity_my_crop_image"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.CropImage.ZoomImgActivity"
+            android:label="@string/title_activity_zoom_img"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.Activities.ScanMSActivity"
+            android:label="@string/title_activity_zoom_img"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.Activities.BillDOActivity"
+            android:label="@string/title_activity_bill_do"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.Activities.BillFailActivity"
+            android:label="@string/title_activity_bill_fail"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.Activities.SendBillActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.Activities.ManagerBillWhiteActivity"
+            android:label="@string/title_activity_manager_bill_white"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.Activities.InfoProductActivity"
+            android:label="@string/title_activity_info_product"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Views.Activities.InputManagementActivity"
+            android:label="@string/title_activity_input_management"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Olds.Activities.ChangePassActivity"
+            android:label="@string/title_activity_change_pass"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <!--TODO: Scan Library-->
+        <activity android:name=".Olds.ScanMS.scanlibrary.ScanActivity"
+            android:label="Xử lý ảnh"
+            android:screenOrientation="portrait"
+            tools:replace="android:label">
+        </activity>
 
         <!-- TODO: Firebase Clouds Message -->
         <service
-            android:name=".Commons.Firebase.CloudMessaging.Services.MyFirebaseInstanceIDService"
+            android:name=".Commons.Firebase.CloudMessage.MyFirebaseInstanceIDService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -89,7 +159,7 @@
             </intent-filter>
         </service>
         <service
-            android:name=".Commons.Firebase.CloudMessaging.Services.MyFirebaseMessagingService"
+            android:name=".Commons.Firebase.CloudMessage.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true"
             android:stopWithTask="false">
@@ -97,21 +167,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <receiver
-            android:name=".Commons.BroadcastReceiver.CheckReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-
-                <!-- Intent filters for broadcast receiver -->
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.location.PROVIDERS_CHANGED" />
-            </intent-filter>
-        </receiver>
-
-        <activity android:name=".Communications.OrderManagementActivity"></activity>
     </application>
 
 </manifest>
