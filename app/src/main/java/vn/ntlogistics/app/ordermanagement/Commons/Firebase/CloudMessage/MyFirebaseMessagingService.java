@@ -1,6 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Commons.Firebase.CloudMessage;
 
 import android.content.Intent;
+import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -12,6 +13,7 @@ import vn.ntlogistics.app.ordermanagement.Views.Activities.OrderManagementActivi
 import vn.ntlogistics.app.ordermanagement.Views.Application.MainApplication;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
+    public static final String TAG = "MyFirebaseMessaging";
     SqliteManager db = null;
     public MyFirebaseMessagingService() {
     }
@@ -25,6 +27,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         try {
             handleMessage(remoteMessage);
         } catch (Exception e) {
+            Log.e(TAG, "onMessageReceived: " +e.getMessage());
+            e.printStackTrace();
         }
     }
 
