@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.PricingVMs.PricingActivityVM;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivityPricingBinding;
@@ -16,8 +15,6 @@ import vn.ntlogistics.app.ordermanagement.databinding.ActivityPricingBinding;
 public class PricingActivity extends BaseActivity {
     private ActivityPricingBinding      binding;
     private PricingActivityVM           viewModel;
-
-    private SqliteManager               db;
 
     public static void startIntentActivity(Context context){
         Intent i = new Intent(context, PricingActivity.class);
@@ -33,7 +30,6 @@ public class PricingActivity extends BaseActivity {
         viewModel = new PricingActivityVM(binding, this);
         binding.setViewModel(viewModel);
         initToolbar();
-        db = new SqliteManager(this);
 
     }
 

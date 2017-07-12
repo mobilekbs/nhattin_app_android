@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.BaseConnect.BaseConnectAPI;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.BaseConnect.Method;
@@ -66,8 +66,7 @@ public class UpdatePinkBillAPI extends BaseConnectAPI {
             Message.makeToastSuccess(context);
             if(isMultiCall) { // Gọi từ BillFail
                 if (bill != null) {
-                    SqliteManager db = new SqliteManager(context);
-                    db.deleteDataFromTable(Variables.TBL_BILLFAIL,
+                    SSqlite.getInstance(context).deleteDataFromTable(Variables.TBL_BILLFAIL,
                             Variables.KEY_BILL, bill);
                     ((BaseActivity) context).onSuccess();
                 }
@@ -87,8 +86,7 @@ public class UpdatePinkBillAPI extends BaseConnectAPI {
         else { //Gọi từ BillFail
             String[] field = {Variables.KEY_STATUS};
             String[] values = {errorCode + ""};
-            SqliteManager db = new SqliteManager(context);
-            db.updateData4Table(Variables.TBL_BILLFAIL,
+            SSqlite.getInstance(context).updateData4Table(Variables.TBL_BILLFAIL,
                     Variables.KEY_BILL, bill, field, values);
             ((BaseActivity) context).onSuccess();
         }

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.BillFail.BillFailSqlite;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.BillDOActivity;
@@ -31,12 +31,10 @@ public class BillFailAdapter extends RecyclerView.Adapter<BillFailAdapter.DataOb
 
     Context context;
     List<BillFailSqlite> mList;
-    private SqliteManager           db;
 
     public BillFailAdapter(Context context, List<BillFailSqlite> mList) {
         this.context = context;
         this.mList = mList;
-        db = new SqliteManager(context);
     }
 
     public class DataObjectHolder extends RecyclerView.ViewHolder {
@@ -157,7 +155,7 @@ public class BillFailAdapter extends RecyclerView.Adapter<BillFailAdapter.DataOb
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-                db.deleteDataFromTable(Variables.TBL_BILLFAIL,
+                SSqlite.getInstance(context).deleteDataFromTable(Variables.TBL_BILLFAIL,
                         Variables.KEY_BILL, item.getBill());
                 mList.remove(position);
                 notifyItemChanged(position);

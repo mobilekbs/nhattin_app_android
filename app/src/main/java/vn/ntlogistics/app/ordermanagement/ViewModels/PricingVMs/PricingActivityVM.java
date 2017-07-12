@@ -17,13 +17,13 @@ import java.util.ArrayList;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
-import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.PricingAPI;
-import vn.ntlogistics.app.ordermanagement.Models.Inputs.PublicPriceInput;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.BaseLocation;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.City;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.District;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.Service;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.PricingAPI;
+import vn.ntlogistics.app.ordermanagement.Models.Inputs.PublicPriceInput;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.PricingActivity;
@@ -37,7 +37,6 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
     private ActivityPricingBinding binding;
     private PricingActivity activity;
 
-    private SqliteManager db;
     //Data Spinner
     private ArrayList<Service> mListService;
     private ArrayList<City> mListCity;
@@ -46,7 +45,6 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
     public PricingActivityVM(ActivityPricingBinding binding, PricingActivity activity) {
         this.binding = binding;
         this.activity = activity;
-        db = new SqliteManager(activity);
         mListService = new ArrayList<>();
         mListCity = new ArrayList<>();
         mListDistrictForm = new ArrayList<>();
@@ -61,20 +59,20 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
     }
 
     private void initSpinnerService() {
-        mListService = db.getListService();
+        mListService = SSqlite.getInstance(activity).getListService();
         setupSpinner(binding.spinService, mListService);
         binding.spinService.setSelection(0);
     }
 
     private void initSpinnerCity() {
-        mListCity = db.getListCity();
+        mListCity = SSqlite.getInstance(activity).getListCity();
         setupSpinner(binding.spinFromCity, mListCity);
         setupSpinner(binding.spinToCity, mListCity);
 
         binding.spinFromCity.setOnItemSelectedListener(this);
         binding.spinToCity.setOnItemSelectedListener(this);
 
-        int idPosition = db.getIdLocationInCity();
+        int idPosition = SSqlite.getInstance(activity).getIdLocationInCity();
         binding.spinFromCity.setSelection(idPosition);
         binding.spinToCity.setSelection(idPosition);
 
@@ -83,14 +81,14 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
     private void setupSpinnerDistrict(Spinner spinner, int id) {
         if (spinner.getId() == binding.spinFromDis.getId()) {
             mListDistrictForm.clear();
-            mListDistrictForm.addAll(db.getListDistrictByCidyID(id + ""));
+            mListDistrictForm.addAll(SSqlite.getInstance(activity).getListDistrictByCidyID(id + ""));
             setupSpinner(
                     spinner,
                     mListDistrictForm
             );
         } else if (spinner.getId() == binding.spinToDis.getId()) {
             mListDistrictTo.clear();
-            mListDistrictTo.addAll(db.getListDistrictByCidyID(id + ""));
+            mListDistrictTo.addAll(SSqlite.getInstance(activity).getListDistrictByCidyID(id + ""));
             setupSpinner(
                     spinner,
                     mListDistrictTo

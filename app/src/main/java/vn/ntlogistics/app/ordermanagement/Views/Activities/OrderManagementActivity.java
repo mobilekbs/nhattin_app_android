@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Constants;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.OrderManagementVMs.OrderManagementActivityVM;
@@ -35,8 +35,7 @@ public class OrderManagementActivity extends AppCompatActivity {
         dataIntent();
         viewModel = new OrderManagementActivityVM(this, binding);
         binding.setViewModel(viewModel);
-        SqliteManager db = new SqliteManager(this);
-        if(db.getListSenderBillByStatus(Constants.STATUS_UNCOMPLETED+"").size() == 0) {
+        if(SSqlite.getInstance(this).getListSenderBillByStatus(Constants.STATUS_UNCOMPLETED+"").size() == 0) {
             for (int i = 0; i < 20; i++) {
                 Bill item = new Bill(
                         "ID111" + i,
@@ -54,8 +53,11 @@ public class OrderManagementActivity extends AppCompatActivity {
                         "weight " + i,
                         "cod " + i,
                         "service " + i,
-                        Constants.STATUS_UNCOMPLETED+"");
-                db.insertOrUpdateSendBill(item);
+                        Constants.STATUS_UNCOMPLETED+"",
+                        "04/07/2017",
+                        "50",
+                        "0983");
+                SSqlite.getInstance(this).insertOrUpdateSendBill(item);
             }
             Bill item = new Bill(
                     "ID222",
@@ -73,10 +75,13 @@ public class OrderManagementActivity extends AppCompatActivity {
                     "weight 2",
                     "cod 2",
                     "service 2",
-                    Constants.STATUS_COMPLETED+"");
-            db.insertOrUpdateSendBill(item);
+                    Constants.STATUS_COMPLETED+"",
+                    "04/07/2017",
+                    "50",
+                    "0983");
+            SSqlite.getInstance(this).insertOrUpdateSendBill(item);
             item.setStatus(Constants.STATUS_CANCEL_ORDER+"");
-            db.insertOrUpdateSendBill(item);
+            SSqlite.getInstance(this).insertOrUpdateSendBill(item);
         }
     }
 

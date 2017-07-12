@@ -57,7 +57,7 @@ public class PricingAPI extends BaseConnectAPI {
     public void onPost(JsonObject rootObject) {
         //JsonObject rootObject = new JsonParser().parse(result).getAsJsonObject();
         PublicPriceOutput output = new Gson()
-                .fromJson(rootObject, PublicPriceOutput.class);
+                .fromJson(rootObject.get("data").getAsJsonObject(), PublicPriceOutput.class);
         if(output == null)
             output = new PublicPriceOutput();
 

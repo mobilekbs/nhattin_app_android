@@ -5,13 +5,13 @@ import android.view.View;
 import android.widget.EditText;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Animations.IAnimationCallback;
+import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
-import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CheckPublicKeyAPI;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CheckPublicKeyAPI;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.LoginActivity;
@@ -27,7 +27,6 @@ public class LoginActivityVM extends ViewModel {
     private LoginActivity               activity;
     private ActivityLoginBinding        binding;
 
-    private SqliteManager               db;
 
     //0 - Active confirm code | 1 - Create password | 2 - Enter Password
     private ObservableInt               flag;
@@ -39,7 +38,6 @@ public class LoginActivityVM extends ViewModel {
         this.flag = new ObservableInt(flag);
 //        this.textButtonActive = new ObservableField<>();
 
-        db = new SqliteManager(activity);
 
         Commons.hideSoftKeyboard(activity, binding.loMainLogin);
 
@@ -92,7 +90,7 @@ public class LoginActivityVM extends ViewModel {
                 ){
             User user = SCurrentUser.getCurrentUser(activity);
             user.setLocalkey(binding.edtPass.getText().toString());
-            if(db.inserOrUpdatetUser(user)){
+            if(SSqlite.getInstance(activity).inserOrUpdatetUser(user)){
                 Message.makeToastSuccess(activity);
                 MainActivity.startIntentActivity(activity);
             }

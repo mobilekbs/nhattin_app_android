@@ -90,6 +90,9 @@ public class Variables {
 	public static final String SB_COD = "cod";
 	public static final String SB_SERVICE = "service";
 	public static final String SB_STATUS = "status";
+	public static final String SB_PROVINCE_ID = "senderProvinceID";
+	public static final String SB_SEND_DATE = "sendDate";
+	public static final String SB_OTP_CODE = "otpCode";
 
 	//TODO: Version 3 _____________________________________End/
 

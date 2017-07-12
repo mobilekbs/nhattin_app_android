@@ -40,10 +40,19 @@ public class Bill extends Observable implements Serializable {
 
     private boolean check;
 
+    private String sendDate;
+    private String senderProvinceID;
+    private String otpCode;
+
     public Bill() {
     }
 
-    public Bill(String billID, String senderNumberPhone, String senderAddress, String senderName, String senderNode, String receiverNumberPhone, String receiverAddress, String receiverName, String receiverNode, String length, String width, String height, String weight, String cod, String service, String status) {
+    public Bill(String billID, String senderNumberPhone, String senderAddress,
+                String senderName, String senderNode, String receiverNumberPhone,
+                String receiverAddress, String receiverName, String receiverNode,
+                String length, String width, String height, String weight,
+                String cod, String service, String status,
+                String sendDate, String senderProvinceID, String otpCode) {
         this.billID = billID;
         this.senderNumberPhone = senderNumberPhone;
         this.senderAddress = senderAddress;
@@ -60,6 +69,9 @@ public class Bill extends Observable implements Serializable {
         this.cod = cod;
         this.service = service;
         this.status = status;
+        this.sendDate = sendDate;
+        this.senderProvinceID = senderProvinceID;
+        this.otpCode = otpCode;
     }
 
     public String getBillID() {
@@ -252,5 +264,29 @@ public class Bill extends Observable implements Serializable {
 
     public void setCheck(boolean check) {
         this.check = check;
+    }
+
+    public String getSendDate() {
+        return sendDate;
+    }
+
+    public void setSendDate(String sendDate) {
+        this.sendDate = sendDate;
+    }
+
+    public String getSenderProvinceID() {
+        return senderProvinceID;
+    }
+
+    public void setSenderProvinceID(String senderProvinceID) {
+        this.senderProvinceID = senderProvinceID;
+    }
+
+    public String getOtpCode() {
+        return otpCode;
+    }
+
+    public void setOtpCode(String otpCode) {
+        this.otpCode = otpCode;
     }
 }

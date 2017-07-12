@@ -12,7 +12,7 @@ import com.google.gson.JsonParser;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.SplashScreenActivity;
 
@@ -57,17 +57,17 @@ public abstract class BaseConnectAPI extends AsyncTask<Void, Void, String> {
                 int errorCode = rootObject.get("errorCode").getAsInt();
                 switch (errorCode){
                     case 200: //Thành công
-                        JsonObject result = null;
+                        /*JsonObject result = null;
                         try {
                             result = rootObject.get("data").getAsJsonObject();
                         } catch (Exception e) {
-                        }
-                        onPost(result);
+                        }*/
+                        onPost(rootObject);
                         break;
                     case 47: //Android Key không hợp lệ
                         Message.makeToastError(context, context.getString(R.string.toast_error_key_api));
-                        SqliteManager db = new SqliteManager(context);
-                        db.deleteUser();
+                        //SqliteManager db = new SqliteManager(context);
+                        SSqlite.getInstance(context).deleteUser();
                         SCurrentUser.delCurrentUser();
                         Commons.restartApp(context, SplashScreenActivity.class);
                         break;
@@ -131,11 +131,17 @@ public abstract class BaseConnectAPI extends AsyncTask<Void, Void, String> {
      * Sau khi onPost nếu check errorCode != 200 thì chạy vào hàm này
      */
     public void onFailed(int errorCode, String errorMessage){
-        Message.makeToastError(context, errorMessage);
+        try {
+            Message.makeToastError(context, errorMessage);
+        } catch (Exception e) {
+        }
     }
 
     public void onError(){
-        Message.makeToastErrorConnect(context);
+        try {
+            Message.makeToastErrorConnect(context);
+        } catch (Exception e) {
+        }
     }
 
     public void onPostMain(String result) {}

@@ -5,7 +5,7 @@ import android.databinding.ObservableInt;
 import android.os.CountDownTimer;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.LoginActivity;
@@ -30,17 +30,13 @@ public class SplashScreenActivityViewModel extends ViewModel {
     boolean                             flag = false;
     CountDownTimer                      countDownTimer;
 
-    SqliteManager db;
-
     public SplashScreenActivityViewModel(SplashScreenActivity activity) {
         this.activity = activity;
     }
 
     public void checkLogin() {
-        //TODO: create sqlite
-        db = new SqliteManager(activity);
         try {
-            db.createDataBase();
+            SSqlite.getInstance(activity).createDataBase();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -10,7 +10,7 @@ public class ConstantURLs {
     public static final String URL = "https://partner.ntlogistics.vn/nhattin-rest-app-service/";
 
     // LINK
-    public final static String CHECK_USER_KEY = URL + "CheckUserKey";
+    public final static String CHECK_USER_KEY = URL + "checkUserKey";
 
     public final static String UPDATE_PINK_BILL = URL + "updatePinkBill";
     public final static String IMPORT_WHITE_BILL = URL + "importWhiteBill";

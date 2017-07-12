@@ -14,7 +14,6 @@ import java.util.List;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseFragment;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.BillDOActivity;
@@ -29,14 +28,12 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
     private View                        view;
 
     private int                         flag;
-    SqliteManager db;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_pink_bill, container, false);
         view = binding.getRoot();
-        db = new SqliteManager(getContext());
 
         //TODO: Get data intent
         Bundle b = getActivity().getIntent().getExtras();

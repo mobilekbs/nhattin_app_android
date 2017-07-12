@@ -2,7 +2,6 @@ package vn.ntlogistics.app.ordermanagement.Commons.Singleton;
 
 import android.content.Context;
 
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 
 
@@ -13,15 +12,13 @@ public class SCurrentUser {
     private static User instance = null;
     public static User getCurrentUser(Context context){
         if(instance == null) {
-            SqliteManager db = new SqliteManager(context);
-            instance = db.getUser();
+            instance = SSqlite.getInstance(context).getUser();
         }
         return instance;
     }
 
     public static boolean checkCurrentUser(Context context){
-        SqliteManager db = new SqliteManager(context);
-        User user = db.getUser();
+        User user = SSqlite.getInstance(context).getUser();
         return user.getPublickey() == null ? true : false;
     }
 

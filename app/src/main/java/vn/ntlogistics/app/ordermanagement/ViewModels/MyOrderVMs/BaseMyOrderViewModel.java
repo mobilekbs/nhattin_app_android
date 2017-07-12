@@ -24,9 +24,9 @@ import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.CustomDialog.Custo
 import vn.ntlogistics.app.ordermanagement.Commons.Location.GetCurrentLocation;
 import vn.ntlogistics.app.ordermanagement.Commons.Location.Lonlat;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SJob;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sort.BillCommon;
 import vn.ntlogistics.app.ordermanagement.Commons.Sort.CompareItemByLocation;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Job;
 import vn.ntlogistics.app.ordermanagement.R;
@@ -82,7 +82,7 @@ public class BaseMyOrderViewModel {
     protected List<String> mListShippingCode;
 
     //TODO: Sqlite Manager
-    protected SqliteManager                 db;
+    //protected SqliteManager                 db;
 
     public BaseMyOrderViewModel(Activity activity,
                                 BaseFragment fragment,
@@ -105,7 +105,7 @@ public class BaseMyOrderViewModel {
         showButton = new ObservableBoolean(false);
         showDialog = new ObservableInt(View.GONE);
 
-        db = new SqliteManager(activity);
+        //db = new SqliteManager(activity);
 
 
         init();
@@ -607,7 +607,7 @@ public class BaseMyOrderViewModel {
                 "32 Ly Thuong Kiet", "2", "1", 0, 10000, 1000000, 2000000, 12300));
         mListMain.add(new Bill("SC0011","1000000", "1230000",1,"23 Ly Chinh Thang",
                 "32 Ly Thuong Kiet", "2", "1", 0, 10000, 1000000, 2000000, 12300));*/
-        mListMain.addAll(db.getListSenderBillByStatus(statusFragment+""));
+        mListMain.addAll(SSqlite.getInstance(activity).getListSenderBillByStatus(statusFragment+""));
         mListOrder.addAll(mListMain);
         loading = false;
         if (swipeRefreshLayout.isRefreshing()) {

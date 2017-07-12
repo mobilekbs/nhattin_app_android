@@ -50,7 +50,10 @@ public class SqliteManager extends SQLiteOpenHelper {
             + Variables.SB_WEIGHT + " text,"
             + Variables.SB_COD + " text,"
             + Variables.SB_SERVICE + " text,"
-            + Variables.SB_STATUS + " text"
+            + Variables.SB_STATUS + " text,"
+            + Variables.SB_SEND_DATE + " text,"
+            + Variables.SB_PROVINCE_ID + " text,"
+            + Variables.SB_OTP_CODE + " text"
             + ");";
 
     public SqliteManager(Context context) {
@@ -534,7 +537,10 @@ public class SqliteManager extends SQLiteOpenHelper {
                             c.getString(12),
                             c.getString(13),
                             c.getString(14),
-                            c.getString(15)
+                            c.getString(15),
+                            c.getString(16),
+                            c.getString(17),
+                            c.getString(18)
                     );
                     mList.add(item);
                 } while (c.moveToNext());

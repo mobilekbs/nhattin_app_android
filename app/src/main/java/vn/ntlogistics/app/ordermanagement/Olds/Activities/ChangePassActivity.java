@@ -1,9 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Olds.Activities;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,8 +13,7 @@ import android.widget.TextView;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.R;
 
@@ -24,13 +21,11 @@ public class ChangePassActivity extends BaseActivity implements OnClickListener 
 	TextView tvshowMoney;
 	EditText edtOldPass, edtNewPass, edtConfirmNewPass;
 	Button btnChangeKo, btnChangeNow;
-	private SqliteManager db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change_pass);
-		db = new SqliteManager(this);
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarChangePass);
 		setSupportActionBar(toolbar);
@@ -105,18 +100,10 @@ public class ChangePassActivity extends BaseActivity implements OnClickListener 
 	}
 
 	public boolean checkPass() {
-		Cursor c = db.getAllDataFromTable(Variables.TBL_STAFF,
-				Variables.KEY_STAFF_ID, "1=1");
-		String localKey = "";
+		String localKey = SCurrentUser.getCurrentUser(this).getLocalkey();
 		String opass = edtOldPass.getText().toString();
 		String pnew = edtNewPass.getText().toString();
 		String cnew = edtConfirmNewPass.getText().toString();
-		c.moveToFirst();
-		if (!c.isAfterLast()) {
-			localKey = c.getString(c.getColumnIndex(Variables.KEY_LOCAL_KEY));
-			c.moveToNext();
-		}
-		Log.d("", "Localkey: " + localKey);
 
 		if (!localKey.equals(opass)) {
 			Message.makeToastWarning(this,
@@ -161,7 +148,7 @@ public class ChangePassActivity extends BaseActivity implements OnClickListener 
 		startActivity(i);*/
 		User user = SCurrentUser.getCurrentUser(this);
         user.setLocalkey(edtNewPass.getText().toString());
-		db.inserOrUpdatetUser(user);
+		SSqlite.getInstance(this).inserOrUpdatetUser(user);
 		finish();
 		Message.makeToastSuccess(this, getString(R.string.toast_success_update));
 		//myast.makeSuccess("Cập nhật thành công.");

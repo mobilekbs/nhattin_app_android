@@ -9,6 +9,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.UpdateFCMTokenAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.CommonInput;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.UpdateFCMTokenInput;
+import vn.ntlogistics.app.ordermanagement.Views.Application.MainApplication;
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     public MyFirebaseInstanceIDService() {
@@ -35,9 +36,11 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         /**
          * Nếu đã tồn tại user thì update fcm token mới
          */
-        if(SCurrentUser.getCurrentUser(this) != null){
+        if(SCurrentUser.getCurrentUser(this) != null &&
+                SCurrentUser.getCurrentUser(this).getPublickey() != null &&
+                SCurrentUser.getCurrentUser(this).getPublickey().length() > 0){
             CommonInput<UpdateFCMTokenInput> input = new CommonInput<>();
-            input.setData(new UpdateFCMTokenInput(this, refreshedToken));
+            input.setData(new UpdateFCMTokenInput(MainApplication.getCurrentActivity(), refreshedToken));
             String data = new Gson().toJson(input);
             new UpdateFCMTokenAPI(this, data).execute();
         }

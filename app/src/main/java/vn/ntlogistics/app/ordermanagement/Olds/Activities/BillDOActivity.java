@@ -1,11 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Olds.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -18,18 +14,14 @@ import android.widget.EditText;
 
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ConfirmBPBillAPI;
-import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.ConstantURLs;
-import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Olds.putDataToServer;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.ConfirmBPBillInput;
 import vn.ntlogistics.app.ordermanagement.R;
 
@@ -43,7 +35,6 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 	String billCheck;
 	int backFail;
 
-	private SqliteManager db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +53,6 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		});
 		// getActionBar().setDisplayHomeAsUpEnabled(true);
 		//getActionBar().setDisplayShowTitleEnabled(false);
-		callDB();
 		edtBill_DO = (EditText) findViewById(R.id.edtBill_DO);
 		edtTL_DO = (EditText) findViewById(R.id.edtTL_DO);
 		edtSL_DO = (EditText) findViewById(R.id.edtSL_DO);
@@ -85,10 +75,6 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_bill_do, menu);
 		return true;
-	}
-
-	public void callDB() {
-		db = new SqliteManager(this);
 	}
 
 	@Override
@@ -229,7 +215,7 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		String fields[] = { Variables.KEY_BILL, Variables.KEY_TL,
 				Variables.KEY_SL, Variables.KEY_TLQD, Variables.KEY_SOKIENDO };
 		Log.d("", "Bill: " + billDO);
-		boolean c = db.updateData4Table(Variables.TBL_BILLFAIL,
+		SSqlite.getInstance(this).updateData4Table(Variables.TBL_BILLFAIL,
 				Variables.KEY_BILL, billCheck, fields, values);
 		// if (c) {
 		// Toast.makeText(this, "Cập nhật thành công.", Toast.LENGTH_SHORT)
@@ -314,118 +300,6 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		myRF();
 	}
 
-	public void sendDATA() throws JSONException {
-
-		String billDO = edtBill_DO.getText().toString();
-		String SK = edtSokien_DO.getText().toString() != "" ? edtSokien_DO
-				.getText().toString() : "0";
-		String TL = edtTL_DO.getText().toString() != "" ? edtTL_DO.getText()
-				.toString() : "0";
-		String SL = edtSL_DO.getText().toString() != "" ? edtSL_DO.getText()
-				.toString() : "0";
-		String TLQD = edtTLQD_DO.getText().toString() != "" ? edtTLQD_DO
-				.getText().toString() : "0";
-		Log.d("dmmmm", billDO + " " + TL + " " + SL + "  " + TLQD + " " + SK);
-		if (TLQD.equals("") || TLQD == "") {
-			TLQD = "0";
-		}
-		Cursor c = db.getAllDataFromTable(Variables.TBL_STAFF,
-				Variables.KEY_STAFF_ID, "1=1");
-
-		String key = "";
-		c.moveToFirst();
-		if (!c.isAfterLast()) {
-			key = c.getString(c.getColumnIndex(Variables.KEY_PUBLIC_KEY));
-			c.moveToNext();
-		}
-		String[] keys = {ConstantURLs.CONFIRM_DO, key, billDO, TL, SL, TLQD, SK };
-		new AsynSendDo().execute(keys);
-
-	}
-
-	/**
-	 * ------------------------------SEND_DO------------------------------------
-	 * ----
-	 **/
-
-	private class AsynSendDo extends AsyncTask<String, Integer, String> {
-
-		@Override
-		protected String doInBackground(String... values) {
-			// TODO Auto-generated method stub
-			putDataToServer put = new putDataToServer();
-			publishProgress(1);
-			return put.putDO(values[0], values[1], values[2], values[3],
-					values[4], values[5], values[6], false);
-		}
-
-		@Override
-		protected void onProgressUpdate(Integer... values) {
-			// TODO Auto-generated method stub
-			btnSend_DO.setText("Sending...");
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			Log.d("", "Result:aa" + result + "aaaaa");
-			btnSend_DO.setText("Send");
-			//showMes(result);
-		}
-
-	}
-
-	// --------------------------CHECKSHARK-------------------------//
-	private class NetCheck extends AsyncTask<String, Integer, Boolean> {
-
-		@Override
-		protected Boolean doInBackground(String... params) {
-			ConnectivityManager connectivity =
-					(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-			if (connectivity != null) {
-				NetworkInfo[] info = connectivity.getAllNetworkInfo();
-				if (info != null)
-					for (int i = 0; i < info.length; i++)
-						if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-							return true;
-						}
-
-			}
-			return false;
-		}
-
-		@Override
-		protected void onPostExecute(Boolean check) {
-			// TODO Auto-generated method stub
-			Log.d("", "INTERNET: " + check);
-			if (check == true) {
-				try {
-					sendDATA();
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-
-				}
-			} else {
-				Message.makeToastError(getApplicationContext(),
-						getString(R.string.toast_save_bill_off));
-				/*myast.makeFail("Không có kết nối Internet."
-						+ "\n"
-						+ "Vận đơn của bạn đã được lưu lại, vui lòng gửi lại sau!");*/
-				dataUnSend();
-				myRF();
-
-			}
-		}
-	}
-
-	/*public void NetAsync(View view) {
-		new NetCheck().execute();
-	}*/
-
-	// -------------------------------------------------------------//
-
-
 	public void myRF() {
 		edtBill_DO.setEnabled(true);
 		edtBill_DO.setText("");
@@ -445,15 +319,12 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		String isDO = "Y";
 		if (TLQD == null || TLQD == "" || TLQD.equals(""))
 			TLQD = "0";
-		Cursor c = db.getAllDataFromTable(Variables.TBL_STAFF,
-				Variables.KEY_STAFF_ID, "1=1");
-		c.moveToFirst();
 
 		String values[] = { billDO, SL, TL, TLQD, isDO, SK };
 		String keys[] = { Variables.KEY_BILL, Variables.KEY_SL,
 				Variables.KEY_TL, Variables.KEY_TLQD, Variables.KEY_ISDO,
 				Variables.KEY_SOKIENDO };
-		Cursor cSend = db.getAllDataFromTable(Variables.TBL_BILLFAIL,
+		Cursor cSend = SSqlite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL,
 				Variables.KEY_BILL_ID, "1=1");
 		cSend.moveToFirst();
 		ArrayList<String> listCheck = new ArrayList<String>();
@@ -469,7 +340,7 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		}
 		long ks = 0;
 		if (check == true) {
-			ks = db.insertdata(Variables.TBL_BILLFAIL, keys, values);
+			ks = SSqlite.getInstance(this).insertdata(Variables.TBL_BILLFAIL, keys, values);
 		}
 		if (ks > 0) {
 			Log.d("", "Insert thành công");

@@ -44,14 +44,14 @@ import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.MyTextWatcher;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
-import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.UpdatePinkBillAPI;
-import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.ConstantURLs;
-import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Olds.putDataToServer;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.BaseLocation;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.City;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.District;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.UpdatePinkBillAPI;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.ConstantURLs;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Olds.putDataToServer;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.UpdatePinkBillInput;
 import vn.ntlogistics.app.ordermanagement.Olds.FTPFile.MyFTPClientFunctions;
 import vn.ntlogistics.app.ordermanagement.Olds.ScanMS.scanlibrary.ItemBill;
@@ -95,7 +95,6 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	String loz = "";
 	private static String saveBill;
 
-	private SqliteManager	db;
 	private String 			imagePath;
 
 	@Override
@@ -113,7 +112,6 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 			}
 		});
 
-		callDB();
 		ftpclient = new MyFTPClientFunctions();
 
 		/*ActionBar actionBar = getActionBar();
@@ -239,7 +237,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 
 	public void autoComplete() {
 
-		Cursor c = db.getAllDataFromTable(Variables.TBL_GUEST);
+		Cursor c = SSqlite.getInstance(this).getAllDataFromTable(Variables.TBL_GUEST);
 		c.moveToFirst();
 		while (!c.isAfterLast()) {
 			list_giao.add(c.getString(
@@ -359,13 +357,9 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		Log.d("", "Bill: " + bill + ",Mã khách: " + mkhChecked + ",Tên: " + tkh
 				+ ",Tỉnh: " + tinh + ",Quận: " + quan + ",Cước chính: " + money
 				+ " " + ",Cod: " + moneyCod);
-		boolean c = db.updateData4Table(Variables.TBL_BILLFAIL,
+		boolean c = SSqlite.getInstance(this).updateData4Table(Variables.TBL_BILLFAIL,
 				Variables.KEY_BILL, billCheck, fields, values);
 		return true;
-	}
-
-	public void callDB() {
-		db = new SqliteManager(this);
 	}
 
 	public void pullDB_ToSpinner() {
@@ -397,7 +391,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 			myCu.moveToNext();
 		}*/
 
-		int id_position = db.getIdLocationInCity();
+		int id_position = SSqlite.getInstance(this).getIdLocationInCity();
 		/*Log.d("", "Id_position: " + id_position);
 
 		*//*------------------Alldata----------------*//*
@@ -414,7 +408,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 			c.moveToNext();
 		}*/
 
-		mListCity = db.getListCity();
+		mListCity = SSqlite.getInstance(this).getListCity();
 
 		setupSpinner(spinCity, mListCity);
 
@@ -439,7 +433,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		CustomSpinnerDistrict CSD = new CustomSpinnerDistrict(this, list_value,
 				list_Name_District);
 		spinDistrict.setAdapter(CSD);*/
-		mListDis = db.getListDistrictByCidyID(id);
+		mListDis = SSqlite.getInstance(this).getListDistrictByCidyID(id);
 		setupSpinner(spinDistrict, mListDis);
 		spinDistrict.setSelection(posDis);
 		spinDistrict.setOnItemSelectedListener(this);
@@ -753,11 +747,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 				Variables.KEY_TKH, Variables.KEY_TINH, Variables.KEY_QUAN,
 				Variables.KEY_MONEY, Variables.KEY_MONEYCOD, Variables.KEY_ISDO };
 
-		Cursor cSend = db.getAllDataFromTable(Variables.TBL_BILLFAIL);
-		Log.d("", "Bill: " + bill + ",Mã khách: " + mkhChecked + ",Tên: " + tkh
-				+ ",Tỉnh: " + tinh + ",Quận: " + quan + ",Cước chính: " + money
-				+ " " + ",Cod: " + moneyCod);
-
+		Cursor cSend = SSqlite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL);
 		cSend.moveToFirst();
 		ArrayList<String> listCheck = new ArrayList<String>();
 		while (!cSend.isAfterLast()) {
@@ -772,7 +762,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		}
 		long ks = 0;
 		if (check == true) {
-			ks = db.insertdata(Variables.TBL_BILLFAIL, keys, values);
+			ks = SSqlite.getInstance(this).insertdata(Variables.TBL_BILLFAIL, keys, values);
 		}
 		if (ks > 0) {
 			Log.d("", "Insert thành công");
@@ -876,7 +866,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 						.getString(c.getColumnIndex(Variables.KEY_PUBLIC_KEY));
 				c.moveToNext();
 			}*/
-			db.deleteUser();
+			SSqlite.getInstance(this).deleteUser();
 			Commons.restartApp(this, SplashScreenActivity.class);
 			/*boolean a = db.deleteDataFromTable(Variables.TBL_STAFF,
 					Variables.KEY_PUBLIC_KEY, oldKey);*/
@@ -1038,7 +1028,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 			Log.d("", "LOZ: " + loz);
 			Log.d("", "P_areacode: " + P_areacode);
 			if (P_areacode.equals(accHong.substring(0, 2))) {
-				boolean up = db.updateData4Table(Variables.TBL_STAFF,
+				boolean up = SSqlite.getInstance(this).updateData4Table(Variables.TBL_STAFF,
 						Variables.KEY_VALUE_STAFF, accHong, fields, values);
 			} else {
 				posDis = 0;

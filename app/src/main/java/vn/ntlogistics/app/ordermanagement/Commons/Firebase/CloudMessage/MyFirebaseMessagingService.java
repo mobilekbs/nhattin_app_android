@@ -7,23 +7,20 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Notification.BaseNotification;
-import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.SqliteManager;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.OrderManagementActivity;
 import vn.ntlogistics.app.ordermanagement.Views.Application.MainApplication;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public static final String TAG = "MyFirebaseMessaging";
-    SqliteManager db = null;
     public MyFirebaseMessagingService() {
     }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        if(db == null){
-            db = new SqliteManager(this);
-        }
         try {
             handleMessage(remoteMessage);
         } catch (Exception e) {
@@ -48,8 +45,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         /**
          * Call api get detial order, after insert into sqlite.
          */
-        String billID = remoteMessage.getData().get("billID");
-        //...
+        Bill result = new Bill();
+        result.setBillID(remoteMessage.getData().get("docode"));
+        result.setSendDate(remoteMessage.getData().get("senddate"));
+        result.setSenderAddress(remoteMessage.getData().get("sender_address"));
+        result.setSenderProvinceID(remoteMessage.getData().get("sender_province_id"));
+        result.setSenderName(remoteMessage.getData().get("sender"));
+        result.setSenderNumberPhone(remoteMessage.getData().get("sender_contact_tel"));
+        result.setOtpCode(remoteMessage.getData().get("otpcode"));
+
+        //Insert bill into Sqlite
+
 
         /**
          * Sau khi insert sqlite thì reload lại list đơn hàng mới.
@@ -94,7 +100,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
          * Sau đó reload lại list bill nếu đang ở OrderManagementActivity
          */
         String billID = remoteMessage.getData().get("billID");
-        if(db.deleteSenderBill(billID)){
+        if(SSqlite.getInstance(this).deleteSenderBill(billID)){
             try {
                 ((OrderManagementActivity)MainApplication.getCurrentActivity()).reload();
             } catch (Exception e) {
