@@ -144,6 +144,10 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
 
     }
 
+    public static void onClickTest(View v){
+
+    }
+
     public void onClickPricing(View view) {
         Commons.setEnabledButton(view);
         if (Commons.hasConnection(activity)) {
@@ -231,7 +235,7 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
     }
 
     @Override
-    public void loadSuccess(String action, boolean b) {
+    public void onSuccess(String action, boolean b) {
         switch (action) {
             case PricingAPI.WHITE_BILL:
                 /*Intent intent = new Intent(activity,

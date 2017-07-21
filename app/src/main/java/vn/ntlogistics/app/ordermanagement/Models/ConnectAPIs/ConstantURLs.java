@@ -7,7 +7,8 @@ package vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs;
 public class ConstantURLs {
     //public static final String URL = "http://ws.ntlogistics.vn:5656/NTAndroidService/webresources/";
     //public static final String URL = "https://1shipglobal.com/nhattin-rest-app-service/";
-    public static final String URL = "https://partner.ntlogistics.vn/nhattin-rest-app-service/";
+//    public static final String URL = "https://partner.ntlogistics.vn/nhattin-rest-app-service/";
+    public static final String URL = "https://ws.ntlogistics.vn:6443/nhattin-rest-app-service/";
 
     // LINK
     public final static String CHECK_USER_KEY = URL + "checkUserKey";

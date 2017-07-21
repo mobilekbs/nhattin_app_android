@@ -1,4 +1,4 @@
-package com.andemteam.eaty.Commons.CustomViews.Spinner.Beans;
+package vn.ntlogistics.app.ordermanagement.Commons.CustomViews.Spinner.Beans;
 
 import java.io.Serializable;
 

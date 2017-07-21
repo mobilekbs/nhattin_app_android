@@ -128,16 +128,9 @@ public class MyOrderFragment extends BaseFragment {
     }
 
     private void setupViewPager() {
-        final List<BaseFragment> list = new ArrayList<>();
-        //NewOrderFragment dhm = new NewOrderFragment();
-        UncompletedFragment dn = new UncompletedFragment();
-        CompletedFragment dht = new CompletedFragment();
-        CancelOrderFragment cancel = new CancelOrderFragment();
-        //list.add(dhm);
-        list.add(dn);
-        list.add(dht);
-        list.add(cancel);
-        mListFragment.addAll(list);
+        mListFragment.add(UncompletedFragment.newInstance());
+        mListFragment.add(CompletedFragment.newInstance());
+        mListFragment.add(CancelOrderFragment.newInstance());
         adapter.notifyDataSetChanged();
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {

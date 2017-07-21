@@ -6,7 +6,7 @@ import java.util.Observable;
 /**
  * Created by Zanty on 25/06/2016.
  */
-public class Bill extends Observable implements Serializable {
+public class Bill extends Observable implements Serializable, Cloneable {
 
     private String billID;
     private String senderNumberPhone;
@@ -72,6 +72,27 @@ public class Bill extends Observable implements Serializable {
         this.sendDate = sendDate;
         this.senderProvinceID = senderProvinceID;
         this.otpCode = otpCode;
+    }
+
+    public String getDate(){
+        try {
+            return sendDate.split(" ")[0];
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public String getTime(){
+        try {
+            return sendDate.split(" ")[1];
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Bill clone() throws CloneNotSupportedException {
+        return (Bill) super.clone();
     }
 
     public String getBillID() {

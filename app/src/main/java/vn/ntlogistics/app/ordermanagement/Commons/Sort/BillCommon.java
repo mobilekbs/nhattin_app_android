@@ -27,7 +27,7 @@ public class BillCommon {
 
         for(int i = 0; i < mList.size(); i++){
             int jobtype = mList.get(i).getJobType();
-            if(jobtype==job)
+            if(jobtype == job)
                 mListResponce.add(mList.get(i));
         }
 

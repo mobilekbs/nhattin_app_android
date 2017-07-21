@@ -6,7 +6,7 @@ import android.view.View;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.OrderManagementActivity;
 import vn.ntlogistics.app.ordermanagement.Views.Adapters.FragmentMainAdapter;
-import vn.ntlogistics.app.ordermanagement.Views.Fragments.MyOrders.MyOrderFragment;
+import vn.ntlogistics.app.ordermanagement.Views.Fragments.MyOrders.UncompletedFragment;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivityOrderManagementBinding;
 
 /**
@@ -46,7 +46,9 @@ public class OrderManagementActivityVM extends BaseObservable {
         adapter = new FragmentMainAdapter(
                 activity.getSupportFragmentManager(),
                 activity);
-        adapter.addFragment(new MyOrderFragment(), activity.getString(R.string.menu_my_order));
+        //adapter.addFragment(new MyOrderFragment(), activity.getString(R.string.menu_my_order));
+        adapter.addFragment(UncompletedFragment.newInstance(),
+                activity.getString(R.string.menu_my_order));
         binding.vpOrderManagement.setAdapter(adapter);
     }
 

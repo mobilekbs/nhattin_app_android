@@ -78,8 +78,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-            <!--android:windowSoftInputMode="adjustResize" />-->
+            android:windowSoftInputMode="adjustResize"/>
+            <!--
+            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            -->
         <activity android:name=".Views.Activities.MainActivity"
             android:label="@string/title_main_activity"
             android:configChanges="orientation|keyboardHidden|screenSize"

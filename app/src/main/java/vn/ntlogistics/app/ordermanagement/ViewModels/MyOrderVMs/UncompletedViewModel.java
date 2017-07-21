@@ -48,9 +48,9 @@ public class UncompletedViewModel extends BaseMyOrderViewModel {
     public void checkAll(boolean check) {
         try {
             if (check) {
-                for (int i = 0; i < mListOrder.size(); i++)
-                    mListOrder.get(i).setCheck(true);
-                adpater.notifyDataSetChanged();
+                for (int i = 0; i < mListShow.size(); i++)
+                    mListShow.get(i).setCheck(true);
+                adapter.notifyDataSetChanged();
                 if (!checkJobTypeInList()) {
                     showButton.set(true);
                 } else {
@@ -59,9 +59,9 @@ public class UncompletedViewModel extends BaseMyOrderViewModel {
                     showButton.set(false);
                 }
             } else {
-                for (int i = 0; i < mListOrder.size(); i++)
-                    mListOrder.get(i).setCheck(false);
-                adpater.notifyDataSetChanged();
+                for (int i = 0; i < mListShow.size(); i++)
+                    mListShow.get(i).setCheck(false);
+                adapter.notifyDataSetChanged();
                 showButton.set(false);
             }
         } catch (Exception e) {
@@ -72,9 +72,9 @@ public class UncompletedViewModel extends BaseMyOrderViewModel {
     private boolean checkJobTypeInList() {
         List<Bill> mListBillChecked = new ArrayList<>();
         //TODO: Get list item checked
-        for (int i = 0; i < mListOrder.size(); i++) {
-            if (mListOrder.get(i).isCheck())
-                mListBillChecked.add(mListOrder.get(i));
+        for (int i = 0; i < mListShow.size(); i++) {
+            if (mListShow.get(i).isCheck())
+                mListBillChecked.add(mListShow.get(i));
         }
         //TODO: Kiểm tra xem trong list đã checked có trùng jobtype không
         int job = mListBillChecked.get(0).getJobType();
@@ -84,31 +84,6 @@ public class UncompletedViewModel extends BaseMyOrderViewModel {
             }
         }
         return false;
-    }
-
-    @Override
-    public void loadSuccessNull() {
-        /*Commons.showToast(activity, activity.getString(R.string.toast_update_success));
-        removeItemList();
-        ((MainActivity)activity).getChildFragment(1, 2).reload();*/
-    }
-
-    private void removeItemList() {
-        List<Bill> mListBillDeleted = new ArrayList<>();
-        for (int i = 0; i < mListOrder.size(); i++) {
-            if (mListOrder.get(i).isCheck()) {
-                mListOrder.get(i).setCheck(false);
-                mListBillDeleted.add(mListOrder.get(i));
-                mListMain.remove(mListOrder.get(i));
-                mListMainSup.remove(mListOrder.get(i));
-            }
-        }
-        //CompletedFragment.getInstanse().updateListAll(mListOrderDeleted);
-        /*((CompletedFragment) ((MainActivity) activity)
-                .getChildFragment(1, 2)).updateListAll(mListOrderDeleted);*/
-        setListOrderShow(s2.getSelectedItemPosition());
-        checkAll.set(false);
-        updateBadgeView();
     }
 
     //TODO: Set Click View ----------------------------------------------------------
@@ -139,22 +114,7 @@ public class UncompletedViewModel extends BaseMyOrderViewModel {
 
     //TODO: Call API ----------------------------------------------------------
     private void callUpdateStatusOrderAPI() {
-       /* JSUpdateStatus data = new JSUpdateStatus(activity);
-        data.setData(checkedFormList());
-        int job = getJobTypeInList();
-        int jobApi = SJob.getIdSuccessByJobType(job);
-        data.setStatusId(jobApi + ""); //8 là giao hàng thành công
-        data.setShippingCode(mListShippingCode);
-        if (job == 8) { //Update ShipK
-            //data.setJobType(0);
-            //data.setLstOrderKCode(mListOrderKCode);
-            //String json = new Gson().toJson(data);
-            //new UpdateOrderKStatusAPI(activity, json, null, jobApi, fragment).execute();
-        } else {
-            data.setJobType(job);
-            String json = new Gson().toJson(data);
-            new UpdateOrderStatusAPI(activity, json, fragment, jobApi, null).execute();
-        }*/
+
     }
     //TODO: End call API -----------------------------------------------------/
 }

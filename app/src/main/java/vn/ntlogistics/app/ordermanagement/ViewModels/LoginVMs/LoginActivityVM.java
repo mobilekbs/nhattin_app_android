@@ -55,6 +55,20 @@ public class LoginActivityVM extends ViewModel {
             //binding.lnCreatePwLogin.setVisibility(View.VISIBLE);
             MyAnimation.setVisibilityAnimationSlide(binding.lnActiveAccountLogin, true, 500);
         }
+
+        binding.btnKeyPublic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickActive(v);
+            }
+        });
+
+        binding.btnSetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSetPw(v);
+            }
+        });
     }
 
     public void onClickActive(View view){
@@ -62,7 +76,7 @@ public class LoginActivityVM extends ViewModel {
         if(flag.get() == 0) {
             if (validateNullFields(binding.edtKeyPublic,
                     activity.getString(R.string.val_your_key_null))) {
-                //loadSuccess(CheckPublicKeyAPI.ACTION,true);
+                //onSuccess(CheckPublicKeyAPI.ACTION,true);
                 callAPICheckPublicKey(binding.edtKeyPublic.getText().toString());
             }
         }
@@ -136,7 +150,7 @@ public class LoginActivityVM extends ViewModel {
     }
 
     @Override
-    public void loadSuccess(String action, boolean b) {
+    public void onSuccess(String action, boolean b) {
         if(action.equals(CheckPublicKeyAPI.ACTION)) {
             if (b) {
                 flag.set(1);

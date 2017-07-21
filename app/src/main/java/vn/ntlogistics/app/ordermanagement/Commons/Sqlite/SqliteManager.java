@@ -24,6 +24,8 @@ import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.Service;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 
+import static vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables.KEY_AREACODE;
+
 
 /**
  * Created by Zanty on 27/06/2016.
@@ -246,7 +248,7 @@ public class SqliteManager extends SQLiteOpenHelper {
             try {
                 c = db.rawQuery(
                         "select * from "+ Variables.TBL_CITY +" where "
-                                + Variables.KEY_AREACODE +"=?",
+                                + KEY_AREACODE +"=?",
                         new String[]{areaCode}
                 );
                 if (c.moveToFirst()) {
@@ -282,8 +284,10 @@ public class SqliteManager extends SQLiteOpenHelper {
                             + Variables.KEY_CITY_ID +"=? order by " + Variables.KEY_AREACODE + " ASC",
                     new String[]{"1=1"}
             );*/
-            c = db.query(Variables.TBL_CITY,null,null,null,null,null,
-                    Variables.KEY_AREACODE + " ASC");
+            c = db.query(Variables.TBL_CITY,null,
+                    Variables.KEY_AREACODE + "!=?",
+                    new String[]{"0"},null,null,
+                    Variables.KEY_CITY_ID + " ASC");
             if (c.moveToFirst()) {
                 do {
                     City item = new City(
@@ -309,7 +313,7 @@ public class SqliteManager extends SQLiteOpenHelper {
         try {
             c = db.rawQuery(
                     "select * from "+ Variables.TBL_CITY +" where "
-                            + Variables.KEY_AREACODE +"=?",
+                            + KEY_AREACODE +"=?",
                     new String[]{areaCode}
             );
             if (c.moveToFirst()) {
@@ -445,6 +449,9 @@ public class SqliteManager extends SQLiteOpenHelper {
                 values.put(Variables.SB_COD, bill.getCod());
                 values.put(Variables.SB_SERVICE, bill.getService());
                 values.put(Variables.SB_STATUS, bill.getStatus());
+                values.put(Variables.SB_SEND_DATE, bill.getSendDate());
+                values.put(Variables.SB_PROVINCE_ID, bill.getSenderProvinceID());
+                values.put(Variables.SB_OTP_CODE, bill.getOtpCode());
 
                 //Kiểm tra xem billID đã có trong bảng chưa.
                 c = db.rawQuery(
@@ -522,7 +529,6 @@ public class SqliteManager extends SQLiteOpenHelper {
             if (c.moveToFirst()) {
                 do {
                     Bill item = new Bill(
-                            c.getString(0),
                             c.getString(1),
                             c.getString(2),
                             c.getString(3),
@@ -540,7 +546,8 @@ public class SqliteManager extends SQLiteOpenHelper {
                             c.getString(15),
                             c.getString(16),
                             c.getString(17),
-                            c.getString(18)
+                            c.getString(18),
+                            c.getString(19)
                     );
                     mList.add(item);
                 } while (c.moveToNext());

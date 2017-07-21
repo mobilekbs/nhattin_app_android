@@ -2,12 +2,10 @@ package vn.ntlogistics.app.ordermanagement.Commons.CustomViews;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.CompoundButtonCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.CheckBox;
@@ -172,14 +170,19 @@ public class HeaderLayout extends LinearLayout {
                 ContextCompat.getColor(getContext(),android.R.color.white),
                 ContextCompat.getColor(getContext(),android.R.color.white)
         };
-        switch (service){
+        lnBody.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorBG));
+        tvTitle.setTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        tvDay.setTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        tvTime.setTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
+        ivIconClock.setImageDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.ic_alarm_clock_white));
+        /*switch (service){
             case SHIP_CARGO: //Book
                 //tvDay.setVisibility(GONE);
                 //ivIconClock.setVisibility(GONE);
-                /*if(fast == Common.TYPE_SHIP_CARGO) { //Thuong = 0
+                *//*if(fast == Common.TYPE_SHIP_CARGO) { //Thuong = 0
 
                 }
-                else*/
+                else*//*
                 if(fast == 1){ //Nhanh - Hoa toc
                     CompoundButtonCompat.setButtonTintList(cb, new ColorStateList(states, colors));
                     
@@ -223,7 +226,7 @@ public class HeaderLayout extends LinearLayout {
                 ivIconClock.setImageDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.ic_alarm_clock_black));
 
                 break;
-        }
+        }*/
     }
 
     public void setupHeaderStopPlace(int number, int resId){

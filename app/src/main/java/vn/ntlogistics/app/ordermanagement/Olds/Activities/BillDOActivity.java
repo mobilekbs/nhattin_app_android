@@ -158,16 +158,21 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
 		if(resultCode == RESULT_OK){
 			if(requestCode == REQUEST_CODE_SCAN){
-				String m = getIntent().getExtras().getString("symbol").toString();
+				Bundle b = data.getExtras();
+				String m = null;
+				try {
+					m = b.getString("symbol").toString();
+				} catch (Exception e) {
+				}
 				if (m != null) {
 					edtBill_DO.setEnabled(false);
 					edtBill_DO.setText(m);
 				}
 			}
 		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	public void getBillDoFail() {

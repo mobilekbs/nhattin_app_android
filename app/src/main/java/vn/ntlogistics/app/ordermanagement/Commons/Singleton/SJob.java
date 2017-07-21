@@ -322,12 +322,12 @@ public class SJob {
         List<Job> mListJob = new ArrayList<>();
         mListJob.add(new Job(1,context.getResources().getString(R.string.job_take_order)));
         mListJob.add(new Job(2,context.getResources().getString(R.string.job_delivery_order)));
-        mListJob.add(new Job(3,context.getResources().getString(R.string.job_handover_order)));
+        /*mListJob.add(new Job(3,context.getResources().getString(R.string.job_handover_order)));
         mListJob.add(new Job(4,context.getResources().getString(R.string.job_return_order)));
         mListJob.add(new Job(5,context.getResources().getString(R.string.job_return_total_order)));
         mListJob.add(new Job(6,context.getResources().getString(R.string.job_ship_moto)));
         mListJob.add(new Job(7,context.getResources().getString(R.string.job_ship_car)));
-        mListJob.add(new Job(8,context.getResources().getString(R.string.job_ship_k)));
+        mListJob.add(new Job(8,context.getResources().getString(R.string.job_ship_k)));*/
         return mListJob;
     }
 }

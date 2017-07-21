@@ -155,7 +155,7 @@ public class PricingAPI extends BaseConnectAPI {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        viewModel.loadSuccess(WHITE_BILL,true);
+                        viewModel.onSuccess(WHITE_BILL,true);
                         Intent intent = new Intent(context,
                                 ManagerBillWhiteActivity.class);
                         Bundle bundle = new Bundle();
@@ -172,7 +172,7 @@ public class PricingAPI extends BaseConnectAPI {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        viewModel.loadSuccess(REPRICING,true);
+                        viewModel.onSuccess(REPRICING,true);
 
                     }
                 });

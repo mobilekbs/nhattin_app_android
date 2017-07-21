@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.Commons.Notification.BaseNotification;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
@@ -22,6 +23,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         try {
+            Log.e("FIRE_BASE", remoteMessage.getData().toString());
             handleMessage(remoteMessage);
         } catch (Exception e) {
             Log.e(TAG, "onMessageReceived: " +e.getMessage());
@@ -30,6 +32,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void handleMessage(RemoteMessage remoteMessage) {
+        //notificationNewBill(remoteMessage);
         int type = Integer.parseInt(remoteMessage.getData().get("type"));
         switch (type){
             case 0: // Nhận đơn hàng mới
@@ -42,6 +45,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void notificationNewBill(RemoteMessage remoteMessage) {
+        Log.e("FIRE_BASE", remoteMessage.getData().toString());
         /**
          * Call api get detial order, after insert into sqlite.
          */
@@ -53,9 +57,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         result.setSenderName(remoteMessage.getData().get("sender"));
         result.setSenderNumberPhone(remoteMessage.getData().get("sender_contact_tel"));
         result.setOtpCode(remoteMessage.getData().get("otpcode"));
-
+        result.setStatus(Constants.STATUS_UNCOMPLETED+"");
         //Insert bill into Sqlite
-
+        SSqlite.getInstance(this).insertOrUpdateSendBill(result);
 
         /**
          * Sau khi insert sqlite thì reload lại list đơn hàng mới.
@@ -83,8 +87,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notify.setIntent(intent);
 
             notify.setContent(
-                    remoteMessage.getData().get("title"),
-                    remoteMessage.getData().get("body"),
+                    getString(R.string.notification_title),
+                    getString(R.string.bill_code) + " " + result.getBillID(),
                     R.mipmap.logonhattin
             );
             notify.build();
@@ -122,8 +126,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notify.setIntent(intent);
 
             notify.setContent(
-                    remoteMessage.getData().get("title"),
-                    remoteMessage.getData().get("body"),
+                    getString(R.string.notification_cancel_title),
+                    getString(R.string.bill_code) + " " + billID,
                     R.mipmap.logonhattin
             );
             notify.build();

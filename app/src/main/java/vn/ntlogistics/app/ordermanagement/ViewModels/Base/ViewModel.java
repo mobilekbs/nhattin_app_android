@@ -7,5 +7,5 @@ import android.databinding.BaseObservable;
  */
 
 public abstract class ViewModel extends BaseObservable{
-    public void loadSuccess(String action, boolean b){}
+    public void onSuccess(String action, boolean b){}
 }

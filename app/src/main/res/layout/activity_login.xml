@@ -72,8 +72,7 @@
                     android:id="@+id/btnKeyPublic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:onClick="@{viewModel::onClickActive}">
+                    android:background="?android:selectableItemBackground">
 
                     <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.ClearTextView
                         android:layout_width="match_parent"
@@ -124,8 +123,7 @@
                     android:id="@+id/btnSetPass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?android:selectableItemBackground"
-                    android:onClick="@{viewModel::onClickSetPw}">
+                    android:background="?android:selectableItemBackground">
 
                     <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.ClearTextView
                         android:layout_width="match_parent"

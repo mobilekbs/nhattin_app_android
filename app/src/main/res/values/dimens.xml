@@ -9,9 +9,9 @@
     <dimen name="padding_edittext">10dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="textsize_toolbar">20sp</dimen>
-    <dimen name="textsize_body">14sp</dimen>
-    <dimen name="textsize_title">16sp</dimen>
-    <dimen name="textsize_sub_title">12sp</dimen>
+    <dimen name="textsize_body">16sp</dimen>
+    <dimen name="textsize_title">18sp</dimen>
+    <dimen name="textsize_sub_title">14sp</dimen>
     <dimen name="tablayout_size">40dp</dimen>
     <dimen name="toolbar_size">50dp</dimen>
     <dimen name="size_image_icon">24dp</dimen>

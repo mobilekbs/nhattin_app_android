@@ -1,4 +1,4 @@
-package com.andemteam.eaty.Commons.CustomViews.Spinner;
+package vn.ntlogistics.app.ordermanagement.Commons.CustomViews.Spinner;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,9 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.andemteam.eaty.Commons.CustomViews.Spinner.Beans.ItemSpinner;
-
 import java.util.ArrayList;
+
+import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.Spinner.Beans.ItemSpinner;
 
 /**
  * Created by Zanty on 24/06/2017.

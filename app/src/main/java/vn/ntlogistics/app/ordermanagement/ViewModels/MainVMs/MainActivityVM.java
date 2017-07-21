@@ -23,6 +23,10 @@ public class MainActivityVM extends ViewModel {
         this.binding = binding;
     }
 
+    public void onClick(View v) {
+
+    }
+
     public void onClickOrder(View view){
         Commons.setEnabledButton(view);
         OrderManagementActivity.startIntentActivity(activity);

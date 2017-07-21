@@ -48,7 +48,6 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
-                android:onClick="@{viewModel::onClickOrder}"
                 android:scaleType="fitXY"
                 android:src="@drawable/nhapxuat" />
 
@@ -59,7 +58,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
-                android:onClick="@{viewModel::onClickPricing}"
                 android:scaleType="fitXY"
                 android:src="@drawable/nhantra" />
         </LinearLayout>
@@ -81,7 +79,6 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
-                android:onClick="@{viewModel::onClickReceive}"
                 android:scaleType="fitXY"
                 android:src="@drawable/nhan" />
 
@@ -92,7 +89,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="?android:selectableItemBackground"
-                android:onClick="@{viewModel::onClickReturn}"
                 android:scaleType="fitXY"
                 android:src="@drawable/tra" />
         </LinearLayout>

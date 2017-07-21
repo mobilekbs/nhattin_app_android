@@ -29,18 +29,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <android.support.v7.widget.AppCompatCheckBox
-                        android:id="@+id/cbAll1"
-                        style="@style/Base.Widget.AppCompat.CompoundButton.CheckBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:checked="@{viewModel.checkAll}"
-                        android:onClick="@{viewModel::onClickCheckAll}"
-                        app:buttonTint="@color/colorAccent" />
-
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/spinner"
                         android:layout_width="wrap_content"
@@ -53,10 +41,13 @@
                         style="@style/Spinner"
                         android:prompt="@string/sp_filter"
                         android:spinnerMode="dialog" />
+
                     <View
                         android:layout_width="0.2dp"
                         android:layout_height="match_parent"
-                        android:background="@color/colorPrimary"/>
+                        android:background="@color/colorPrimary"
+                        android:visibility="gone" />
+
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/spinner1"
                         style="@style/Spinner"
@@ -68,7 +59,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
                         android:prompt="@string/sp_job"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -87,7 +79,7 @@
                     android:splitMotionEvents="false"></android.support.v7.widget.RecyclerView>
             </android.support.v4.widget.SwipeRefreshLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/lnDefault"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +117,7 @@
                         android:textSize="@dimen/textsize_title" />
                 </LinearLayout>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/lnDialog"

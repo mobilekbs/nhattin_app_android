@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">NT Logistics</string>
-    <string name="about_us">©2015 Designed By HDSoft</string>
+    <string name="about_us">©2017 By Nhất Tín Logistics</string>
 
 
     <string name="confirm_code_delivery">Mã xác thực</string>
     <string name="menu_my_order">Đơn hàng của tôi</string>
+    <string name="notification_title">Bạn có đơn hàng mới</string>
+    <string name="notification_cancel_title">Bạn có đơn hàng hủy</string>
+    <string name="bill_code">Mã đơn hàng:</string>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
     </string>
@@ -333,4 +336,6 @@
     <string name="old_password">Mật khẩu cũ</string>
     <string name="new_password">Mật khẩu mới</string>
     <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
+    <string name="otp_code">Mã xác thực:</string>
+    <string name="dont_take">Không lấy được</string>
 </resources>

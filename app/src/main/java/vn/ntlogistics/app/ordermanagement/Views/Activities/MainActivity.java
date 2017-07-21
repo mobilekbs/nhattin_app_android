@@ -5,10 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.BillFailActivity;
@@ -22,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding         binding;
     private MainActivityVM              viewModel;
 
+    //TODO: Twice press back finish
+    private boolean                     doubleBackToExitPressedOnce = false;
 
     public static void startIntentActivity(Context context){
         Intent i = new Intent(context, MainActivity.class);
@@ -36,8 +42,36 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         viewModel = new MainActivityVM(this, binding);
         setSupportActionBar(binding.toolbarMain);
-
         binding.setViewModel(viewModel);
+
+        binding.btnOrderMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Commons.setEnabledButton(v);
+                OrderManagementActivity.startIntentActivity(MainActivity.this);
+            }
+        });
+        binding.btnPricingMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Commons.setEnabledButton(v);
+                PricingActivity.startIntentActivity(MainActivity.this);
+            }
+        });
+        binding.btnRecieveMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Commons.setEnabledButton(v);
+                InputManagementActivity.startIntentActivity(MainActivity.this, 0);
+            }
+        });
+        binding.btnReturnMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Commons.setEnabledButton(v);
+                InputManagementActivity.startIntentActivity(MainActivity.this, 1);
+            }
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,5 +116,22 @@ public class MainActivity extends AppCompatActivity {
             return false;
         } else
             return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (doubleBackToExitPressedOnce)
+            moveTaskToBack(true);
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getResources().getString(R.string.twice_back), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 }

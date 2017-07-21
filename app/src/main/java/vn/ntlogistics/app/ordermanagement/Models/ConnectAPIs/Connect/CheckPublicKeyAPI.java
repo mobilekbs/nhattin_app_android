@@ -31,7 +31,7 @@ public class CheckPublicKeyAPI extends BaseConnectAPI {
         this.key = data;
         this.viewModel = viewModel;
         JsonObject json = new JsonObject();
-        json.addProperty("AndroidKey", data);
+        json.addProperty("androidKey", data);
         this.data = new Gson().toJson(json);
         initDialogWithTitle(context.getString(R.string.checking), false);
     }
@@ -72,21 +72,21 @@ public class CheckPublicKeyAPI extends BaseConnectAPI {
                 if(SSqlite.getInstance(context).inserOrUpdatetUser(user)){
                     Message.makeToastSuccess(context);
                     if(viewModel != null){
-                        viewModel.loadSuccess(ACTION, true);
+                        viewModel.onSuccess(ACTION, true);
                     }
                     callAPIUpdateFCMToken();
                 }
                 else {
                     Message.makeToastError(context, context.getString(R.string.toast_error));
                     if(viewModel != null){
-                        viewModel.loadSuccess(ACTION, false);
+                        viewModel.onSuccess(ACTION, false);
                     }
                 }
             }
         } catch (Exception e) {
             Message.makeToastError(context, context.getString(R.string.toast_error));
             if(viewModel != null){
-                viewModel.loadSuccess(ACTION, false);
+                viewModel.onSuccess(ACTION, false);
             }
         }
     }

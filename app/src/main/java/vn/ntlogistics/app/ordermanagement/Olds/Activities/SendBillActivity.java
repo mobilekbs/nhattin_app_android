@@ -126,7 +126,11 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		mListDis = new ArrayList<>();
 
 		accHong = SCurrentUser.getCurrentUser(this).getValue_staff();
-		posDis = Integer.parseInt(SCurrentUser.getCurrentUser(this).getMyBank());
+		try {
+			posDis = Integer.parseInt(SCurrentUser.getCurrentUser(this).getMyBank());
+		} catch (NumberFormatException e) {
+			posDis = 0;
+		}
 
 		tvAccountPink.setText(SCurrentUser.getCurrentUser(this).getValue_staff());
 
