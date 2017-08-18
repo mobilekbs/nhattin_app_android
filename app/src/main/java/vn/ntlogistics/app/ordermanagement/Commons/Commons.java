@@ -43,8 +43,10 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import vn.ntlogistics.app.ordermanagement.BuildConfig;
 
@@ -228,6 +230,32 @@ public class Commons {
         return date.getTime();
     }
 
+    /**
+     * Từ ngày tháng năm lấy được tên hiển thị của ngày đó.
+     * Ví dụ: TUE, FRI
+     * @param date
+     * @param month
+     * @param year
+     * @return
+     */
+    public static String getDisplayNameOfDay(int date, int month, int year){
+        String weekDay = null;
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", Locale.US);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, date);
+        weekDay = dayFormat.format(calendar.getTime());
+
+        return weekDay;
+    }
+    public static String timeStampToDDMM(long timeStamp) {
+        try {
+            Date netDate = (new Date(timeStamp));
+            return new SimpleDateFormat("dd/MM").format(netDate);
+        } catch (Exception ex) {
+            return "";
+        }
+    }
     public static String timeStampToDate(long timeStamp) {
         try {
             Date netDate = (new Date(timeStamp));
@@ -463,7 +491,7 @@ public class Commons {
             public void run() {
                 v.setEnabled(true);
             }
-        }, 500);
+        }, 300);
     }
 
     public static void restartApp(Context context, Class<?> t){

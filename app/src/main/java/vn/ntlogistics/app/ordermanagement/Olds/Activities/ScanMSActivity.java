@@ -1,6 +1,5 @@
 package vn.ntlogistics.app.ordermanagement.Olds.Activities;
 
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -27,13 +26,15 @@ import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 
 import java.io.File;
+import java.io.Serializable;
 
+import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Olds.ScanMS.CameraMS;
 import vn.ntlogistics.app.ordermanagement.Olds.ScanMS.scanlibrary.ItemBill;
 import vn.ntlogistics.app.ordermanagement.R;
 
-public class ScanMSActivity extends Activity {
+public class ScanMSActivity extends BaseActivity implements Serializable {
 
     private Camera mCamera;
     private CameraMS mPreview;
@@ -57,6 +58,7 @@ public class ScanMSActivity extends Activity {
         Log.d("ON CREATE", "ON CREATE");
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         moCame();
     }
 
@@ -216,14 +218,14 @@ public class ScanMSActivity extends Activity {
         finish();
     }
 
-    public void returnDataDO(Symbol sym) {
+    /*public void returnDataDO(Symbol sym) {
         Intent sIntent = new Intent(getApplication(), BillDOActivity.class);
         Bundle sBundle = new Bundle();
         sBundle.putString("symbol", sym.getData().toString());
         sIntent.putExtras(sBundle);
         startActivity(sIntent);
         finish();
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

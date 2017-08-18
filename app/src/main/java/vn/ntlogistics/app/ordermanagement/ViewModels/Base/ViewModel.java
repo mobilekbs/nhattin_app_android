@@ -8,4 +8,8 @@ import android.databinding.BaseObservable;
 
 public abstract class ViewModel extends BaseObservable{
     public void onSuccess(String action, boolean b){}
+    public void onSuccess(int action){}
+    public void onSuccess(){}
+    public void onSuccess(Object result){}
+    public void onFailed(){}
 }

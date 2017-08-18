@@ -1,6 +1,8 @@
 package vn.ntlogistics.app.ordermanagement.Views.Fragments.MyOrders;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -77,6 +79,31 @@ public class UncompletedFragment extends BaseFragment {
         } catch (Exception e) {
             Log.d(TAG, "reload");
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK){
+            switch (requestCode){
+                case Constants.REQUEST_CODE_CANCEL_BILL:
+                    try {
+                        int position = data.getExtras().getInt("position");
+                        if (viewModel != null)
+                            viewModel.removeItem(position);
+                    } catch (Exception e) {
+                    }
+                    break;
+                case Constants.REQUEST_CODE_SUCCESS_BILL:
+                    try {
+                        int position = data.getExtras().getInt("position");
+                        if (viewModel != null)
+                            viewModel.removeItem(position);
+                    } catch (Exception e) {
+                    }
+                    break;
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
+import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Application.MainApplication;
 
 
@@ -46,6 +47,7 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
             Commons.hideSoftKeyboard(this);
         } catch (Exception e) {
         }
+        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
     }
 
     private void setApplication() {
@@ -53,17 +55,15 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     private void clearReferences() {
-        MainApplication.setCurrentActivity(null);
+        if (this.equals(MainApplication.getCurrentActivity()))
+            MainApplication.setCurrentActivity(null);
     }
 
     public void handleNotification(int action, Bundle b){}
 
     public void checkPermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE)
-                            != PackageManager.PERMISSION_GRANTED
-                    ||
-                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                             != PackageManager.PERMISSION_GRANTED
                     ||
                     checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -78,7 +78,6 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
                 ActivityCompat.requestPermissions(
                         this,
                         new String[]{
-                                Manifest.permission.READ_PHONE_STATE,
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 Manifest.permission.READ_EXTERNAL_STORAGE,
                                 Manifest.permission.ACCESS_COARSE_LOCATION,

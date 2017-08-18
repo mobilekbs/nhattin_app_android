@@ -7,11 +7,14 @@ import android.databinding.ObservableInt;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseFragment;
@@ -19,9 +22,11 @@ import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.CustomDialog.CustomDialog;
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.Spinner.BaseSpinner;
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.Spinner.Beans.ItemSpinner;
+import vn.ntlogistics.app.ordermanagement.Commons.Interfaces.ICallback;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SJob;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
-import vn.ntlogistics.app.ordermanagement.Commons.Sort.BillCommon;
+import vn.ntlogistics.app.ordermanagement.Commons.Sort.CompareItemByLocation;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.GoogleAPIs.DistanceMatrixAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Job;
 import vn.ntlogistics.app.ordermanagement.R;
@@ -102,13 +107,28 @@ public class BaseMyOrderViewModel {
         }
 
         BaseSpinner.setupSpinner(s1, mListSort);
+        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                //Khi sort theo công việc thì sẽ bỏ check
+                //checkAll.set(false);
+                setListOrderShow();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         BaseSpinner.setupSpinner(s2, mListSortJob);
         s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 //Khi sort theo công việc thì sẽ bỏ check
-                checkAll.set(false);
+                //checkAll.set(false);
                 setListOrderShow();
             }
 
@@ -138,17 +158,31 @@ public class BaseMyOrderViewModel {
         });
     }
 
+    public void removeItem(int position){
+        try {
+            mListShow.remove(position);
+            adapter.notifyItemRemoved(position);
+            adapter.notifyItemRangeChanged(position, mListShow.size());
+        } catch (Exception e) {
+        }
+    }
+
     /**
      * Hàm dùng để thay đổi giá trị hiển thị lên màn hình
      */
     public void setListOrderShow() {
         mListShow.clear();
-        /*int sp1 = s1.getSelectedItemPosition();
-        if (sp1 == 1) { //sort gần nhất
-            Collections.sort(mListMain, new CompareItemByLocation());
-        }*/
+        mListShow.addAll(mListMain);
+        int sp1 = s1.getSelectedItemPosition();
+        switch(sp1){
+            case 0: //Mới nhất
+                break;
+            case 1: //Gần nhất
+                Collections.sort(mListShow, new CompareItemByLocation());
+                break;
+        }
 
-        int posJob = s2.getSelectedItemPosition();
+        /*int posJob = s2.getSelectedItemPosition();
         switch (posJob){
             case 0:
                 mListShow.addAll(mListMain);
@@ -159,7 +193,7 @@ public class BaseMyOrderViewModel {
                         mListSortJob.get(posJob).getId()
                 ));
                 break;
-        }
+        }*/
         try {
             adapter.notifyDataSetChanged();
         } catch (Exception e) {
@@ -239,6 +273,10 @@ public class BaseMyOrderViewModel {
                 mListMain,
                 SSqlite.getInstance(activity).getListSenderBillByStatus(statusFragment+"")
         );
+
+        //Tính khoảng cách để lọc gần nhất.
+        callDistanceMatrixAPI();
+
         //set item show
         setListOrderShow();
 
@@ -247,6 +285,39 @@ public class BaseMyOrderViewModel {
             swipeRefreshLayout.setRefreshing(false);
         }
     }
+
+    public void callDistanceMatrixAPI() {
+        final ArrayList<String> lstAddress = new ArrayList<>();
+
+        for (Bill item : mListMain){
+            lstAddress.add(item.getSenderAddress());
+        }
+
+        new DistanceMatrixAPI(activity, lstAddress, new ICallback() {
+            @Override
+            public void onSuccess(Object result) {
+                if(result != null){
+                ArrayList<Long> lstDistance = new ArrayList<>();
+                    lstDistance.addAll((Collection<? extends Long>) result);
+                    for (int i = 0; i < mListMain.size(); i++){
+                        mListMain.get(i).setTotalDistance(lstDistance.get(i));
+                        Log.e("DISTANCE",
+                                mListMain.get(i).getSenderAddress() + " - " +
+                                        mListMain.get(i).getTotalDistance()
+                        );
+                    }
+
+                    /**
+                     * Nếu đã chọn lọc theo khoảng cách thì
+                     * khi tính khoảng cách xong mới show list lại.
+                     * Còn đang ở mới nhất thì vẫn để vậy.
+                     */
+                    if(s1.getSelectedItemPosition() == 1)
+                        setListOrderShow();
+                }
+            }
+        }).execute();
+     }
 
     public void updateList(Bill Bill) {
         mListMain.add(Bill);

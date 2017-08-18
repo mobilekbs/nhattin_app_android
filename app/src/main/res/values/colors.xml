@@ -7,6 +7,8 @@
     <color name="colorAccent">#ffff01</color>
     <color name="colorAccentSub1">#e8cd0e</color>
     <color name="colorAccentSub2">#a6961c</color>
+    <color name="colorMenu">#FADF14</color>
+    <color name="colorMenuSub">#252525</color>
 
     <color name="colorGreen">#01a358</color>
     <color name="colorGreenDark">#02894b</color>
@@ -79,4 +81,5 @@
     <color name="polygonViewCircleBackground">#90e5f8ff</color>
     <color name="colorBgrItemBill">#bc000000</color>
     <color name="colorPink">#ff41ac</color>
+    <color name="colorBgrCardView">#e8f5f5f5</color>
 </resources>

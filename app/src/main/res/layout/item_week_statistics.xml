@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" alias="View"/>
+        <variable
+            name="viewModel"
+            type="vn.ntlogistics.app.ordermanagement.Models.Outputs.Shipper.Productivity"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/loMainItemWeekStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        app:cardBackgroundColor="@color/colorBgrCardView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvNameMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.getNameMonth(context)}"
+                        android:textColor="@android:color/black"
+                        android:visibility="@{viewModel.getNameMonth(context) == null ? View.GONE : View.VISIBLE}"
+                        android:textSize="@dimen/textsize_title" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.fromToDate}"
+                        android:textColor="@color/colorGrayText"
+                        android:textSize="@dimen/textsize_body" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="@dimen/size_image_icon"
+                    android:layout_height="@dimen/size_image_icon"
+                    app:srcCompat="@mipmap/ic_completed_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@{viewModel.stringProductivity}"
+                    android:textColor="@color/colorSuccess"
+                    android:textSize="@dimen/textsize_body"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/completed_bill"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/textsize_body" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/size_image_icon"
+                    android:layout_height="@dimen/size_image_icon"
+                    android:padding="1dp"
+                    app:srcCompat="@mipmap/ic_limit_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/quota"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/textsize_body" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@{viewModel.stringQuota}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/textsize_body"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

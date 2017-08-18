@@ -3,11 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="vn.ntlogistics.app.ordermanagement.Views.Activities.MainActivity">
+
     <data>
+
         <variable
             name="viewModel"
-            type="vn.ntlogistics.app.ordermanagement.ViewModels.MainVMs.MainActivityVM"/>
+            type="vn.ntlogistics.app.ordermanagement.ViewModels.MainVMs.MainActivityVM" />
     </data>
+
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
@@ -40,26 +43,207 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-
-            <ImageButton
+            <FrameLayout
                 android:id="@+id/btnOrderMain"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="?android:selectableItemBackground"
-                android:scaleType="fitXY"
-                android:src="@drawable/nhapxuat" />
+                android:background="@color/colorMenu">
 
-            <ImageButton
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="@string/menu_title_management"
+                        android:textColor="@color/colorMenuSub"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_menu_1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorMenuSub"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/menu_title_order"
+                        android:textColor="@color/colorMenu"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"/>
+            </FrameLayout>
+
+            <FrameLayout
                 android:id="@+id/btnPricingMain"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="?android:selectableItemBackground"
-                android:scaleType="fitXY"
-                android:src="@drawable/nhantra" />
+                android:background="@color/colorMenu">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="@string/menu_title_2"
+                        android:textColor="@color/colorMenuSub"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_menu_2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorMenuSub"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/menu_title_21"
+                        android:textColor="@color/colorMenu"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/btnRecieveMain"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorMenu">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="@string/receive"
+                        android:textColor="@color/colorMenuSub"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_menu_3" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorMenuSub"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/sender_info"
+                        android:textColor="@color/colorMenu"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/btnReturnMain"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@color/colorMenu">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="@string/return_cap"
+                        android:textColor="@color/colorMenuSub"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_menu_4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorMenuSub"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/reveicer_info"
+                        android:textColor="@color/colorMenu"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"/>
+            </FrameLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -72,25 +256,99 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/btnRecieveMain"
+            <FrameLayout
+                android:id="@+id/btnStatisticsMain"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="?android:selectableItemBackground"
-                android:scaleType="fitXY"
-                android:src="@drawable/nhan" />
+                android:background="@color/colorMenu">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/btnReturnMain"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="@string/menu_title_5"
+                        android:textColor="@color/colorMenuSub"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_menu_5" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorMenuSub"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/menu_title_51"
+                        android:textColor="@color/colorMenu"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/btnHelpMain"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="?android:selectableItemBackground"
-                android:scaleType="fitXY"
-                android:src="@drawable/tra" />
+                android:background="@color/colorMenu">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:text="@string/menu_title_6"
+                        android:textColor="@color/colorMenuSub"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_menu_6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorMenuSub"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/menu_title_61"
+                        android:textColor="@color/colorMenu"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:selectableItemBackground"/>
+            </FrameLayout>
+
         </LinearLayout>
 
     </LinearLayout>

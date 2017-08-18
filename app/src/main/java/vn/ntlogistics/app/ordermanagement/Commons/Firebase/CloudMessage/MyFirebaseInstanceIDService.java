@@ -1,5 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Commons.Firebase.CloudMessage;
 
+import android.util.Log;
+
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.gson.Gson;
@@ -9,7 +11,6 @@ import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.UpdateFCMTokenAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.CommonInput;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.UpdateFCMTokenInput;
-import vn.ntlogistics.app.ordermanagement.Views.Application.MainApplication;
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     public MyFirebaseInstanceIDService() {
@@ -19,7 +20,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         // Get updated InstanceID token.
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        //Log.d("FCM", "Refreshed token: " + refreshedToken);
+        Log.d("FCM", "Refreshed token: " + refreshedToken);
 
         // TODO: Implement this method to send any registration to your app's servers.
         sendRegistrationToServer(refreshedToken);
@@ -40,7 +41,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
                 SCurrentUser.getCurrentUser(this).getPublickey() != null &&
                 SCurrentUser.getCurrentUser(this).getPublickey().length() > 0){
             CommonInput<UpdateFCMTokenInput> input = new CommonInput<>();
-            input.setData(new UpdateFCMTokenInput(MainApplication.getCurrentActivity(), refreshedToken));
+            input.setData(new UpdateFCMTokenInput(this, refreshedToken));
             String data = new Gson().toJson(input);
             new UpdateFCMTokenAPI(this, data).execute();
         }

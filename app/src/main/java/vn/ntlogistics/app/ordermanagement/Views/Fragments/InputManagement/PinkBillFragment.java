@@ -12,14 +12,16 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseFragment;
+import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
-import vn.ntlogistics.app.ordermanagement.Olds.Activities.BillDOActivity;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.SendBillActivity;
 import vn.ntlogistics.app.ordermanagement.R;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.ConfirmDOActivity;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.PricingActivity;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.UpdateBillActivity;
 import vn.ntlogistics.app.ordermanagement.databinding.FragmentPinkBillBinding;
 
 public class PinkBillFragment extends BaseFragment implements OnClickListener {
@@ -42,6 +44,7 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
 
         if (flag == 0) {
             binding.btnPinkBill.setVisibility(View.GONE);
+            binding.btnErrorReport.setVisibility(View.GONE);
         }
         else  {
             binding.btnWhiteBill.setVisibility(View.GONE);
@@ -51,6 +54,16 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
         binding.btnWhiteBill.setOnClickListener(this);
         binding.btnPinkBill.setOnClickListener(this);
         binding.btnDOBill.setOnClickListener(this);
+        binding.btnErrorReport.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Commons.setEnabledButton(v);
+                Bundle b = new Bundle();
+                b.putInt("flag", 2);
+                UpdateBillActivity.startIntentActivity(getContext(), b, null, false);
+                //DialogCommons.showDialogUpdateStatusBill(getContext(), 2, null, null);
+            }
+        });
 
         return view;
     }
@@ -77,8 +90,9 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
                 break;
             case R.id.btnDOBill:
                 if (existsUser()) {
-                    Intent i = new Intent(getActivity(), BillDOActivity.class);
-                    startActivity(i);
+                    /*Intent i = new Intent(getActivity(), BillDOActivity.class);
+                    startActivity(i);*/
+                    ConfirmDOActivity.startIntentActivity(getContext(), null, null, null, false);
                     //getActivity().finish();
                 }
                 break;

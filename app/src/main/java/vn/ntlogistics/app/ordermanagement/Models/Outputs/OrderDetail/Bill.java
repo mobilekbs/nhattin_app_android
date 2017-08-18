@@ -1,7 +1,12 @@
 package vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.util.Observable;
+
+import vn.ntlogistics.app.ordermanagement.Commons.Commons;
+import vn.ntlogistics.app.ordermanagement.R;
 
 /**
  * Created by Zanty on 25/06/2016.
@@ -43,6 +48,7 @@ public class Bill extends Observable implements Serializable, Cloneable {
     private String sendDate;
     private String senderProvinceID;
     private String otpCode;
+    private String emsBpbillID;
 
     public Bill() {
     }
@@ -51,8 +57,8 @@ public class Bill extends Observable implements Serializable, Cloneable {
                 String senderName, String senderNode, String receiverNumberPhone,
                 String receiverAddress, String receiverName, String receiverNode,
                 String length, String width, String height, String weight,
-                String cod, String service, String status,
-                String sendDate, String senderProvinceID, String otpCode) {
+                String cod, String ship, String service, String status,
+                String sendDate, String senderProvinceID, String otpCode, String emsBpbillID) {
         this.billID = billID;
         this.senderNumberPhone = senderNumberPhone;
         this.senderAddress = senderAddress;
@@ -66,12 +72,30 @@ public class Bill extends Observable implements Serializable, Cloneable {
         this.width = width;
         this.height = height;
         this.weight = weight;
-        this.cod = cod;
+        try {
+            this.codAmount = Double.parseDouble(cod);
+        } catch (NumberFormatException e) {
+            this.codAmount = 0;
+        }
+        try {
+            this.shipperAmount = Double.parseDouble(ship);
+        } catch (NumberFormatException e) {
+            this.shipperAmount = 0;
+        }
         this.service = service;
         this.status = status;
         this.sendDate = sendDate;
         this.senderProvinceID = senderProvinceID;
         this.otpCode = otpCode;
+        this.emsBpbillID = emsBpbillID;
+    }
+
+    public String getShowCodAmount(Context context){
+        return Commons.DinhDangChuoiTien(codAmount) + context.getString(R.string.unit);
+    }
+
+    public String getShowShippingFee(Context context){
+        return Commons.DinhDangChuoiTien(shipperAmount) + context.getString(R.string.unit);
     }
 
     public String getDate(){
@@ -309,5 +333,13 @@ public class Bill extends Observable implements Serializable, Cloneable {
 
     public void setOtpCode(String otpCode) {
         this.otpCode = otpCode;
+    }
+
+    public String getEmsBpbillID() {
+        return emsBpbillID;
+    }
+
+    public void setEmsBpbillID(String emsBpbillID) {
+        this.emsBpbillID = emsBpbillID;
     }
 }

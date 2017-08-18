@@ -9,8 +9,8 @@
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="true" />
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -33,7 +33,6 @@
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
 
-
     <application
         android:name=".Views.Application.MainApplication"
         android:allowBackup="true"
@@ -43,7 +42,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Views.Activities.SplashScreenActivity"
+        <activity
+            android:name=".Views.Activities.SplashScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -55,102 +55,138 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.Activities.OrderManagementActivity"
+        <activity
+            android:name=".Views.Activities.OrderManagementActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".Views.Activities.ViewImageActivity"
+        <activity
+            android:name=".Views.Activities.ViewImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".Views.Activities.OrderDetailActivity"
+        <activity
+            android:name=".Views.Activities.OrderDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".Views.Activities.LoginActivity"
+        <activity
+            android:name=".Views.Activities.LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize"/>
-            <!--
+            android:windowSoftInputMode="adjustResize" />
+        <!--
             android:windowSoftInputMode="adjustResize" />
             android:windowSoftInputMode="stateHidden|adjustPan"
-            -->
-        <activity android:name=".Views.Activities.MainActivity"
-            android:label="@string/title_main_activity"
+        -->
+        <activity
+            android:name=".Views.Activities.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_main_activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <activity android:name=".Views.Activities.PricingActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".Views.Activities.PricingActivity"
             android:label="@string/pricing"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <!--TODO: Old Activities-->
-        <activity android:name=".Olds.Activities.MyCropImage"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Views.Activities.ConfirmDOActivity"
+            android:label="@string/title_activity_bill_do"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Views.Activities.ProductivityStatisticsActivity"
+            android:label="@string/title_activity_statistics"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".Views.Activities.UpdateBillActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dialog.NoActionBar" />
+        <!-- TODO: Old Activities -->
+        <activity
+            android:name=".Olds.Activities.MyCropImage"
             android:label="@string/title_activity_my_crop_image"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.CropImage.ZoomImgActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Olds.CropImage.ZoomImgActivity"
             android:label="@string/title_activity_zoom_img"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.Activities.ScanMSActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Olds.Activities.ScanMSActivity"
             android:label="@string/title_activity_zoom_img"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.Activities.BillDOActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Olds.Activities.BillDOActivity"
             android:label="@string/title_activity_bill_do"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.Activities.BillFailActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Olds.Activities.BillFailActivity"
             android:label="@string/title_activity_bill_fail"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.Activities.SendBillActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Olds.Activities.SendBillActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.Activities.ManagerBillWhiteActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Olds.Activities.ManagerBillWhiteActivity"
             android:label="@string/title_activity_manager_bill_white"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.Activities.InfoProductActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Olds.Activities.InfoProductActivity"
             android:label="@string/title_activity_info_product"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Views.Activities.InputManagementActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Views.Activities.InputManagementActivity"
             android:label="@string/title_activity_input_management"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Olds.Activities.ChangePassActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Olds.Activities.ChangePassActivity"
             android:label="@string/title_activity_change_pass"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <!--TODO: Scan Library-->
-        <activity android:name=".Olds.ScanMS.scanlibrary.ScanActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- TODO: Scan Library -->
+        <activity
+            android:name=".Olds.ScanMS.scanlibrary.ScanActivity"
             android:label="Xử lý ảnh"
             android:screenOrientation="portrait"
-            tools:replace="android:label">
-        </activity>
+            tools:replace="android:label" />
 
         <!-- TODO: Firebase Clouds Message -->
         <service
@@ -170,6 +206,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>

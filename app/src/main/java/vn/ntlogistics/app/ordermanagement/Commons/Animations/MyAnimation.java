@@ -97,7 +97,7 @@ public class MyAnimation {
         }
     }
     public static void setVisibilityAnimationRight(final View view, boolean b) {
-        if (b) {
+        if (b && view.getVisibility() != View.VISIBLE) {
             view.setVisibility(View.VISIBLE);
             view.setAlpha(0.0f);
             view.animate()
@@ -111,7 +111,7 @@ public class MyAnimation {
                             //view.setVisibility(View.VISIBLE);
                         }
                     });
-        } else {
+        } else if(!b && view.getVisibility() != View.GONE){
             view.setAlpha(1.0f);
             view.animate()
                     .translationX(view.getWidth())
@@ -121,6 +121,40 @@ public class MyAnimation {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
+                            view.setVisibility(View.GONE);
+                        }
+                    });
+        }
+    }
+
+    public static void setVisibilityAnimationRight(final View view, boolean b, final IAnimationCallback callback) {
+        if (b && view.getVisibility() != View.VISIBLE) {
+            view.setVisibility(View.VISIBLE);
+            view.setAlpha(0.0f);
+            view.animate()
+                    .translationX(0)
+                    .alpha(1.0f)
+                    .setDuration(150)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            if(callback != null)
+                                callback.callback();
+                        }
+                    });
+        } else if(!b && view.getVisibility() != View.GONE){
+            view.setAlpha(1.0f);
+            view.animate()
+                    .translationX(view.getWidth())
+                    .alpha(0.0f)
+                    .setDuration(150)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            if(callback != null)
+                                callback.callback();
                             view.setVisibility(View.GONE);
                         }
                     });

@@ -55,7 +55,7 @@ public class ItemOrderAdapter extends RecyclerView.Adapter<ItemOrderAdapter.Data
 
         void bindObject(Bill item, int position) {
             if (binding.getViewModel() == null) {
-                binding.setViewModel(new ItemOrderVM(context, item, position));
+                binding.setViewModel(new ItemOrderVM(context, item, position, ItemOrderAdapter.this));
             } else {
                 binding.getViewModel().setItem(item, position);
                 /**
@@ -167,6 +167,15 @@ public class ItemOrderAdapter extends RecyclerView.Adapter<ItemOrderAdapter.Data
             Animation animation = AnimationUtils.loadAnimation(context, R.anim.alpha_in);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
+        }
+    }
+
+    public void removeItem(int position){
+        try {
+            mList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, mList.size());
+        } catch (Exception e) {
         }
     }
 }

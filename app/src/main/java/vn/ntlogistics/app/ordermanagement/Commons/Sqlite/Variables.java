@@ -88,11 +88,13 @@ public class Variables {
 	public static final String SB_HEIGHT = "height";
 	public static final String SB_WEIGHT = "weight";
 	public static final String SB_COD = "cod";
+	public static final String SB_SHIP = "ship";
 	public static final String SB_SERVICE = "service";
 	public static final String SB_STATUS = "status";
 	public static final String SB_PROVINCE_ID = "senderProvinceID";
 	public static final String SB_SEND_DATE = "sendDate";
 	public static final String SB_OTP_CODE = "otpCode";
+	public static final String SB_BPBILL_ID = "setEmsBpbillID";
 
 	//TODO: Version 3 _____________________________________End/
 

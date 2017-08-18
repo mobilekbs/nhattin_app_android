@@ -1,5 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Models.Inputs;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,10 @@ public class CommonInput<T> implements Serializable {
     private T data;
 
     public CommonInput() {
+    }
+
+    public String toJson(){
+        return new Gson().toJson(this);
     }
 
     public CommonInput(T data) {

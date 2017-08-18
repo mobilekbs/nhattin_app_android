@@ -1,5 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Olds.Activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -35,6 +37,19 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 	String billCheck;
 	int backFail;
 
+	public static void startIntentActivity(Context context, Bundle b, Integer requestCode){
+		Intent intent = new Intent(context, BillDOActivity.class);
+		if(b != null)
+			intent.putExtras(b);
+
+		if(requestCode != null){
+			((Activity) context).startActivityForResult(intent, requestCode);
+		}
+		else {
+			((Activity) context).startActivity(intent);
+		}
+		((Activity) context).overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

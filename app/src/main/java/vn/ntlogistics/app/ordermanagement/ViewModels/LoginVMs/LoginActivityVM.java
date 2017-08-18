@@ -1,8 +1,11 @@
 package vn.ntlogistics.app.ordermanagement.ViewModels.LoginVMs;
 
 import android.databinding.ObservableInt;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Animations.IAnimationCallback;
 import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
@@ -23,7 +26,7 @@ import vn.ntlogistics.app.ordermanagement.databinding.ActivityLoginBinding;
  * Created by Zanty on 19/05/2017.
  */
 
-public class LoginActivityVM extends ViewModel {
+public class LoginActivityVM extends ViewModel implements TextView.OnEditorActionListener {
     private LoginActivity               activity;
     private ActivityLoginBinding        binding;
 
@@ -56,6 +59,9 @@ public class LoginActivityVM extends ViewModel {
             MyAnimation.setVisibilityAnimationSlide(binding.lnActiveAccountLogin, true, 500);
         }
 
+        binding.edtKeyPublic.setOnEditorActionListener(this);
+        binding.edtPassConfirm.setOnEditorActionListener(this);
+
         binding.btnKeyPublic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +75,21 @@ public class LoginActivityVM extends ViewModel {
                 onClickSetPw(v);
             }
         });
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if(actionId== EditorInfo.IME_ACTION_DONE){
+            switch (v.getId()){
+                case R.id.edtKeyPublic:
+                    onClickActive(v);
+                    break;
+                case R.id.edtPassConfirm:
+                    onClickSetPw(v);
+                    break;
+            }
+        }
+        return false;
     }
 
     public void onClickActive(View view){
@@ -195,4 +216,6 @@ public class LoginActivityVM extends ViewModel {
     public void setFlag(int flag) {
         this.flag .set(flag);
     }
+
+
 }

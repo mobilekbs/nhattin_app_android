@@ -1,5 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect;
 
+import android.util.Log;
+
 import com.google.gson.JsonObject;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
@@ -16,6 +18,7 @@ import vn.ntlogistics.app.ordermanagement.R;
  */
 
 public class ConfirmBPBillAPI extends BaseConnectAPI {
+    public static final String TAG = "ConfirmBPBillAPI";
     private String              bill;
     private BaseActivity        activity;
     private boolean             isMultiCall;
@@ -41,9 +44,22 @@ public class ConfirmBPBillAPI extends BaseConnectAPI {
         this.activity = activity;
         this.bill = bill;
         this.isMultiCall = isMultiCall;
+        Log.e(TAG, this.url + "\n" + this.data);
         try {
             if(!isMultiCall)
                 initDialogWithTitle(context.getString(R.string.sending),false);
+        } catch (Exception e) {
+        }
+    }
+
+    public ConfirmBPBillAPI(BaseActivity activity, String data, String bill) {
+        super(activity, ConstantURLs.CONFIRM_DO, data, false, Method.POST);
+        if(bill != null && bill.length() > 0)
+            this.url = ConstantURLs.CONFIRM_IB_BILL;
+        this.activity = activity;
+        Log.e(TAG, this.url + "\n" + this.data);
+        try {
+             initDialogWithTitle(context.getString(R.string.sending),false);
         } catch (Exception e) {
         }
     }

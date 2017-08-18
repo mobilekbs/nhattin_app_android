@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="vn.ntlogistics.app.ordermanagement.R.color" alias="color"/>
+        <import type="android.support.v4.content.ContextCompat" alias="ContextCompat"/>
+        <variable
+            name="item"
+            type="vn.ntlogistics.app.ordermanagement.Models.Beans.ItemSelectDay"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/loMainItemSD"
+        android:layout_width="@dimen/item_select_day_width"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0.1dp">
+        <!--android:background="@{item.selected ? ContextCompat.getColor(context, color.colorGray) : ContextCompat.getColor(context, color.colorGrayTrangsperant)}"-->
+        <LinearLayout
+            android:id="@+id/loDayItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/tvNameDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@android:color/white" />
+            <!--android:text="@{item.nameDay}"-->
+            <TextView
+                android:id="@+id/tvNumberDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_toolbar" />
+            <!--android:text="@{item.numberDay}"-->
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -7,9 +7,12 @@
     <string name="menu_my_order">Đơn hàng của tôi</string>
     <string name="notification_title">Bạn có đơn hàng mới</string>
     <string name="notification_cancel_title">Bạn có đơn hàng hủy</string>
-    <string name="bill_code">Mã đơn hàng:</string>
+    <string name="bill_code">Số DO:</string>
+    <string name="do_code_hint">Nhập số DO</string>
+    <string name="sender_code_hint">Nhập mã phiếu gửi hàng(nếu có)</string>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyB6PJdJuv2_pKciFE8uTZ5KD5leRGEs7WQ
     </string>
 
     <!--TODO: Main Title-->
@@ -20,9 +23,10 @@
     <string name="title_activity_change_pass">Tài khoản</string>
     <string name="title_activity_my_crop_image">Danh sách vận đơn</string>
     <string name="title_activity_zoom_img">Ảnh</string>
-    <string name="title_activity_bill_do">Bill DO</string>
+    <string name="title_activity_bill_do">Xác nhận DO</string>
     <string name="title_activity_bill_fail">Vận đơn chưa gửi được</string>
     <string name="title_activity_manager_bill_white">Nhập liên trắng</string>
+    <string name="title_activity_statistics">Thống kê năng suất</string>
 
     <!--TODO: Layout Content Goods-->
     <string name="goods_type">Loại hàng hóa</string>
@@ -222,6 +226,7 @@
     <string name="toast_error_null_id_customer">Bạn chưa nhập mã khách hàng!</string>
     <string name="toast_error_null_name_customer">Bạn chưa nhập tên khách hàng!</string>
     <string name="toast_error_null_id_bill">Bạn chưa nhập số vận đơn!</string>
+    <string name="toast_error_correct_id">Mã vận đơn chưa chính xác!</string>
     <string name="toast_error_key_api">Lỗi sai khóa!</string>
     <string name="toast_error">Lỗi..! Vui lòng thử lại sau!</string>
     <string name="message_dialog_update_now">Bạn có chắc đã hoàn thành công việc của các đơn hàng được chọn không?</string>
@@ -232,12 +237,16 @@
     <string name="completed">HOÀN THÀNH</string>
     <!--TODO: Change Pass Activity-->
     <string name="error_old_password_not_correct">Mật khẩu cũ không đúng.</string>
+    <!--TODO: Update Bill-->
+    <string name="error_report">Báo cáo sự cố</string>
+    <string name="error_select_status_update">Bạn chưa chọn trạng thái cần cập nhật!</string>
+    <string name="error_null_bill_id">Bạn chưa nhập mã DO!</string>
 
     <!--TODO: DO Bill Activity-->
     <string name="error_do_number_null">Bạn chưa nhập số DO.</string>
     <string name="error_weight_null">Bạn chưa nhập trọng lượng.</string>
     <string name="error_number_null">Bạn chưa nhập số lượng kiểm đếm.</string>
-    <string name="error_number_package_null">Bạn chưa nhập số lượng kiểm đếm.</string>
+    <string name="error_number_package_null">Bạn chưa nhập số kiện.</string>
     <string name="error_system">Lỗi hệ thống.</string>
 
     <!--TODO: Bill Detail -->
@@ -303,7 +312,7 @@
     <string name="reciever_address">Địa chỉ trả hàng</string>
     <string name="enter_bill_number">Nhập số bill</string>
     <string name="reciever">Người nhận</string>
-    <string name="apollo_money" >Tiền Apollo</string>
+    <string name="apollo_money">Tiền Apollo</string>
     <string name="take_photo_bill">Chụp ảnh vận đơn</string>
     <string name="refresh">refresh</string>
     <string name="sending">Đang gửi...</string>
@@ -338,4 +347,35 @@
     <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
     <string name="otp_code">Mã xác thực:</string>
     <string name="dont_take">Không lấy được</string>
+    <string name="cancel">Hủy</string>
+    <string name="response_status_01">Khách hủy</string>
+    <string name="response_status_02">Không liên hệ được</string>
+    <string name="response_status_03">Sai địa chỉ</string>
+    <string name="response_status_04">Khách từ chối nhận hàng</string>
+    <string name="response_status_99">Lý do khác</string>
+    <string name="select_status_update">Chọn trạng thái cập nhật đơn hàng</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_title_order">ĐƠN HÀNG</string>
+    <string name="menu_title_management">QUẢN LÝ</string>
+    <string name="menu_title_2">TIỆN ÍCH</string>
+    <string name="menu_title_21">TÍNH CƯỚC</string>
+    <string name="return_cap">TRẢ</string>
+    <string name="menu_title_5">THỐNG KÊ</string>
+    <string name="menu_title_51">NĂNG SUẤT</string>
+    <string name="menu_title_6">TRỢ GIÚP</string>
+    <string name="menu_title_61">SỬ DỤNG</string>
+
+    <!--TODO: Productivity Statistics Activity-->
+    <string name="statistics_day">HÀNG NGÀY</string>
+    <string name="statistics_week">HÀNG TUẦN</string>
+    <string name="enter_do_code_update_hint">Nhập mã DO hoặc phiếu gửi hàng</string>
+    <string name="shipping_fee">Phí ship</string>
+    <string name="cod_text">COD</string>
+    <string name="enter_reason">Nhập lý do...</string>
+    <string name="completed_bill">đơn đã hoàn thành</string>
+    <string name="quota">Định mức năng suất</string>
+    <string name="this_month">Tháng này</string>
+    <string name="last_month">Tháng trước</string>
 </resources>

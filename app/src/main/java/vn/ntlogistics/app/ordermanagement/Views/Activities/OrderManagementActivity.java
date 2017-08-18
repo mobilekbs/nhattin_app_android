@@ -72,4 +72,10 @@ public class OrderManagementActivity extends BaseActivity {
         }*/
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(viewModel != null)
+            viewModel.onActivityResult(requestCode, resultCode, data);
+    }
 }

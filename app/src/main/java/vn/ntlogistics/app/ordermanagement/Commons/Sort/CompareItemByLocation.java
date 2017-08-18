@@ -18,14 +18,14 @@ public class CompareItemByLocation implements Comparator<Bill> {
 
     public int compare(Bill p1, Bill p2) {
         try {
-            /*double tt1 = p1.getDistance();
-            double tt2 = p2.getDistance();
+            long tt1 = p1.getTotalDistance();
+            long tt2 = p2.getTotalDistance();
             if (tt1 > tt2) {
                 return 1;
             }
             if (tt1 < tt2) {
                 return -1;
-            }*/
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

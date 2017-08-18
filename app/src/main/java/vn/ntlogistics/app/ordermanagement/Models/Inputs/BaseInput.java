@@ -2,6 +2,8 @@ package vn.ntlogistics.app.ordermanagement.Models.Inputs;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
@@ -15,6 +17,10 @@ public class BaseInput implements Serializable {
 
     public BaseInput(Context context) {
         androidKey = SCurrentUser.getCurrentUser(context).getPublickey();
+    }
+
+    public String toJson(){
+        return new Gson().toJson(this);
     }
 
     public String getAndroidKey() {

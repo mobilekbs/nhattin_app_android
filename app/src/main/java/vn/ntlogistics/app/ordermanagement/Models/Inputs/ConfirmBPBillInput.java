@@ -2,21 +2,39 @@ package vn.ntlogistics.app.ordermanagement.Models.Inputs;
 
 import android.content.Context;
 
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
+
 /**
  * Created by Zanty on 02/06/2017.
  */
 
-public class ConfirmBPBillInput extends BaseInput {
+public class ConfirmBPBillInput extends BaseInput implements Cloneable {
 
     private short packNo;
     private long itemQty;
     private long weight;
     private long dimensionWeight;
     private String doCode;
+    private String bill;
     private String isactive;
+    private String cbPartnerId;
+
+    @Override
+    public ConfirmBPBillInput clone() throws CloneNotSupportedException {
+        return (ConfirmBPBillInput) super.clone();
+    }
 
     public ConfirmBPBillInput(Context context) {
         super(context);
+        this.cbPartnerId = SCurrentUser.getCurrentUser(context).getValue_staff()+"";
+    }
+
+    public String getBill() {
+        return bill;
+    }
+
+    public void setBill(String bill) {
+        this.bill = bill;
     }
 
     public short getPackNo() {
@@ -65,5 +83,13 @@ public class ConfirmBPBillInput extends BaseInput {
 
     public void setIsactive(String isactive) {
         this.isactive = isactive;
+    }
+
+    public String getCbPartnerId() {
+        return cbPartnerId;
+    }
+
+    public void setCbPartnerId(String cbPartnerId) {
+        this.cbPartnerId = cbPartnerId;
     }
 }

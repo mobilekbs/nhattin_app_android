@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
@@ -22,7 +22,7 @@ import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.MainVMs.MainActivityVM;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private ActivityMainBinding         binding;
     private MainActivityVM              viewModel;
 
@@ -70,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Commons.setEnabledButton(v);
                 InputManagementActivity.startIntentActivity(MainActivity.this, 1);
+            }
+        });
+        binding.btnStatisticsMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Commons.setEnabledButton(v);
+                ProductivityStatisticsActivity.startIntentActivity(MainActivity.this);
             }
         });
     }

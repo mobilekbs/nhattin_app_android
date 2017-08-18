@@ -5,12 +5,8 @@ package vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs;
  */
 
 public class ConstantURLs {
-    //public static final String URL = "http://ws.ntlogistics.vn:5656/NTAndroidService/webresources/";
-    //public static final String URL = "https://1shipglobal.com/nhattin-rest-app-service/";
-//    public static final String URL = "https://partner.ntlogistics.vn/nhattin-rest-app-service/";
     public static final String URL = "https://ws.ntlogistics.vn:6443/nhattin-rest-app-service/";
 
-    // LINK
     public final static String CHECK_USER_KEY = URL + "checkUserKey";
 
     public final static String UPDATE_PINK_BILL = URL + "updatePinkBill";
@@ -18,5 +14,15 @@ public class ConstantURLs {
     public final static String CONFIRM_DO = URL + "confirmBPBill";
     public final static String PUBLIC_PRICE = URL + "calculateTempBillPrice";
     public final static String UPDATE_FCM_TOKEN = URL + "updateFCMToken";
+    public final static String CREATE_BILL_RESPONSE = URL + "createBillResponse";
+    public final static String CHECK_TH_BILL = URL + "checkThBill";
+    public final static String CONFIRM_IB_BILL = URL + "confirmIBBill";
+    public final static String GET_PRODUCTIVITY = URL + "getProductivity";
+
+    //TODO: Google API
+    public static final String DISTANCE_MATRIX = "https://maps.googleapis.com/maps/api/distancematrix/json?mode=driving";
+    public static final String ORIGINS = "&origins=";
+    public static final String DESTINATIONS = "&destinations=";
+    public static final String KEYS = "&key=";
 
 }

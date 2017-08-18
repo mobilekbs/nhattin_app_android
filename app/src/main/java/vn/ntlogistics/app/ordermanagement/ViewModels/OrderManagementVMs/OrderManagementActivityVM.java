@@ -1,5 +1,6 @@
 package vn.ntlogistics.app.ordermanagement.ViewModels.OrderManagementVMs;
 
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.view.View;
 
@@ -56,6 +57,15 @@ public class OrderManagementActivityVM extends BaseObservable {
         try {
             adapter.getFragment(0).reload();
         } catch (Exception e) {
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        for (int i = 0; i < adapter.getCount(); i++){
+            try {
+                adapter.getFragment(i).onActivityResult(requestCode, resultCode, data);
+            } catch (Exception e) {
+            }
         }
     }
 

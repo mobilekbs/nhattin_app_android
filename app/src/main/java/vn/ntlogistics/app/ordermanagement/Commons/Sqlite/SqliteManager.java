@@ -22,6 +22,7 @@ import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.City;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.District;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.Service;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
+import vn.ntlogistics.app.ordermanagement.Models.Inputs.ConfirmBPBillInput;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 
 import static vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables.KEY_AREACODE;
@@ -51,11 +52,13 @@ public class SqliteManager extends SQLiteOpenHelper {
             + Variables.SB_HEIGHT + " text,"
             + Variables.SB_WEIGHT + " text,"
             + Variables.SB_COD + " text,"
+            + Variables.SB_SHIP + " text,"
             + Variables.SB_SERVICE + " text,"
             + Variables.SB_STATUS + " text,"
             + Variables.SB_SEND_DATE + " text,"
             + Variables.SB_PROVINCE_ID + " text,"
-            + Variables.SB_OTP_CODE + " text"
+            + Variables.SB_OTP_CODE + " text,"
+            + Variables.SB_BPBILL_ID + " text"
             + ");";
 
     public SqliteManager(Context context) {
@@ -446,12 +449,14 @@ public class SqliteManager extends SQLiteOpenHelper {
                 values.put(Variables.SB_WIDTH, bill.getWidth());
                 values.put(Variables.SB_HEIGHT, bill.getHeight());
                 values.put(Variables.SB_WEIGHT, bill.getWeight());
-                values.put(Variables.SB_COD, bill.getCod());
+                values.put(Variables.SB_COD, bill.getCodAmount());
+                values.put(Variables.SB_SHIP, bill.getShipperAmount());
                 values.put(Variables.SB_SERVICE, bill.getService());
                 values.put(Variables.SB_STATUS, bill.getStatus());
                 values.put(Variables.SB_SEND_DATE, bill.getSendDate());
                 values.put(Variables.SB_PROVINCE_ID, bill.getSenderProvinceID());
                 values.put(Variables.SB_OTP_CODE, bill.getOtpCode());
+                values.put(Variables.SB_BPBILL_ID, bill.getEmsBpbillID());
 
                 //Kiểm tra xem billID đã có trong bảng chưa.
                 c = db.rawQuery(
@@ -476,6 +481,41 @@ public class SqliteManager extends SQLiteOpenHelper {
             }
         } catch (Exception e) {
             Log.d(TAG, "insertOrUpdateSendBill ------------------- 2");
+            return false;
+        }
+    }
+
+    public boolean updateStatusSendBill(String billId, int status){
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            Cursor c = null;
+            try {
+                boolean result = false;
+                values.put(Variables.SB_STATUS, status);
+
+                //Kiểm tra xem billID đã có trong bảng chưa.
+                c = db.rawQuery(
+                        "select * from "+ Variables.TBL_SENDER_BILL +" where "
+                                + Variables.SB_ID +"=?",
+                        new String[]{billId}
+                );
+                if (c.moveToFirst()) { //Đã có trong bảng thì update
+                    db.update(Variables.TBL_SENDER_BILL,
+                            values,
+                            Variables.SB_ID + "=?",
+                            new String[]{billId});
+                    result = true;
+                }
+                c.close();
+                return result;
+            } catch (Exception e) {
+                Log.d(TAG, "updateStatusSendBill ------------------- 1");
+                e.printStackTrace();
+                return false;
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "updateStatusSendBill ------------------- 2");
             return false;
         }
     }
@@ -547,7 +587,9 @@ public class SqliteManager extends SQLiteOpenHelper {
                             c.getString(16),
                             c.getString(17),
                             c.getString(18),
-                            c.getString(19)
+                            c.getString(19),
+                            c.getString(20),
+                            c.getString(21)
                     );
                     mList.add(item);
                 } while (c.moveToNext());
@@ -574,6 +616,59 @@ public class SqliteManager extends SQLiteOpenHelper {
 
     //TODO: Send Bill ____________________________________________End/
 
+    //region TODO: Confirm DO_____________________________________
+    public boolean insertOrUpdateConfirmDO(ConfirmBPBillInput data){
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            Cursor c = null;
+            try {
+                values.put(Variables.KEY_BILL, data.getDoCode());
+                values.put(Variables.KEY_SL, data.getItemQty());
+                values.put(Variables.KEY_TL, data.getWeight());
+                values.put(Variables.KEY_TLQD, data.getDimensionWeight());
+                values.put(Variables.KEY_SOKIENDO, data.getPackNo());
+                values.put(Variables.KEY_ISDO, "Y");
+
+                //Kiểm tra xem billID đã có trong bảng chưa.
+                c = db.rawQuery(
+                        "select * from "+ Variables.TBL_BILLFAIL +" where "
+                                + Variables.KEY_BILL +"=?",
+                        new String[]{data.getDoCode()}
+                );
+                if (c.moveToFirst()) { //Đã có trong bảng thì update
+                    db.update(Variables.TBL_BILLFAIL,
+                            values,
+                            Variables.KEY_BILL + "=?",
+                            new String[]{data.getDoCode()});
+                } else { //Chưa có trong bảng thì insert
+                    db.insert(Variables.TBL_BILLFAIL, null, values);
+                }
+                c.close();
+                return true;
+            } catch (Exception e) {
+                Log.d(TAG, "insertOrUpdateConfirmDO ------------------- 1");
+                e.printStackTrace();
+                return false;
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "insertOrUpdateConfirmDO ------------------- 2");
+            return false;
+        }
+    }
+
+    public boolean deleteConfirmBill(String DOCode){
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete(Variables.TBL_BILLFAIL, Variables.KEY_BILL+"=?", new String[]{DOCode});
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "deleteSenderBill");
+            e.printStackTrace();
+            return false;
+        }
+    }
+    //endregion TODO: Confirm DO__________________________________End/
 
 
     //TODO: Notification
