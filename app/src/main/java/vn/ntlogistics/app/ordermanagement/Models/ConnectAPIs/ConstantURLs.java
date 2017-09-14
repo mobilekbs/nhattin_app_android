@@ -18,6 +18,7 @@ public class ConstantURLs {
     public final static String CHECK_TH_BILL = URL + "checkThBill";
     public final static String CONFIRM_IB_BILL = URL + "confirmIBBill";
     public final static String GET_PRODUCTIVITY = URL + "getProductivity";
+    public final static String CHECK_VERSION = URL + "checkNewestVersion";
 
     //TODO: Google API
     public static final String DISTANCE_MATRIX = "https://maps.googleapis.com/maps/api/distancematrix/json?mode=driving";

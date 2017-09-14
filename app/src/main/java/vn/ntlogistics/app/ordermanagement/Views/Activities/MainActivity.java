@@ -15,6 +15,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CheckVersionAPI;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.BillFailActivity;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.ChangePassActivity;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.InfoProductActivity;
@@ -43,6 +44,9 @@ public class MainActivity extends BaseActivity {
         viewModel = new MainActivityVM(this, binding);
         setSupportActionBar(binding.toolbarMain);
         binding.setViewModel(viewModel);
+
+        //Call api check version
+        CheckVersionAPI.execute(this);
 
         binding.btnOrderMain.setOnClickListener(new View.OnClickListener() {
             @Override

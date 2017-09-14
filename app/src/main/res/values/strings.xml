@@ -137,6 +137,7 @@
     <string name="note">GHI CHÚ</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
+    <string name="dialog_message_update_version">Bạn cần cập nhật phiên bản mới để sử dụng ứng dụng!</string>
 
     <!--TODO: Item List-->
     <string name="fee_ship">Tiền ship:</string>
