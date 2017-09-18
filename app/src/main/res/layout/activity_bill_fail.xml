@@ -1,12 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/frame"
+    android:background="@color/colorPrimarySub"
     android:orientation="vertical"
     tools:context=".Olds.Activities.BillFailActivity">
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +22,7 @@
             app:titleTextAppearance="@style/AppTheme.Toolbar.TextAppearance" />
 
     </android.support.design.widget.AppBarLayout>
+
     <Button
         android:id="@+id/btnSendAll"
         android:layout_width="fill_parent"

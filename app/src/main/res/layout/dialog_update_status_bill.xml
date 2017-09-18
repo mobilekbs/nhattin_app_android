@@ -4,7 +4,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBG"
+        android:background="@color/colorPrimarySub"
         android:orientation="vertical">
 
         <TextView
@@ -139,7 +139,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/update"
-                android:textColor="@color/colorAccentSub1"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/textsize_body" />
 
             <View

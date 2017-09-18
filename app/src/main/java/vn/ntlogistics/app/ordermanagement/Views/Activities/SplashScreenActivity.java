@@ -30,7 +30,7 @@ public class SplashScreenActivity extends BaseActivity {
         viewModel = new SplashScreenActivityViewModel(this);
         binding.setViewModel(viewModel);
         //networkChangeConnection();
-        viewModel.checkLogin();
+        //viewModel.checkLogin();
     }
 
     public SplashScreenActivityViewModel getViewModel(){

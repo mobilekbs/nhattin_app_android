@@ -3,8 +3,8 @@
 
     <color name="colorPrimaryDark">#131311</color>
     <color name="colorPrimary">#242520</color>
-    <color name="colorPrimarySub">#303030</color>
-    <color name="colorAccent">#ffff01</color>
+    <color name="colorPrimarySub">#464646</color>
+    <color name="colorAccent">#fdd700</color>
     <color name="colorAccentSub1">#e8cd0e</color>
     <color name="colorAccentSub2">#a6961c</color>
     <color name="colorMenu">#FADF14</color>
@@ -26,6 +26,7 @@
     <color name="colorGray">#bfbfbf</color>
     <color name="colorBlackGray">#d2ccc9c9</color>
     <color name="colorGrayCC">#cccccc</color>
+    <color name="colorBackgroundMain">#464646</color>
 
     <!--TODO: color button -->
     <color name="colorGreenBtn">#01a358</color>

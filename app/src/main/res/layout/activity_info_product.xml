@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/colorPrimarySub"
     android:orientation="vertical"
-    android:background="#d6d6d6"
     tools:context=".Olds.Activities.InfoProductActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -29,31 +29,26 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:src="@mipmap/logonhattin" />
-    <TextView 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Nhất Tín Logistics"
+        android:textColor="@android:color/white"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="#5b5b5b"
-        android:layout_gravity="center"
-        />
-    <TextView 
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/tvPhienBan"
-        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:textStyle="normal"
         android:layout_gravity="center"
-        />
-     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:src="@drawable/logohdsoft"
-        />
-    
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/white"
+        android:textSize="15dp"
+        android:textStyle="normal" />
+
 
 </LinearLayout>

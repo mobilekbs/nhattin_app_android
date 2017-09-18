@@ -6,9 +6,11 @@
             name="viewModel"
             type="vn.ntlogistics.app.ordermanagement.ViewModels.MyOrderVMs.CompletedVM"/>
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimarySub">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -12,12 +12,13 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorAccent"
         tools:context=".Views.Activities.SplashScreenActivity">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/bg_splash_screen" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/nhattin_gray" />
     </android.support.design.widget.CoordinatorLayout>
 </layout>

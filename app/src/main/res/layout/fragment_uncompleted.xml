@@ -8,9 +8,11 @@
             name="viewModel"
             type="vn.ntlogistics.app.ordermanagement.ViewModels.MyOrderVMs.UncompletedViewModel"/>
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimarySub"
         tools:context=".Views.Fragments.MyOrders.UncompletedFragment">
 
         <RelativeLayout
@@ -31,6 +33,7 @@
 
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/spinner"
+                        style="@style/Spinner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -38,7 +41,6 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        style="@style/Spinner"
                         android:prompt="@string/sp_filter"
                         android:spinnerMode="dialog" />
 
