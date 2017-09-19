@@ -124,3 +124,4 @@
 
 #send mail
 -dontwarn java.awt.**,javax.security.**,java.beans.**
+-keep class org.acra.ReportingInteractionMode { *; }
