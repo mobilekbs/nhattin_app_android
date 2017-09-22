@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseFragment;
+import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.Shipper.Productivity;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Adapters.ViewPagerAdapter;
@@ -45,8 +46,12 @@ public class ProductivityStatisticsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_productivity_statistics);
         initToolbar();
-        initViewPager();
-        setupViewPager();
+        if (!Commons.hasConnection(this)) {
+            binding.loNotConectPS.setVisibility(View.VISIBLE);
+        } else {
+            initViewPager();
+            setupViewPager();
+        }
     }
 
     private void initToolbar(){

@@ -1,19 +1,22 @@
 package vn.ntlogistics.app.ordermanagement.Olds.Activities;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
+import android.support.v4.app.ActivityCompat;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -55,11 +58,18 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_ms);
-        Log.d("ON CREATE", "ON CREATE");
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        moCame();
+        if (Build.VERSION.SDK_INT >= 23 &&
+            checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.CAMERA}, 1);
+            finish();
+        }
+        else
+            moCame();
     }
 
     public void moCame() {
@@ -89,17 +99,20 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
     @Override
     public void onPause() {
         super.onPause();
-        if (mCamera != null) {
-            mCamera.setPreviewCallback(null);
-            mCamera.stopPreview();
-            mCamera.release();
-            mCamera = null;
-            previewing = false;
-        }
-        if (mPreview != null) {
-            preview.removeView(mPreview);
-            mPreview = null;
-            previewing = false;
+        try {
+            if (mCamera != null) {
+                mCamera.setPreviewCallback(null);
+                mCamera.stopPreview();
+                mCamera.release();
+                mCamera = null;
+                previewing = false;
+            }
+            if (mPreview != null) {
+                preview.removeView(mPreview);
+                mPreview = null;
+                previewing = false;
+            }
+        } catch (Exception e) {
         }
     }
 
@@ -107,14 +120,17 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        if (mCamera == null) {
-            mCamera = getCameraInstance();
-            previewing = true;
-        }
-        if (mPreview == null) {
-            mPreview = new CameraMS(this, mCamera, previewCb, autoFocusCB);
-            preview.addView(mPreview);
-            previewing = true;
+        try {
+            if (mCamera == null) {
+                mCamera = getCameraInstance();
+                previewing = true;
+            }
+            if (mPreview == null) {
+                mPreview = new CameraMS(this, mCamera, previewCb, autoFocusCB);
+                preview.addView(mPreview);
+                previewing = true;
+            }
+        } catch (Exception e) {
         }
     }
 

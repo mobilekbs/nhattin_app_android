@@ -29,13 +29,37 @@
 
 
         </android.support.design.widget.AppBarLayout>
-        <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.NonSwipeableViewPager
-            android:id="@+id/vpPS"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></vn.ntlogistics.app.ordermanagement.Commons.CustomViews.NonSwipeableViewPager>
-        <!--<android.support.v4.view.ViewPager
-            android:id="@+id/vpPS"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />-->
+            android:layout_height="match_parent">
+            <vn.ntlogistics.app.ordermanagement.Commons.CustomViews.NonSwipeableViewPager
+                android:id="@+id/vpPS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </vn.ntlogistics.app.ordermanagement.Commons.CustomViews.NonSwipeableViewPager>
+
+            <LinearLayout
+                android:id="@+id/loNotConectPS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="@dimen/iv_size_product_catalog"
+                    android:layout_height="@dimen/iv_size_product_catalog"
+                    app:srcCompat="@mipmap/ic_cry_white" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_connect"
+                    android:textSize="@dimen/textsize_body" />
+            </LinearLayout>
+        </FrameLayout>
+
     </LinearLayout>
 </layout>

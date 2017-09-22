@@ -2,16 +2,16 @@ package vn.ntlogistics.app.ordermanagement.Views.Activities;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.SplashScreenVMs.SplashScreenActivityViewModel;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivitySplashScreenBinding;
 
 
-public class SplashScreenActivity extends BaseActivity {
+public class SplashScreenActivity extends AppCompatActivity {
     public static final String              TAG = "SplashScreenActivity";
 
     private ActivitySplashScreenBinding binding;
