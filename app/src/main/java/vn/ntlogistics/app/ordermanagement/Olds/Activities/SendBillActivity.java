@@ -658,16 +658,14 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 				null,
 				formatMoney(edtMoney.getText().toString()),
 				formatMoney(edtMoneyCod.getText().toString()),
-				mListDis.get(spinDistrict.getSelectedItemPosition()).getValue()+"",
-				mListCity.get(spinCity.getSelectedItemPosition()).getAreacode()+""
+				mListCity.get(spinCity.getSelectedItemPosition()).getAreacode()+"",
+				mListDis.get(spinDistrict.getSelectedItemPosition()).getValue()+""
 		);
 
 		String data = new Gson().toJson(input);
 
 		new UpdatePinkBillAPI(this, data, false, input.getBill()).execute();
 	}
-
-
 
 	//TODO: Call API -------------------------------------------------End/
 
