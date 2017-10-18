@@ -187,6 +187,7 @@ public class SqliteManager extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             Cursor c = null;
             try {
+                values.put(Variables.KEY_STAFF_ID, user.getIdStaff());
                 values.put(Variables.KEY_PUBLIC_KEY, user.getPublickey());
                 values.put(Variables.KEY_LOCAL_KEY, user.getLocalkey());
                 values.put(Variables.KEY_VALUE_STAFF, user.getValue_staff());

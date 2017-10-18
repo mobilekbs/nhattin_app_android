@@ -240,14 +240,29 @@ public class Commons {
      */
     public static String getDisplayNameOfDay(int date, int month, int year){
         String weekDay = null;
-        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", Locale.US);
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", Locale.ENGLISH);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, date);
         weekDay = dayFormat.format(calendar.getTime());
-
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        int month1 = calendar.get(Calendar.MONTH);
+        int year1 = calendar.get(Calendar.YEAR);
         return weekDay;
     }
+
+    public static String dayName(int day, int month, int year){
+        String dayy = day+"";
+        String inputDate = (dayy.length()==1? "0" + dayy : dayy) + "/" + month + "/" + year;
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(inputDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new SimpleDateFormat("EEE", Locale.ENGLISH).format(date);
+    }
+
     public static String timeStampToDDMM(long timeStamp) {
         try {
             Date netDate = (new Date(timeStamp));

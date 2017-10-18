@@ -10,7 +10,7 @@ public class Variables {
 	// LINK
 	public static String DB_PATH = "";
 	// DB
-	public final static int DATABASE_VERSION = 3;
+	public final static int DATABASE_VERSION = 4;
 	public static final String SP_KEY_DB_VER = "db_ver";
 	public final static String DATABASE_NAME = "MyStaff";
 	public final static String USER_ACCOUNT = "UserAccount";
@@ -97,6 +97,10 @@ public class Variables {
 	public static final String SB_BPBILL_ID = "setEmsBpbillID";
 
 	//TODO: Version 3 _____________________________________End/
+
+	//TODO: Version 4 _____________________________________
+	//public static final String SB_BPBILL_ID = "setEmsBpbillID";
+	//TODO: Version 4 _____________________________________End/
 
 
 

@@ -58,6 +58,18 @@ public class SplashScreenActivityViewModel extends ViewModel {
         try {
             User user = SCurrentUser.getCurrentUser(activity);
             int flag = 0; // Active confirm code
+
+            /**
+             * Nếu nhỏ hơn 999 thì đó đang ở version 3.
+             * Vì lên v4 khi kích hoạt khóa sẽ thêm trường partnerId và partnerValue
+             * Sẽ update lại giá trị trong sqlite.
+             * Các user login trước ver4 sẽ phải kích hoạt lại.
+             */
+            if (user.getIdStaff() < 999){
+                user = new User();
+                SCurrentUser.delCurrentUser();
+            }
+
             if (user.getPublickey() != null) {
                 if(user.getLocalkey() != null) { //Have password
                     flag = 2; // Enter password

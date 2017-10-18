@@ -27,7 +27,7 @@ public class GetProductivityAPI extends BaseConnectAPI {
     public GetProductivityAPI(Context context, GetProductivityInput data, ViewModel viewModel) {
         super(context, ConstantURLs.GET_PRODUCTIVITY, null, true, Method.POST);
         //CommonInput<GetProductivityInput> input = new CommonInput<GetProductivityInput>(data);
-        data.setCbPartnerID(SCurrentUser.getCurrentUser(context).getValue_staff());
+        data.setCbPartnerID(SCurrentUser.getCurrentUser(context).getIdStaff()+"");
         this.data = data.toJson();
         this.viewModel = viewModel;
         Log.e("Productivity", this.data);

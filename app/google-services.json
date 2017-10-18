@@ -1,58 +1,27 @@
 {
   "project_info": {
-    "project_number": "543963681008",
-    "firebase_url": "https://nhat-tin.firebaseio.com",
-    "project_id": "nhat-tin",
-    "storage_bucket": "nhat-tin.appspot.com"
+    "project_number": "953503244700",
+    "firebase_url": "https://ntlogistics-tracking-cloud-api.firebaseio.com",
+    "project_id": "ntlogistics-tracking-cloud-api",
+    "storage_bucket": "ntlogistics-tracking-cloud-api.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:543963681008:android:4d5f5d3aeb0ca7b8",
+        "mobilesdk_app_id": "1:953503244700:android:4d5f5d3aeb0ca7b8",
         "android_client_info": {
           "package_name": "vn.ntlogistics.app.shipper"
         }
       },
       "oauth_client": [
         {
-          "client_id": "543963681008-8lshethg5ifmf6ndrjapbqfjd7jo3688.apps.googleusercontent.com",
+          "client_id": "953503244700-2q27bii0mehnhk72i9cp0i8urtt52onf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyARCIlFOypjjSqXIP7wgV4bJ82wStkHW9g"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:543963681008:android:74db21187822730a",
-        "android_client_info": {
-          "package_name": "com.scanvandon"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "543963681008-8lshethg5ifmf6ndrjapbqfjd7jo3688.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyARCIlFOypjjSqXIP7wgV4bJ82wStkHW9g"
+          "current_key": "AIzaSyDNiO1j52JK_DvxwaQWaUWARysc84glvTw"
         }
       ],
       "services": {

@@ -154,7 +154,7 @@ public class UpdateBillDialog extends Dialog {
         CreateBillResponseInput data = new CreateBillResponseInput(
                 getContext(),
                 billID,
-                SCurrentUser.getCurrentUser(getContext()).getValue_staff()+"",
+                SCurrentUser.getCurrentUser(getContext()).getIdStaff()+"",
                 flag+"",
                 responseStatus+"",
                 null);

@@ -26,7 +26,7 @@ public class ConfirmBPBillInput extends BaseInput implements Cloneable {
 
     public ConfirmBPBillInput(Context context) {
         super(context);
-        this.cbPartnerId = SCurrentUser.getCurrentUser(context).getValue_staff()+"";
+        this.cbPartnerId = SCurrentUser.getCurrentUser(context).getIdStaff()+"";
     }
 
     public String getBill() {

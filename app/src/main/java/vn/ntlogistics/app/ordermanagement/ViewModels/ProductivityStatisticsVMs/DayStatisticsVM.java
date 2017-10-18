@@ -78,7 +78,7 @@ public class DayStatisticsVM extends ViewModel {
                     mListSelectDay.add(
                             new ItemSelectDay(
                                     false,
-                                    Commons.getDisplayNameOfDay(i, month, year),
+                                    Commons.dayName(i, month, year),
                                     i+"",
                                     month,
                                     year));

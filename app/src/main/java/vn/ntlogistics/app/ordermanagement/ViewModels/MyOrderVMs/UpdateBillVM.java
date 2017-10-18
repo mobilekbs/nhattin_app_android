@@ -181,7 +181,7 @@ public class UpdateBillVM extends ViewModel {
         CreateBillResponseInput data = new CreateBillResponseInput(
                 activity,
                 billID,
-                SCurrentUser.getCurrentUser(activity).getValue_staff()+"",
+                SCurrentUser.getCurrentUser(activity).getIdStaff()+"",
                 flag+"",
                 responseStatus+"",
                 binding.etReasonUpdate.getText().toString());

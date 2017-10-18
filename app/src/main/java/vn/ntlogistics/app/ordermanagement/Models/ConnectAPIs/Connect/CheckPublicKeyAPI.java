@@ -54,20 +54,24 @@ public class CheckPublicKeyAPI extends BaseConnectAPI {
     @Override
     public void onPost(JsonObject result) {
         try {
-            int valueStaff = result.get("data").getAsInt();
+            JsonObject object = result.get("data").getAsJsonObject();
+            int partnerId = object.get("partnerId").getAsInt();
 
-            if(valueStaff == -1){ //Khóa không tồn tại
+            if(partnerId == -1){ //Khóa không tồn tại
                 Message.makeToastError(context, context.getString(R.string.error_key_not_exist));
             }
-            else if(valueStaff == -2){ //Key đã được kích hoạt.
+            else if(partnerId == -2){ //Key đã được kích hoạt.
                 Message.makeToastError(context, context.getString(R.string.error_key_activated));
             }
-            else if(valueStaff == -3){ //Lỗi lưu kích hoạt Key
+            else if(partnerId == -3){ //Lỗi lưu kích hoạt Key
                 Message.makeToastError(context, context.getString(R.string.error_save_key));
             }
-            else if(valueStaff > 9999){
+            else if(partnerId > 9999){
+                String partnerValue = object.get("partnerValue").getAsString();
+
                 User user = new User();
-                user.setValue_staff(valueStaff+"");
+                user.setIdStaff(partnerId);
+                user.setValue_staff(partnerValue);
                 user.setPublickey(key);
                 if(SSqlite.getInstance(context).inserOrUpdatetUser(user)){
                     Message.makeToastSuccess(context);
