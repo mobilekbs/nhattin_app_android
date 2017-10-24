@@ -101,8 +101,10 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_send_bill);
+		overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarSendBill);
+		toolbar.setTitle(getString(R.string.enter_pink_bill));
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		toolbar.setNavigationOnClickListener(new OnClickListener() {
@@ -394,8 +396,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 					.getColumnIndex(Variables.KEY_ID_POSITON));
 			myCu.moveToNext();
 		}*/
-
-		int id_position = SSqlite.getInstance(this).getIdLocationInCity();
+		//int id_position = SSqlite.getInstance(this).getIdLocationInCity();
 		/*Log.d("", "Id_position: " + id_position);
 
 		*//*------------------Alldata----------------*//*
@@ -413,10 +414,22 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		}*/
 
 		mListCity = SSqlite.getInstance(this).getListCity();
+		String areaCode = SCurrentUser.getCurrentUser(this).getValue_staff().substring(0,2);
+		int areaCodeCity = 50;
+		try {
+			areaCodeCity = Integer.parseInt(areaCode);
+		} catch (NumberFormatException e) {
+		}
+		int positionCity = -1;
+		for (City item : mListCity){
+			positionCity++;
+			if (item.getAreacode() == areaCodeCity)
+				break;
+		}
 
 		setupSpinner(spinCity, mListCity);
 
-		spinCity.setSelection(id_position);
+		spinCity.setSelection(positionCity);
 		spinCity.setOnItemSelectedListener(this);
 
 	}
