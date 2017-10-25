@@ -10,7 +10,11 @@ import android.widget.TextView;
 import vn.ntlogistics.app.ordermanagement.Commons.Animations.IAnimationCallback;
 import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
+import vn.ntlogistics.app.ordermanagement.Commons.MaterialTapTargetPrompt.MaterialTapTargetPrompt;
+import vn.ntlogistics.app.ordermanagement.Commons.MaterialTapTargetPrompt.extras.backgrounds.FullscreenPromptBackground;
+import vn.ntlogistics.app.ordermanagement.Commons.MaterialTapTargetPrompt.extras.focals.RectanglePromptFocal;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
+import vn.ntlogistics.app.ordermanagement.Commons.SharedPreference.MySharedPreference;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
@@ -41,19 +45,35 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
         this.flag = new ObservableInt(flag);
 //        this.textButtonActive = new ObservableField<>();
 
-
         Commons.hideSoftKeyboard(activity, binding.loMainLogin);
 
         init();
     }
 
     private void init(){
-        if(flag.get() == 1){
+        if(flag.get() == 1){ // create pwd
+            showFullscreenRectPrompt(binding.edtPass,
+                    MySharedPreference.CREATE_PWD_PROMPT,
+                    activity.getString(R.string.prompt_create_pwd_title),
+                    activity.getString(R.string.prompt_create_pwd_content));
             //binding.lnActiveAccountLogin.setVisibility(View.VISIBLE);
             MyAnimation.setVisibilityAnimationSlide(binding.lnCreatePwLogin, true, 500);
             binding.lnActiveAccountLogin.setVisibility(View.GONE);
         }
-        else {
+        else { //activate or login
+            if (SCurrentUser.getCurrentUser(activity).getValue_staff() == null){ //login
+                showFullscreenRectPrompt(binding.edtKeyPublic,
+                        MySharedPreference.ACTIVATE_PROMPT,
+                        activity.getString(R.string.prompt_activate_title),
+                        activity.getString(R.string.prompt_activate_content));
+            }
+            else {
+                showFullscreenRectPrompt(binding.edtKeyPublic,
+                        MySharedPreference.LOGIN_PROMPT,
+                        activity.getString(R.string.prompt_login_title),
+                        activity.getString(R.string.prompt_login_content));
+            }
+
             binding.lnCreatePwLogin.setVisibility(View.GONE);
             //binding.lnCreatePwLogin.setVisibility(View.VISIBLE);
             MyAnimation.setVisibilityAnimationSlide(binding.lnActiveAccountLogin, true, 500);
@@ -75,6 +95,20 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
                 onClickSetPw(v);
             }
         });
+    }
+
+    public void showFullscreenRectPrompt(View view, String key, String title, String message)
+    {
+        if (MySharedPreference.getLoginPrompt(activity, key) == 0) {
+            new MaterialTapTargetPrompt.Builder(activity)
+                    .setTarget(view)
+                    .setPrimaryText(title)
+                    .setSecondaryText(message)
+                    .setPromptBackground(new FullscreenPromptBackground())
+                    .setPromptFocal(new RectanglePromptFocal())
+                    .show();
+            MySharedPreference.setLoginPrompt(activity, key, 1);
+        }
     }
 
     @Override
@@ -185,8 +219,10 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
                                         binding.lnCreatePwLogin, true, 200);
                             }
                         });
-
-                //binding.lnCreatePwLogin.setVisibility(View.GONE);
+                showFullscreenRectPrompt(binding.edtPass,
+                        MySharedPreference.CREATE_PWD_PROMPT,
+                        activity.getString(R.string.prompt_create_pwd_title),
+                        activity.getString(R.string.prompt_create_pwd_content));
             } else {
 
             }

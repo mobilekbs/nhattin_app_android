@@ -10,6 +10,9 @@ import android.content.SharedPreferences;
 public class MySharedPreference {
     public static final String                  MY_APP = "nhattin_sharedpreference";
     public static final String                  FCM_TOKEN = "fcm_token";
+    public static final String                  ACTIVATE_PROMPT = "activate_prompt";
+    public static final String                  CREATE_PWD_PROMPT = "create_pwd_prompt";
+    public static final String                  LOGIN_PROMPT = "login_prompt";
 
     private static SharedPreferences            instanceGet = null;
     private static BaseSharedReference.build    instanceSet = null;
@@ -28,6 +31,20 @@ public class MySharedPreference {
                     .build()
                     .init(context, MY_APP);
         }
+    }
+
+    public static int getLoginPrompt(Context context, String key){
+        //Init instance get
+        setInstanceGet(context);
+        //Get value into shared preference
+        return instanceGet.getInt(key, 0);
+    }
+
+    public static void setLoginPrompt(Context context, String key, int isPrompt){
+        //Init instance get
+        setInstanceSet(context);
+        //Set value into shared preference
+        instanceSet.putInt(key, isPrompt).save();
     }
 
     /**

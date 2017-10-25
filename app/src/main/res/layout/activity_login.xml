@@ -158,5 +158,12 @@
             android:textColor="@color/colorAccent"
             android:textSize="15dp"
             android:textStyle="bold" />
+
+        <FrameLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
     </RelativeLayout>
 </layout>

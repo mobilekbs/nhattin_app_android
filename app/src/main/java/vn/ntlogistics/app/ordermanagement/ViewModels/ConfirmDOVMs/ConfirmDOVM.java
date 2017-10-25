@@ -153,7 +153,7 @@ public class ConfirmDOVM extends ViewModel {
             input = new ConfirmBPBillInput(activity);
         }
         if(input.getDoCode() == null) {
-            input.setDoCode(binding.etDOCode.toString());
+            input.setDoCode(binding.etDOCode.getText().toString());
         }
         else {
             input.setBill(billScan);
@@ -193,6 +193,7 @@ public class ConfirmDOVM extends ViewModel {
         input.setIsactive("Y");
         if(Commons.hasConnection(activity)) {
             String data = new Gson().toJson(input);
+            //Log.e("ConfirmBPBillAPI", data);
             /**
              * @param flag
              *          - 0 = confirm_do
