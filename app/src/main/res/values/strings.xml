@@ -387,4 +387,9 @@
     <string name="prompt_login_content">Hãy nhập mật khẩu của bạn để có thể sử dụng ứng dụng</string>
     <string name="prompt_activate_title">Nhập khóa của bạn</string>
     <string name="prompt_activate_content">Mỗi nhân viên sẽ được tạo 1 khóa của mình. Nếu bạn chưa có khóa hãy liên hệ với trưởng chi nhánh!</string>
+
+    <!--TODO: ZXing Scanner-->
+    <string name="turn_on_flashlight">Mở đèn flash</string>
+    <string name="turn_off_flashlight">Tắt đèn flash</string>
+
 </resources>

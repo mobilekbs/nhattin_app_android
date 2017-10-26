@@ -17,6 +17,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.BillFail.BillFailSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.City;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.District;
@@ -246,31 +247,19 @@ public class SqliteManager extends SQLiteOpenHelper {
         User user = getUser();
         if(user.getValue_staff() != null){
             String areaCode = user.getValue_staff().substring(0,2);
-            City item = null;
-            SQLiteDatabase db = this.getWritableDatabase();
-            Cursor c = null;
+            ArrayList<City> mListCity = SSqlite.getInstance(context).getListCity();
+            int areaCodeCity = 50;
             try {
-                c = db.rawQuery(
-                        "select * from "+ Variables.TBL_CITY +" where "
-                                + KEY_AREACODE +"=?",
-                        new String[]{areaCode}
-                );
-                if (c.moveToFirst()) {
-                    do {
-                        item = new City(
-                                c.getInt(0),
-                                c.getString(1),
-                                c.getInt(2),
-                                c.getInt(3)
-                        );
-                    } while (c.moveToNext());
-                }
-                if(item != null){
-                    return item.getIdPosition();
-                }
-            } catch (Exception e) {
-                Log.d(TAG, "Không thể getdata getUser");
+                areaCodeCity = Integer.parseInt(areaCode);
+            } catch (NumberFormatException e) {
             }
+            int positionCity = -1;
+            for (City city : mListCity){
+                positionCity++;
+                if (city.getAreacode() == areaCodeCity)
+                    break;
+            }
+            return positionCity;
         }
         return 0;
     }

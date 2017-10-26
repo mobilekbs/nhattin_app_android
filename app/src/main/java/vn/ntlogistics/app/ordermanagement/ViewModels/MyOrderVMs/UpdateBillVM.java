@@ -16,10 +16,10 @@ import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CreateBillResponseAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.CreateBillResponseInput;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
-import vn.ntlogistics.app.ordermanagement.Olds.Activities.ScanMSActivity;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.UpdateBillActivity;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.ZXingScannerActivity;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivityUpdateBillBinding;
 
 /**
@@ -83,8 +83,10 @@ public class UpdateBillVM extends ViewModel {
             @Override
             public void onClick(View v) {
                 Commons.setEnabledButton(v);
-                Intent intent = new Intent(activity, ScanMSActivity.class);
-                activity.startActivityForResult(intent, Constants.REQUEST_CODE_SCAN);
+                /*Intent intent = new Intent(activity, ScanMSActivity.class);
+                activity.startActivityForResult(intent, Constants.REQUEST_CODE_SCAN);*/
+
+                ZXingScannerActivity.openScanner(activity);
             }
         });
 

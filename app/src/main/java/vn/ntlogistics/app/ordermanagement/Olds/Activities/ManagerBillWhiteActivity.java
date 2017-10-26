@@ -34,6 +34,7 @@ import vn.ntlogistics.app.ordermanagement.Models.Inputs.ImportWhiteBillInput;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.PublicPriceInput;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.Pricing.PublicPriceOutput;
 import vn.ntlogistics.app.ordermanagement.R;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.ZXingScannerActivity;
 
 public class ManagerBillWhiteActivity extends BaseActivity implements OnClickListener,
         OnItemSelectedListener {
@@ -339,12 +340,14 @@ public class ManagerBillWhiteActivity extends BaseActivity implements OnClickLis
 
     public void scanBill() {
 
-        Intent intent = new Intent(this, ScanMSActivity.class);
-        /*Bundle b = new Bundle();
+        /*Intent intent = new Intent(this, ScanMSActivity.class);
+        *//*Bundle b = new Bundle();
         b.putInt("cmw", Variables.BILLW);
-        intent.putExtras(b);*/
-        startActivityForResult(intent,REQUEST_CODE);
+        intent.putExtras(b);*//*
+        startActivityForResult(intent,REQUEST_CODE);*/
         //startActivity(intent);
+
+        ZXingScannerActivity.openScanner(this);
     }
 
     /*public void sendData() throws JSONException {
@@ -543,13 +546,11 @@ public class ManagerBillWhiteActivity extends BaseActivity implements OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
-            if (requestCode == REQUEST_CODE){
-                String m = data.getExtras().getString("symbol");
+            String m = ZXingScannerActivity.getCodeAfterScan(requestCode, resultCode, data);
 
-                if (m != null) {
-                    edtBillWhite.setEnabled(false);
-                    edtBillWhite.setText(m);
-                }
+            if (m != null) {
+                edtBillWhite.setEnabled(false);
+                edtBillWhite.setText(m);
             }
         }
     }

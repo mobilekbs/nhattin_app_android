@@ -7,7 +7,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
-import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.MyOrderVMs.UpdateBillVM;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivityUpdateBillBinding;
@@ -44,18 +43,12 @@ public class UpdateBillActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            if(requestCode == Constants.REQUEST_CODE_SCAN){
-                Bundle b = data.getExtras();
-                String m = null;
-                try {
-                    m = b.getString("symbol").toString();
-                } catch (Exception e) {
-                }
-                if (m != null) {
-                    binding.etDOCode.setEnabled(false);
-                    binding.etDOCode.setText(m);
-                    viewModel.showScan(false);
-                }
+            Bundle b = data.getExtras();
+            String m = ZXingScannerActivity.getCodeAfterScan(requestCode, resultCode, data);
+            if (m != null) {
+                binding.etDOCode.setEnabled(false);
+                binding.etDOCode.setText(m);
+                viewModel.showScan(false);
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

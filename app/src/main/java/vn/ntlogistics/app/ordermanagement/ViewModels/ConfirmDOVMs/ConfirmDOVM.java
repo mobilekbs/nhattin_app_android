@@ -16,10 +16,10 @@ import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CheckThBillAPI;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ConfirmBPBillAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.ConfirmBPBillInput;
-import vn.ntlogistics.app.ordermanagement.Olds.Activities.ScanMSActivity;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.ConfirmDOActivity;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.ZXingScannerActivity;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivityConfirmDoBinding;
 
 /**
@@ -68,18 +68,22 @@ public class ConfirmDOVM extends ViewModel {
         if (billDO.length() == 0 && item.getDoCode() == null) {
             Message.makeToastWarning(activity,
                     activity.getString(R.string.error_do_number_null));
+            binding.etDOCode.requestFocus();
             return false;
+        } else if (packNo.length() == 0 && item.getPackNo() == 0) {
+                Message.makeToastWarning(activity,
+                        activity.getString(R.string.error_number_package_null));
+                binding.etPackageNo.requestFocus();
+                return false;
         } else if (weight.length() == 0 && item.getWeight() == 0) {
             Message.makeToastWarning(activity,
                     activity.getString(R.string.error_weight_null));
+            binding.etWeight.requestFocus();
             return false;
         } else if (quantity.length() == 0 && item.getItemQty() == 0) {
             Message.makeToastWarning(activity,
                     activity.getString(R.string.error_number_null));
-            return false;
-        } else if (packNo.length() == 0 && item.getPackNo() == 0) {
-            Message.makeToastWarning(activity,
-                    activity.getString(R.string.error_number_package_null));
+            binding.etQuantity.requestFocus();
             return false;
         }
         return true;
@@ -138,8 +142,10 @@ public class ConfirmDOVM extends ViewModel {
 
     public void onClikScan(View v){
         Commons.setEnabledButton(v);
-        Intent intent = new Intent(activity, ScanMSActivity.class);
-        activity.startActivityForResult(intent, Constants.REQUEST_CODE_SCAN);
+        /*Intent intent = new Intent(activity, ScanMSActivity.class);
+        activity.startActivityForResult(intent, Constants.REQUEST_CODE_SCAN);*/
+
+        ZXingScannerActivity.openScanner(activity);
     }
 
     //endregion TODO: On Click ________________End/

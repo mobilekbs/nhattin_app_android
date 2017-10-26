@@ -9,6 +9,7 @@ import org.acra.sender.ReportSenderException;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseAsystask;
 import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.Commons.GmailSender.GmailSender;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 
 
 /**

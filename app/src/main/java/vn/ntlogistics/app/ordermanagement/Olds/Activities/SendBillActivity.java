@@ -57,6 +57,7 @@ import vn.ntlogistics.app.ordermanagement.Olds.FTPFile.MyFTPClientFunctions;
 import vn.ntlogistics.app.ordermanagement.Olds.ScanMS.scanlibrary.ItemBill;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.SplashScreenActivity;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.ZXingScannerActivity;
 
 public class SendBillActivity extends BaseActivity implements OnClickListener,
 		OnItemSelectedListener {
@@ -209,19 +210,16 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 							.concat(saveBill).concat(".jpg"));
 
 					break;
-				case REQUEST_CODE_SCAN:
-					try {
-						String m = data.getExtras().getString("symbol");
-						if (m != null) {
-							edtBill.setEnabled(false);
-							edtBill.setText(m);
-						}
+			}
+			try {
+				String m = ZXingScannerActivity.getCodeAfterScan(requestCode, resultCode, data);
+				if (m != null) {
+					edtBill.setEnabled(false);
+					edtBill.setText(m);
+				}
 
-					} catch (NullPointerException e) {
-						e.getMessage();
-					}
-
-					break;
+			} catch (NullPointerException e) {
+				e.getMessage();
 			}
 		}
 	}
@@ -663,21 +661,24 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	//TODO: Call API -------------------------------------------------
 
 	private void callAPIUpdatePinkBill(){
-		UpdatePinkBillInput input = new UpdatePinkBillInput(
-				this,
-				edtBill.getText().toString(),
-				edtMaKh.getText().toString(),
-				edtNameKh.getText().toString().trim(),
-				null,
-				formatMoney(edtMoney.getText().toString()),
-				formatMoney(edtMoneyCod.getText().toString()),
-				mListCity.get(spinCity.getSelectedItemPosition()).getAreacode()+"",
-				mListDis.get(spinDistrict.getSelectedItemPosition()).getValue()+""
-		);
+		try {
+			UpdatePinkBillInput input = new UpdatePinkBillInput(
+                    this,
+                    edtBill.getText().toString(),
+                    edtMaKh.getText().toString(),
+                    edtNameKh.getText().toString().trim(),
+                    null,
+                    formatMoney(edtMoney.getText().toString()),
+                    formatMoney(edtMoneyCod.getText().toString()),
+                    mListCity.get(spinCity.getSelectedItemPosition()).getAreacode()+"",
+                    mListDis.get(spinDistrict.getSelectedItemPosition()).getValue()+""
+            );
 
-		String data = new Gson().toJson(input);
+			String data = new Gson().toJson(input);
 
-		new UpdatePinkBillAPI(this, data, false, input.getBill()).execute();
+			new UpdatePinkBillAPI(this, data, false, input.getBill()).execute();
+		} catch (Exception e) {
+		}
 	}
 
 	//TODO: Call API -------------------------------------------------End/
@@ -981,11 +982,13 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	}*/
 
 	public void ScanNew() {
-		Intent intent = new Intent(this, ScanMSActivity.class);
-		/*Bundle b = new Bundle();
+		/*Intent intent = new Intent(this, ScanMSActivity.class);
+		*//*Bundle b = new Bundle();
 		b.putInt("cmnt", Variables.BILLNT);
-		intent.putExtras(b);*/
-		startActivityForResult(intent, REQUEST_CODE_SCAN);
+		intent.putExtras(b);*//*
+		startActivityForResult(intent, REQUEST_CODE_SCAN);*/
+
+		ZXingScannerActivity.openScanner(this);
 	}
 
 	public boolean checkBill() {

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
-import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.ConfirmBPBillInput;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.ConfirmDOVMs.ConfirmDOVM;
@@ -71,18 +70,11 @@ public class ConfirmDOActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            if(requestCode == Constants.REQUEST_CODE_SCAN){
-                Bundle b = data.getExtras();
-                String m = null;
-                try {
-                    m = b.getString("symbol").toString();
-                } catch (Exception e) {
-                }
-                if (m != null) {
-                    binding.etDOCode.setEnabled(false);
-                    binding.etDOCode.setText(m);
-                    viewModel.checkDOCodeInvalid(m, false);
-                }
+            String m = ZXingScannerActivity.getCodeAfterScan(requestCode, resultCode, data);
+            if (m != null) {
+                binding.etDOCode.setEnabled(false);
+                binding.etDOCode.setText(m);
+                viewModel.checkDOCodeInvalid(m, false);
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

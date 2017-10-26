@@ -26,6 +26,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ConfirmBPBillAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.ConfirmBPBillInput;
 import vn.ntlogistics.app.ordermanagement.R;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.ZXingScannerActivity;
 
 public class BillDOActivity extends BaseActivity implements OnClickListener {
 	public static final String TAG = "BillDOActivity";
@@ -152,11 +153,14 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 	}
 
 	public void ScanDO() {
-		Intent intent = new Intent(this, ScanMSActivity.class);
-		/*Bundle b = new Bundle();
+		/*Intent intent = new Intent(this, ScanMSActivity.class);
+		*//*Bundle b = new Bundle();
 		b.putInt("cmdo", Variables.BILLDO);
-		intent.putExtras(b);*/
-		startActivityForResult(intent, REQUEST_CODE_SCAN);
+		intent.putExtras(b);*//*
+		startActivityForResult(intent, REQUEST_CODE_SCAN);*/
+
+		ZXingScannerActivity.openScanner(this);
+
 	}
 
 	public void getData() {
@@ -174,6 +178,14 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(resultCode == RESULT_OK){
+
+			String m = ZXingScannerActivity.getCodeAfterScan(requestCode, resultCode, data);
+			if (m != null) {
+				edtBill_DO.setEnabled(false);
+				edtBill_DO.setText(m);
+			}
+
+			/*
 			if(requestCode == REQUEST_CODE_SCAN){
 				Bundle b = data.getExtras();
 				String m = null;
@@ -185,7 +197,7 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 					edtBill_DO.setEnabled(false);
 					edtBill_DO.setText(m);
 				}
-			}
+			}*/
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}

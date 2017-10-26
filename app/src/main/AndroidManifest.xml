@@ -9,8 +9,7 @@
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="true" />
-    <uses-feature
-        android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -116,8 +115,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
-
-        <activity android:name=".Views.Activities.UpdateBillActivity"
+        <activity
+            android:name=".Views.Activities.UpdateBillActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -207,6 +206,12 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".Views.Activities.ZXingScannerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
     </application>
 
 </manifest>

@@ -3,7 +3,6 @@ package vn.ntlogistics.app.ordermanagement.Olds.Activities;
 import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
@@ -50,16 +49,16 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
     private boolean previewing = true;
     ItemBill itembill = new ItemBill();
 
-    static {
+    /*static {
         System.loadLibrary("iconv");
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_ms);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (Build.VERSION.SDK_INT >= 23 &&
             checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -68,8 +67,10 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
                         new String[]{Manifest.permission.CAMERA}, 1);
             finish();
         }
-        else
+        else {
+            //ZXingScannerActivity.openScanner(this);
             moCame();
+        }
     }
 
     public void moCame() {
@@ -255,6 +256,11 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
+        /*String m = ZXingScannerActivity.getCodeAfterScan(requestCode, resultCode, data);
+        Bundle bb = new Bundle();
+        bb.putString("sysbom", m);*/
+
+
         if (requestCode == 1) {
             File file = new File(Environment.getExternalStorageDirectory()
                     + File.separator + "img.jpg");
@@ -285,7 +291,6 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
             it.putExtras(b);
             startActivity(it);
             finish();
-
         }
 
     }
