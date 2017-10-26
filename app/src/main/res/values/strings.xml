@@ -230,6 +230,7 @@
     <string name="toast_error_correct_id">Mã vận đơn chưa chính xác!</string>
     <string name="toast_error_key_api">Lỗi sai khóa!</string>
     <string name="toast_error">Lỗi..! Vui lòng thử lại sau!</string>
+    <string name="toast_permission_camera">Vui lòng cấp quyền sử dụng camera để có thể tiếp tục!</string>
     <string name="message_dialog_update_now">Bạn có chắc đã hoàn thành công việc của các đơn hàng được chọn không?</string>
     <string name="toast_compare_job">Bạn phải chọn 1 loại công việc để cập nhật nhanh</string>
     <string name="message_turnon_gps">Vui lòng mở GPS để sử dụng ứng dụng!</string>
