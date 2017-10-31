@@ -39,6 +39,7 @@ public class ZXingScannerActivity extends BaseActivity implements
             Message.makeToastWarning(activity, activity.getString(R.string.toast_permission_camera));
         }
         else {
+
             new IntentIntegrator(activity)
                     .setOrientationLocked(false)
                     .setCaptureActivity(ZXingScannerActivity.class)
@@ -64,7 +65,7 @@ public class ZXingScannerActivity extends BaseActivity implements
         if (!hasFlash()) {
             binding.switchFlashlight.setVisibility(View.GONE);
         }
-
+        binding.barcodeScanner.getBarcodeView().getCameraSettings().setAutoFocusEnabled(true);
         capture = new CaptureManager(this, binding.barcodeScanner);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
         capture.decode();

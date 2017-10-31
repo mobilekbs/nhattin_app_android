@@ -983,9 +983,9 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 
 	public void ScanNew() {
 		/*Intent intent = new Intent(this, ScanMSActivity.class);
-		*//*Bundle b = new Bundle();
+		Bundle b = new Bundle();
 		b.putInt("cmnt", Variables.BILLNT);
-		intent.putExtras(b);*//*
+		intent.putExtras(b);
 		startActivityForResult(intent, REQUEST_CODE_SCAN);*/
 
 		ZXingScannerActivity.openScanner(this);

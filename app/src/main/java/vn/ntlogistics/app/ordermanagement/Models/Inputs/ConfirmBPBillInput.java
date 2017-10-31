@@ -12,8 +12,8 @@ public class ConfirmBPBillInput extends BaseInput implements Cloneable {
 
     private short packNo;
     private long itemQty;
-    private long weight;
-    private long dimensionWeight;
+    private double weight;
+    private double dimensionWeight;
     private String doCode;
     private String bill;
     private String isactive;
@@ -53,19 +53,19 @@ public class ConfirmBPBillInput extends BaseInput implements Cloneable {
         this.itemQty = itemQty;
     }
 
-    public long getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(long weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public long getDimensionWeight() {
+    public double getDimensionWeight() {
         return dimensionWeight;
     }
 
-    public void setDimensionWeight(long dimensionWeight) {
+    public void setDimensionWeight(double dimensionWeight) {
         this.dimensionWeight = dimensionWeight;
     }
 

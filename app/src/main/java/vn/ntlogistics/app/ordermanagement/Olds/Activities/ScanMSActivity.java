@@ -3,6 +3,7 @@ package vn.ntlogistics.app.ordermanagement.Olds.Activities;
 import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
@@ -58,7 +59,7 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_ms);
 
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         if (Build.VERSION.SDK_INT >= 23 &&
             checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {

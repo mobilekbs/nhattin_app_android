@@ -1,6 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.JsonObject;
 
@@ -19,6 +20,7 @@ public class ImportWhiteBillAPI extends BaseConnectAPI {
     public ImportWhiteBillAPI(Context context, String data) {
         super(context, ConstantURLs.IMPORT_WHITE_BILL, data, true, Method.POST);
         initDialogWithTitle(context.getString(R.string.sending),false);
+        Log.e("ImportWhiteBillAPI", data);
     }
 
     @Override

@@ -164,18 +164,20 @@ public class ConfirmDOVM extends ViewModel {
         else {
             input.setBill(billScan);
         }
-        long dimensionWeight = 0;
+        double dimensionWeight = 0;
         try {
-            dimensionWeight = Long.parseLong(binding.etDimensionWeight.getText().toString());
+            dimensionWeight = Double.parseDouble(binding.etDimensionWeight.getText().toString());
         } catch (NumberFormatException e) {
         }
         if(input.getDimensionWeight() != dimensionWeight)
             input.setDimensionWeight(dimensionWeight);
 
-        long weight = 0;
+        double weight = 0;
         try {
-            weight = Long.parseLong(binding.etWeight.getText().toString());
+            String strWeight = binding.etWeight.getText().toString();
+            weight = Double.parseDouble(strWeight);
         } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
         if(input.getWeight() != weight)
             input.setWeight(weight);
