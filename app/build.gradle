@@ -7,8 +7,8 @@ android {
         applicationId "vn.ntlogistics.app.shipper"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 7
-        versionName "1"
+        versionCode 10
+        versionName "1.0.3"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -19,12 +19,13 @@ android {
         }
         release {
             minifyEnabled false
-            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     dataBinding {
         enabled = true
+    }
+    productFlavors {
     }
 }
 
@@ -33,8 +34,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    //compile files('libs/zbar.jar')
-    //compile files('libs/core-3.1.0.jar')
+    compile files('libs/zbar.jar')
+    compile files('libs/core-3.1.0.jar')
     //compile files('libs/commons-net-3.4.jar')
     compile files('libs/mail.jar')
     compile files('libs/activation.jar')
@@ -55,6 +56,7 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.google.firebase:firebase-messaging:11.0.2'
+    //compile 'com.journeyapps:zxing-android-embedded:3.5.0'
     compile ('com.journeyapps:zxing-android-embedded:3.5.0'){
         exclude group: 'com.google.zxing'
     }

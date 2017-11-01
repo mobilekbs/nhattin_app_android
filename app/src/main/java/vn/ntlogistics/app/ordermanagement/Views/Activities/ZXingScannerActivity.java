@@ -15,6 +15,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
+import com.journeyapps.barcodescanner.camera.CameraSettings;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
@@ -66,6 +67,8 @@ public class ZXingScannerActivity extends BaseActivity implements
             binding.switchFlashlight.setVisibility(View.GONE);
         }
         binding.barcodeScanner.getBarcodeView().getCameraSettings().setAutoFocusEnabled(true);
+        binding.barcodeScanner.getBarcodeView().getCameraSettings().setContinuousFocusEnabled(true);
+        binding.barcodeScanner.getBarcodeView().getCameraSettings().setFocusMode(CameraSettings.FocusMode.INFINITY);
         capture = new CaptureManager(this, binding.barcodeScanner);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
         capture.decode();

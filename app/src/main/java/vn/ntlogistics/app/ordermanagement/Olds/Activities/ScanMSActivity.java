@@ -50,9 +50,9 @@ public class ScanMSActivity extends BaseActivity implements Serializable {
     private boolean previewing = true;
     ItemBill itembill = new ItemBill();
 
-    /*static {
+    static {
         System.loadLibrary("iconv");
-    }*/
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

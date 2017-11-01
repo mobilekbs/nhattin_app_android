@@ -18,7 +18,7 @@ import vn.ntlogistics.app.ordermanagement.R;
  */
 
 public class ConfirmBPBillAPI extends BaseConnectAPI {
-    public static final String TAG = "ConfirmBPBillAPI";
+    public static final String  TAG = "ConfirmBPBillAPI";
     private String              bill;
     private BaseActivity        activity;
     private boolean             isMultiCall;
@@ -44,7 +44,7 @@ public class ConfirmBPBillAPI extends BaseConnectAPI {
         this.activity = activity;
         this.bill = bill;
         this.isMultiCall = isMultiCall;
-        //Log.e(TAG, this.url + "\n" + this.data);
+        Log.e(TAG, this.url + "\n" + this.data);
         try {
             if(!isMultiCall)
                 initDialogWithTitle(context.getString(R.string.sending),false);
