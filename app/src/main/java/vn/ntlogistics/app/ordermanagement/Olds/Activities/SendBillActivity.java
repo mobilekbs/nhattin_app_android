@@ -924,6 +924,11 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		}
 	}
 
+	@Override
+	public void onSuccess() {
+		myRF();
+	}
+
 	/*public void makeWarning(String text) {
 
 		Context context = getApplicationContext();
@@ -1072,4 +1077,3 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
 	}
 }
-// Nguyễn Ngọc Giao
