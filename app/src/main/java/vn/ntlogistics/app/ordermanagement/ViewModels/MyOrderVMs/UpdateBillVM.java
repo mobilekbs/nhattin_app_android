@@ -108,6 +108,9 @@ public class UpdateBillVM extends ViewModel {
                     case R.id.rb04Update:
                         statusId = 4;
                         break;
+                    case R.id.rb99Update:
+                        statusId = 99;
+                        break;
                 }
 
                 if(statusId == 0) {
