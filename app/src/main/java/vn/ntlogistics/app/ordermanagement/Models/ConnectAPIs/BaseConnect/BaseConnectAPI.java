@@ -13,6 +13,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ReportErrorAPI;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.SplashScreenActivity;
 
@@ -26,7 +27,7 @@ public abstract class BaseConnectAPI extends AsyncTask<Void, Void, String> {
     public Context                      context;
     public String                       url, data;
     ProgressDialog                      pg_dialog;
-    public boolean                      refresh = false;
+    public boolean                      refresh = false, isReport = false;
     GetJsonFromUrl getJsonFromUrl;
     Method method;
     //SqliteManager db;
@@ -75,13 +76,17 @@ public abstract class BaseConnectAPI extends AsyncTask<Void, Void, String> {
                         onFailed(errorCode, rootObject.get("errorMessage").getAsString());
                         break;
                 }
+                if (errorCode != 200)
+                    callReportErrorAPI(aVoid);
             } else {
                 Log.d(TAG, "Result = null");
                 onError();
+                callReportErrorAPI(aVoid);
             }
         } catch (Exception e) {
             onError();
             e.printStackTrace();
+            callReportErrorAPI(aVoid);
         }
         onPostMain(aVoid);
         dismissDialog();
@@ -142,6 +147,11 @@ public abstract class BaseConnectAPI extends AsyncTask<Void, Void, String> {
             Message.makeToastErrorConnect(context);
         } catch (Exception e) {
         }
+    }
+
+    public void callReportErrorAPI(String output){
+        if (!isReport && Commons.hasConnection(context))
+            new ReportErrorAPI(context, url, data, output +"").execute();
     }
 
     public void onPostMain(String result) {}

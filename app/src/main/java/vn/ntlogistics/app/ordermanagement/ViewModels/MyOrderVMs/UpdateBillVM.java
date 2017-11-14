@@ -120,8 +120,7 @@ public class UpdateBillVM extends ViewModel {
                     Commons.showToast(activity, activity.getString(R.string.error_null_bill_id));
                 }
                 else {
-                    if(billID == null)
-                        billID = binding.etDOCode.getText().toString();
+                    billID = binding.etDOCode.getText().toString();
                     callCreateBillResponse(statusId);
                 }
             }
@@ -187,15 +186,18 @@ public class UpdateBillVM extends ViewModel {
                 activity,
                 billID,
                 SCurrentUser.getCurrentUser(activity).getIdStaff()+"",
-                flag+"",
-                responseStatus+"",
+                String.format("%02d", flag),
+                String.format("%02d", responseStatus),
                 binding.etReasonUpdate.getText().toString());
         new CreateBillResponseAPI(activity, data, this).execute();
     }
 
     @Override
     public void onSuccess() {
-        SSqlite.getInstance(activity).updateStatusSendBill(item.getBillID(), Constants.STATUS_CANCEL);
+        try {
+            SSqlite.getInstance(activity).updateStatusSendBill(item.getBillID(), Constants.STATUS_CANCEL);
+        } catch (Exception e) {
+        }
         Intent intent = new Intent();
         Bundle b = new Bundle();
         b.putInt("position", position);

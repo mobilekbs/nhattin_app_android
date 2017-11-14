@@ -26,4 +26,9 @@ public class ConstantURLs {
     public static final String DESTINATIONS = "&destinations=";
     public static final String KEYS = "&key=";
 
+    //Ghi log lỗi
+    public static final String URL_WEB = "https://ws.ntlogistics.vn:6443/nhattin_rest_web_service/";
+    public static final String REPORT_ERROR_WEB = URL_WEB + "reportRealtimeError";
+
+
 }

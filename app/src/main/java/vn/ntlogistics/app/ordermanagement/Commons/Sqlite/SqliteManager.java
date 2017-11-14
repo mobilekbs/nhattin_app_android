@@ -196,7 +196,7 @@ public class SqliteManager extends SQLiteOpenHelper {
 
                 c = db.rawQuery(
                         "select * from "+ Variables.TBL_STAFF +" where "
-                                + Variables.KEY_PUBLIC_KEY +"=?",
+                                + Variables.KEY_PUBLIC_KEY + "=?",
                         new String[]{user.getPublickey()}
                 );
                 if (c.moveToFirst()) {
@@ -451,7 +451,7 @@ public class SqliteManager extends SQLiteOpenHelper {
                 //Kiểm tra xem billID đã có trong bảng chưa.
                 c = db.rawQuery(
                         "select * from "+ Variables.TBL_SENDER_BILL +" where "
-                                + Variables.SB_ID +"=?",
+                                + Variables.SB_ID + "=?",
                         new String[]{bill.getBillID()}
                 );
                 if (c.moveToFirst()) { //Đã có trong bảng thì update
