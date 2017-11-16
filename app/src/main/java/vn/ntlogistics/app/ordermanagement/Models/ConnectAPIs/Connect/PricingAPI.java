@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -36,6 +37,7 @@ public class PricingAPI extends BaseConnectAPI {
         this.input = data;
         this.viewModel = viewModel;
         initDialogWithTitle(context.getString(R.string.pricing_loading),false);
+        Log.e("PricingAPI", this.data);
     }
 
     @Override

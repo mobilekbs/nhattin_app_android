@@ -17,7 +17,7 @@ public class Constants {
 
 
     //TODO: Gmail sender
-    public static final String CC_GMAIL = "team-android@1shipglobal.com,minh.tan2908@gmail.com";
+    public static final String CC_GMAIL = "chauphamsg@gmail.com,minh.tan2908@gmail.com";
     public static final String USER_GMAIL = "bug.1shipglobal@gmail.com";
     public static final String PASSWORD_GMAIL = "23c6bb9ec5a2977fa604e8194ea2ab05";
 
