@@ -16,7 +16,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.MaterialTapTargetPrompt.extras
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.SharedPreference.MySharedPreference;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CheckPublicKeyAPI;
 import vn.ntlogistics.app.ordermanagement.R;
@@ -159,7 +159,7 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
                 ){
             User user = SCurrentUser.getCurrentUser(activity);
             user.setLocalkey(binding.edtPass.getText().toString());
-            if(SSqlite.getInstance(activity).inserOrUpdatetUser(user)){
+            if(SSQLite.getInstance(activity).inserOrUpdatetUser(user)){
                 Message.makeToastSuccess(activity);
                 MainActivity.startIntentActivity(activity);
             }

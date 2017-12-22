@@ -12,7 +12,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CreateBillResponseAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.CreateBillResponseInput;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
@@ -195,7 +195,7 @@ public class UpdateBillVM extends ViewModel {
     @Override
     public void onSuccess() {
         try {
-            SSqlite.getInstance(activity).updateStatusSendBill(item.getBillID(), Constants.STATUS_CANCEL);
+            SSQLite.getInstance(activity).updateStatusSendBill(item.getBillID(), Constants.STATUS_CANCEL);
         } catch (Exception e) {
         }
         Intent intent = new Intent();

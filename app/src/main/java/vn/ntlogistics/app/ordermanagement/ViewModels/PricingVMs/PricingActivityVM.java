@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.BaseLocation;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.City;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.District;
@@ -59,20 +59,20 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
     }
 
     private void initSpinnerService() {
-        mListService = SSqlite.getInstance(activity).getListService();
+        mListService = SSQLite.getInstance(activity).getListService();
         setupSpinner(binding.spinService, mListService);
         binding.spinService.setSelection(0);
     }
 
     private void initSpinnerCity() {
-        mListCity = SSqlite.getInstance(activity).getListCity();
+        mListCity = SSQLite.getInstance(activity).getListCity();
         setupSpinner(binding.spinFromCity, mListCity);
         setupSpinner(binding.spinToCity, mListCity);
 
         binding.spinFromCity.setOnItemSelectedListener(this);
         binding.spinToCity.setOnItemSelectedListener(this);
 
-        int idPosition = SSqlite.getInstance(activity).getIdLocationInCity();
+        int idPosition = SSQLite.getInstance(activity).getIdLocationInCity();
         binding.spinFromCity.setSelection(idPosition);
         binding.spinToCity.setSelection(idPosition);
 
@@ -81,14 +81,14 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
     private void setupSpinnerDistrict(Spinner spinner, int id) {
         if (spinner.getId() == binding.spinFromDis.getId()) {
             mListDistrictForm.clear();
-            mListDistrictForm.addAll(SSqlite.getInstance(activity).getListDistrictByCidyID(id + ""));
+            mListDistrictForm.addAll(SSQLite.getInstance(activity).getListDistrictByCidyID(id + ""));
             setupSpinner(
                     spinner,
                     mListDistrictForm
             );
         } else if (spinner.getId() == binding.spinToDis.getId()) {
             mListDistrictTo.clear();
-            mListDistrictTo.addAll(SSqlite.getInstance(activity).getListDistrictByCidyID(id + ""));
+            mListDistrictTo.addAll(SSQLite.getInstance(activity).getListDistrictByCidyID(id + ""));
             setupSpinner(
                     spinner,
                     mListDistrictTo

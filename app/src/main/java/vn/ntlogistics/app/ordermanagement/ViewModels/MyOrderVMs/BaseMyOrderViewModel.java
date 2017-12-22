@@ -24,7 +24,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.Spinner.BaseSpinne
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.Spinner.Beans.ItemSpinner;
 import vn.ntlogistics.app.ordermanagement.Commons.Interfaces.ICallback;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SJob;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sort.CompareItemByLocation;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.GoogleAPIs.DistanceMatrixAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
@@ -271,7 +271,7 @@ public class BaseMyOrderViewModel {
         //clone list
         cloneArrayList(
                 mListMain,
-                SSqlite.getInstance(activity).getListSenderBillByStatus(statusFragment+"")
+                SSQLite.getInstance(activity).getListSenderBillByStatus(statusFragment+"")
         );
 
         //Tính khoảng cách để lọc gần nhất.

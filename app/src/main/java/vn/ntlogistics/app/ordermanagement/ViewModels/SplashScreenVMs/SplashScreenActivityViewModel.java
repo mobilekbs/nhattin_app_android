@@ -5,7 +5,6 @@ import android.databinding.ObservableInt;
 import android.os.CountDownTimer;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.LoginActivity;
@@ -50,11 +49,11 @@ public class SplashScreenActivityViewModel extends ViewModel {
     }
 
     public void checkLogin() {
-        try {
-            SSqlite.getInstance(activity).createDataBase();
+        /*try {
+            SSQLite.getInstance(activity).createDatabase();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         try {
             User user = SCurrentUser.getCurrentUser(activity);
             int flag = 0; // Active confirm code

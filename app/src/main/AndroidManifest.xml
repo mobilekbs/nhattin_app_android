@@ -209,6 +209,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+
+        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false" />
+
     </application>
 
 </manifest>

@@ -483,6 +483,8 @@ public class ManagerBillWhiteActivity extends BaseActivity implements OnClickLis
     }
 
     public long formatMoney(String input) {
+        if (input == null || input.isEmpty())
+            return 0;
         String del = "";
         char check[] = {' ', ','};
 

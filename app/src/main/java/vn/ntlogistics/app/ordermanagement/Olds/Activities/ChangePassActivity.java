@@ -13,7 +13,7 @@ import android.widget.TextView;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.R;
 
@@ -148,7 +148,7 @@ public class ChangePassActivity extends BaseActivity implements OnClickListener 
 		startActivity(i);*/
 		User user = SCurrentUser.getCurrentUser(this);
         user.setLocalkey(edtNewPass.getText().toString());
-		SSqlite.getInstance(this).inserOrUpdatetUser(user);
+		SSQLite.getInstance(this).inserOrUpdatetUser(user);
 		finish();
 		Message.makeToastSuccess(this, getString(R.string.toast_success_update));
 		//myast.makeSuccess("Cập nhật thành công.");

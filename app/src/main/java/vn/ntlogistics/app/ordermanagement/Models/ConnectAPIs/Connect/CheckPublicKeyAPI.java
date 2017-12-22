@@ -7,7 +7,7 @@ import com.google.gson.JsonObject;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.SharedPreference.MySharedPreference;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.BaseConnect.BaseConnectAPI;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.BaseConnect.Method;
@@ -73,7 +73,7 @@ public class CheckPublicKeyAPI extends BaseConnectAPI {
                 user.setIdStaff(partnerId);
                 user.setValue_staff(partnerValue);
                 user.setPublickey(key);
-                if(SSqlite.getInstance(context).inserOrUpdatetUser(user)){
+                if(SSQLite.getInstance(context).inserOrUpdatetUser(user)){
                     Message.makeToastSuccess(context);
                     if(viewModel != null){
                         viewModel.onSuccess(ACTION, true);

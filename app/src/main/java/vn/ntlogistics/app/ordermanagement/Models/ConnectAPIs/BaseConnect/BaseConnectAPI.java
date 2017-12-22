@@ -12,7 +12,7 @@ import com.google.gson.JsonParser;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ReportErrorAPI;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.SplashScreenActivity;
@@ -68,7 +68,7 @@ public abstract class BaseConnectAPI extends AsyncTask<Void, Void, String> {
                     case 47: //Android Key không hợp lệ
                         Message.makeToastError(context, context.getString(R.string.toast_error_key_api));
                         //SqliteManager db = new SqliteManager(context);
-                        SSqlite.getInstance(context).deleteUser();
+                        SSQLite.getInstance(context).deleteUser();
                         SCurrentUser.delCurrentUser();
                         Commons.restartApp(context, SplashScreenActivity.class);
                         break;

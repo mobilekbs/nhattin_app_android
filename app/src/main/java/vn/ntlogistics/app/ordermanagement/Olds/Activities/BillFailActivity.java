@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.BillFail.BillFailSqlite;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ConfirmBPBillAPI;
@@ -67,7 +67,7 @@ public class BillFailActivity extends BaseActivity implements OnClickListener {
         });
 
 
-        Cursor c = SSqlite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL);
+        Cursor c = SSQLite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL);
         countsend = c.getCount();
         oldcountsend = countsend;
 
@@ -86,7 +86,7 @@ public class BillFailActivity extends BaseActivity implements OnClickListener {
         rvBillFail = (RecyclerView) findViewById(R.id.rvBillFail);
         rvBillFail.setLayoutManager(new LinearLayoutManager(this));
 
-        mList = SSqlite.getInstance(this).getListBillFail();
+        mList = SSQLite.getInstance(this).getListBillFail();
         adapter = new BillFailAdapter(this, mList);
 
         if(mList.size() == 0){
@@ -101,7 +101,7 @@ public class BillFailActivity extends BaseActivity implements OnClickListener {
     public void reloadRecyclerView(){
         if (adapter != null) {
             mList.clear();
-            mList.addAll(SSqlite.getInstance(this).getListBillFail());
+            mList.addAll(SSQLite.getInstance(this).getListBillFail());
             adapter.notifyDataSetChanged();
             if(mList.size() == 0){
                 tvNullList.setVisibility(View.VISIBLE);
@@ -339,9 +339,9 @@ public class BillFailActivity extends BaseActivity implements OnClickListener {
             Log.d("BILL", "bill: " + bill);
 
             if (result.equals("0") || result == "0") {
-                SSqlite.getInstance(BillFailActivity.this).deleteDataFromTable(Variables.TBL_BILLFAIL,
+                SSQLite.getInstance(BillFailActivity.this).deleteDataFromTable(Variables.TBL_BILLFAIL,
                         Variables.KEY_BILL, bill);
-                Cursor c = SSqlite.getInstance(BillFailActivity.this).getAllDataFromTable(Variables.TBL_BILLFAIL);
+                Cursor c = SSQLite.getInstance(BillFailActivity.this).getAllDataFromTable(Variables.TBL_BILLFAIL);
                 c.moveToFirst();
 
                 Custom_lv_BillFail adt1 = new Custom_lv_BillFail(
@@ -352,13 +352,13 @@ public class BillFailActivity extends BaseActivity implements OnClickListener {
                 count++;
                 String[] field = {Variables.KEY_STATUS};
                 String[] values = {resultFail.toString()};
-                boolean m = SSqlite.getInstance(BillFailActivity.this).updateData4Table(Variables.TBL_BILLFAIL,
+                boolean m = SSQLite.getInstance(BillFailActivity.this).updateData4Table(Variables.TBL_BILLFAIL,
                         Variables.KEY_BILL, bill.toString(), field, values);
                 if (m)
                     Log.d("", "update thành công");
                 else
                     Log.d("", "update thất bại");
-                Cursor c = SSqlite.getInstance(BillFailActivity.this).getAllDataFromTable(Variables.TBL_BILLFAIL);
+                Cursor c = SSQLite.getInstance(BillFailActivity.this).getAllDataFromTable(Variables.TBL_BILLFAIL);
                 c.moveToFirst();
                 if (c.getCount() > 0) {
                     Custom_lv_BillFail adt2 = new Custom_lv_BillFail(

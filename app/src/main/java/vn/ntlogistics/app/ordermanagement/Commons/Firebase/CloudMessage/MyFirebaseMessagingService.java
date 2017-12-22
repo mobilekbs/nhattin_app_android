@@ -9,7 +9,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.Commons.Notification.BaseNotification;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.OrderManagementActivity;
@@ -79,7 +79,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         result.setSenderNode(data.getString("note"));
         result.setStatus(Constants.STATUS_UNCOMPLETED + "");
         //Insert bill into Sqlite
-        SSqlite.getInstance(this).insertOrUpdateSendBill(result);
+        SSQLite.getInstance(this).insertOrUpdateSendBill(result);
 
         /**
          * Sau khi insert sqlite thì reload lại list đơn hàng mới.
@@ -128,7 +128,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
          * Sau đó reload lại list bill nếu đang ở OrderManagementActivity
          */
         String billID = data.getString("billID");
-        if (SSqlite.getInstance(this).deleteSenderBill(billID)) {
+        if (SSQLite.getInstance(this).deleteSenderBill(billID)) {
             try {
                 ((OrderManagementActivity) MainApplication.getCurrentActivity()).reload();
             } catch (Exception e) {

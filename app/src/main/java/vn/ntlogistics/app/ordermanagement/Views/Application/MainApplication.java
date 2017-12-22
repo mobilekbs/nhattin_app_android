@@ -25,6 +25,8 @@ public class MainApplication extends Application {
         // these will be used to send the crash report
         ACRAReportSender reportSender = new ACRAReportSender();
         ACRA.getErrorReporter().setReportSender(reportSender);
+
+//        Fabric.with(this, new Crashlytics());
     }
 
     private static Activity mCurrentActivity = null;

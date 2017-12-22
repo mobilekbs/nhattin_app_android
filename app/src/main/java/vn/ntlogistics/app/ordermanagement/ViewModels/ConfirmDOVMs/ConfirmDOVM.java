@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.CheckThBillAPI;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ConfirmBPBillAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.ConfirmBPBillInput;
@@ -212,7 +212,7 @@ public class ConfirmDOVM extends ViewModel {
         else if(input.getBill() == null || input.getBill().length() == 0){
             Message.makeToastError(activity,
                     activity.getString(R.string.toast_save_bill_off));
-            SSqlite.getInstance(activity).insertOrUpdateConfirmDO(input);
+            SSQLite.getInstance(activity).insertOrUpdateConfirmDO(input);
         }
 
     }
@@ -220,7 +220,7 @@ public class ConfirmDOVM extends ViewModel {
     @Override
     public void onSuccess() {
         if(item.getDoCode() != null && item.getDoCode().length() > 0){
-            SSqlite.getInstance(activity).updateStatusSendBill(
+            SSQLite.getInstance(activity).updateStatusSendBill(
                     item.getDoCode(), Constants.STATUS_COMPLETED);
             Intent i = new Intent();
             Bundle b = new Bundle();
@@ -231,7 +231,7 @@ public class ConfirmDOVM extends ViewModel {
             activity.overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
         }
         else {
-            SSqlite.getInstance(activity).deleteConfirmBill(item.getDoCode());
+            SSQLite.getInstance(activity).deleteConfirmBill(item.getDoCode());
             activity.onBackPressed();
         }
     }

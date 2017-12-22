@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect.ConfirmBPBillAPI;
 import vn.ntlogistics.app.ordermanagement.Models.Inputs.ConfirmBPBillInput;
@@ -247,7 +247,7 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		String fields[] = { Variables.KEY_BILL, Variables.KEY_TL,
 				Variables.KEY_SL, Variables.KEY_TLQD, Variables.KEY_SOKIENDO };
 		Log.d("", "Bill: " + billDO);
-		SSqlite.getInstance(this).updateData4Table(Variables.TBL_BILLFAIL,
+		SSQLite.getInstance(this).updateData4Table(Variables.TBL_BILLFAIL,
 				Variables.KEY_BILL, billCheck, fields, values);
 		// if (c) {
 		// Toast.makeText(this, "Cập nhật thành công.", Toast.LENGTH_SHORT)
@@ -356,7 +356,7 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		String keys[] = { Variables.KEY_BILL, Variables.KEY_SL,
 				Variables.KEY_TL, Variables.KEY_TLQD, Variables.KEY_ISDO,
 				Variables.KEY_SOKIENDO };
-		Cursor cSend = SSqlite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL,
+		Cursor cSend = SSQLite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL,
 				Variables.KEY_BILL_ID, "1=1");
 		cSend.moveToFirst();
 		ArrayList<String> listCheck = new ArrayList<String>();
@@ -372,7 +372,7 @@ public class BillDOActivity extends BaseActivity implements OnClickListener {
 		}
 		long ks = 0;
 		if (check == true) {
-			ks = SSqlite.getInstance(this).insertdata(Variables.TBL_BILLFAIL, keys, values);
+			ks = SSQLite.getInstance(this).insertdata(Variables.TBL_BILLFAIL, keys, values);
 		}
 		if (ks > 0) {
 			Log.d("", "Insert thành công");

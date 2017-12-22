@@ -44,7 +44,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.MyTextWatcher;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
-import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSqlite;
+import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.BaseLocation;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Location.City;
@@ -241,7 +241,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 
 	public void autoComplete() {
 
-		Cursor c = SSqlite.getInstance(this).getAllDataFromTable(Variables.TBL_GUEST);
+		Cursor c = SSQLite.getInstance(this).getAllDataFromTable(Variables.TBL_GUEST);
 		c.moveToFirst();
 		while (!c.isAfterLast()) {
 			list_giao.add(c.getString(
@@ -361,7 +361,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		Log.d("", "Bill: " + bill + ",Mã khách: " + mkhChecked + ",Tên: " + tkh
 				+ ",Tỉnh: " + tinh + ",Quận: " + quan + ",Cước chính: " + money
 				+ " " + ",Cod: " + moneyCod);
-		boolean c = SSqlite.getInstance(this).updateData4Table(Variables.TBL_BILLFAIL,
+		boolean c = SSQLite.getInstance(this).updateData4Table(Variables.TBL_BILLFAIL,
 				Variables.KEY_BILL, billCheck, fields, values);
 		return true;
 	}
@@ -411,7 +411,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 			c.moveToNext();
 		}*/
 
-		mListCity = SSqlite.getInstance(this).getListCity();
+		mListCity = SSQLite.getInstance(this).getListCity();
 		String areaCode = SCurrentUser.getCurrentUser(this).getValue_staff().substring(0,2);
 		int areaCodeCity = 50;
 		try {
@@ -448,7 +448,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		CustomSpinnerDistrict CSD = new CustomSpinnerDistrict(this, list_value,
 				list_Name_District);
 		spinDistrict.setAdapter(CSD);*/
-		mListDis = SSqlite.getInstance(this).getListDistrictByCidyID(id);
+		mListDis = SSQLite.getInstance(this).getListDistrictByCidyID(id);
 		setupSpinner(spinDistrict, mListDis);
 		spinDistrict.setSelection(posDis);
 		spinDistrict.setOnItemSelectedListener(this);
@@ -763,7 +763,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 				Variables.KEY_TKH, Variables.KEY_TINH, Variables.KEY_QUAN,
 				Variables.KEY_MONEY, Variables.KEY_MONEYCOD, Variables.KEY_ISDO };
 
-		Cursor cSend = SSqlite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL);
+		Cursor cSend = SSQLite.getInstance(this).getAllDataFromTable(Variables.TBL_BILLFAIL);
 		cSend.moveToFirst();
 		ArrayList<String> listCheck = new ArrayList<String>();
 		while (!cSend.isAfterLast()) {
@@ -778,7 +778,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		}
 		long ks = 0;
 		if (check == true) {
-			ks = SSqlite.getInstance(this).insertdata(Variables.TBL_BILLFAIL, keys, values);
+			ks = SSQLite.getInstance(this).insertdata(Variables.TBL_BILLFAIL, keys, values);
 		}
 		if (ks > 0) {
 			Log.d("", "Insert thành công");
@@ -882,7 +882,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 						.getString(c.getColumnIndex(Variables.KEY_PUBLIC_KEY));
 				c.moveToNext();
 			}*/
-			SSqlite.getInstance(this).deleteUser();
+			SSQLite.getInstance(this).deleteUser();
 			Commons.restartApp(this, SplashScreenActivity.class);
 			/*boolean a = db.deleteDataFromTable(Variables.TBL_STAFF,
 					Variables.KEY_PUBLIC_KEY, oldKey);*/
@@ -1051,7 +1051,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 			Log.d("", "LOZ: " + loz);
 			Log.d("", "P_areacode: " + P_areacode);
 			if (P_areacode.equals(accHong.substring(0, 2))) {
-				boolean up = SSqlite.getInstance(this).updateData4Table(Variables.TBL_STAFF,
+				boolean up = SSQLite.getInstance(this).updateData4Table(Variables.TBL_STAFF,
 						Variables.KEY_VALUE_STAFF, accHong, fields, values);
 			} else {
 				posDis = 0;

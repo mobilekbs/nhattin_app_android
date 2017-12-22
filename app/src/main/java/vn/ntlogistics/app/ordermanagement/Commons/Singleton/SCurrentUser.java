@@ -12,13 +12,13 @@ public class SCurrentUser {
     private static User instance = null;
     public static User getCurrentUser(Context context){
         if(instance == null) {
-            instance = SSqlite.getInstance(context).getUser();
+            instance = SSQLite.getInstance(context).getUser();
         }
         return instance;
     }
 
     public static boolean checkCurrentUser(Context context){
-        User user = SSqlite.getInstance(context).getUser();
+        User user = SSQLite.getInstance(context).getUser();
         return user.getPublickey() == null ? true : false;
     }
 
