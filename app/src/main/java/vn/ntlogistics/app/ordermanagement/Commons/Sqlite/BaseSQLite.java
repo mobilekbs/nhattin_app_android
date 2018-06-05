@@ -48,6 +48,26 @@ public class BaseSQLite extends SQLiteOpenHelper {
             + Variables.SB_BPBILL_ID + " text"
             + ");";
 
+    String tb_congo = "CREATE TABLE  " + Variables.TBL_CONGO + "("
+            + "_id" + " integer primary key autoincrement, "
+            + Variables.CONGO_TYPE + " text,"
+            + Variables.CONGO_MSG + " text,"
+            + Variables.CONGO_FROM + " text,"
+            + Variables.CONGO_DATE + " text,"
+            + Variables.CONGO_TIME + " text"
+            + ");";
+
+    String tb_thong = "CREATE TABLE  " + Variables.TBL_THONG + "("
+            + "_id" + " integer primary key autoincrement, "
+            + Variables.THONG_TYPE + " text,"
+            + Variables.THONG_MSG + " text,"
+            + Variables.THONG_FROM + " text,"
+            + Variables.THONG_DATE + " text,"
+            + Variables.THONG_TIME + " text"
+            + ");";
+
+
+
     public BaseSQLite(Context context) {
         super(context, Variables.DATABASE_NAME, null, Variables.DATABASE_VERSION);
         this.context = context;
@@ -70,6 +90,8 @@ public class BaseSQLite extends SQLiteOpenHelper {
                      * shipper đi lấy hàng về kho.
                      */
                     sqLiteDatabase.execSQL(tb_sender_bill);
+                    sqLiteDatabase.execSQL(tb_congo);
+                    sqLiteDatabase.execSQL(tb_thong);
                 } catch (SQLException e) {
                 }
                 /**

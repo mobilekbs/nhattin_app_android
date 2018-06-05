@@ -1,6 +1,8 @@
 package vn.ntlogistics.app.ordermanagement.Commons.ACRA;
 
 
+import android.annotation.SuppressLint;
+
 import org.acra.ReportField;
 import org.acra.collector.CrashReportData;
 import org.acra.sender.ReportSender;
@@ -38,6 +40,7 @@ public class ACRAReportSender implements ReportSender {
         return body.toString();
     }
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     public void send(CrashReportData errorContent) throws ReportSenderException {
         // Extract the required data out of the crash report.

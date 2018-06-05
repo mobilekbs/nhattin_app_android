@@ -7,6 +7,7 @@ import android.content.Context;
  */
 
 public class ImportWhiteBillInput extends BaseInput {
+ //   private String androidKey;
     private String bill;
     private String senderCode;
     private String receiverCode;
@@ -46,6 +47,15 @@ public class ImportWhiteBillInput extends BaseInput {
     public ImportWhiteBillInput(Context context) {
         super(context);
     }
+
+
+ /*   public String getAndroidKey() {
+        return androidKey;
+    }
+
+    public void setAndroidKey(String androidKey) {
+        this.androidKey = androidKey;
+    }*/
 
     public String getBill() {
         return bill;

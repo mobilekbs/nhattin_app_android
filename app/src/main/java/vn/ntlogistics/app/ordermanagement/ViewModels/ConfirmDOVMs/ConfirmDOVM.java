@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.databinding.Bindable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.android.databinding.library.baseAdapters.BR;
 import com.google.gson.Gson;
 
+import vn.ntlogistics.app.config.Config;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Constants;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
@@ -27,6 +29,9 @@ import vn.ntlogistics.app.ordermanagement.databinding.ActivityConfirmDoBinding;
  */
 
 public class ConfirmDOVM extends ViewModel {
+
+    private static final String TAG = "ConfirmDOVM";
+
     private ConfirmDOActivity           activity;
     private ActivityConfirmDoBinding    binding;
 
@@ -44,6 +49,10 @@ public class ConfirmDOVM extends ViewModel {
         if(item.getDoCode() != null){
             binding.etDOCode.setHint(activity.getString(R.string.sender_code_hint));
         }
+
+        if(Config.debug_mode){
+            binding.etDOCode.setText(Config.testingBillNumber);
+        }
     }
 
     private void getDataIntent(){
@@ -60,6 +69,9 @@ public class ConfirmDOVM extends ViewModel {
     }
 
     public boolean myValidate() {
+
+        Log.e(TAG,"---------------- in  myValidate() " );
+
         String billDO = binding.etDOCode.getText().toString();
         String weight = binding.etWeight.getText().toString();
         String quantity = binding.etQuantity.getText().toString();
@@ -71,10 +83,10 @@ public class ConfirmDOVM extends ViewModel {
             binding.etDOCode.requestFocus();
             return false;
         } else if (packNo.length() == 0 && item.getPackNo() == 0) {
-                Message.makeToastWarning(activity,
-                        activity.getString(R.string.error_number_package_null));
-                binding.etPackageNo.requestFocus();
-                return false;
+            Message.makeToastWarning(activity,
+                    activity.getString(R.string.error_number_package_null));
+            binding.etPackageNo.requestFocus();
+            return false;
         } else if (weight.length() == 0 && item.getWeight() == 0) {
             Message.makeToastWarning(activity,
                     activity.getString(R.string.error_weight_null));
@@ -98,6 +110,9 @@ public class ConfirmDOVM extends ViewModel {
     }
 
     public void checkDOCodeInvalid(String bill, boolean isConfirm){
+
+        Log.e(TAG,"---------------- in checkDOCodeInvalid() " );
+
         /**
          * Kiểm tra khi item tồn tại
          */
@@ -122,20 +137,42 @@ public class ConfirmDOVM extends ViewModel {
 
     public void onClickSend(View v){
         Commons.setEnabledButton(v);
+
+        if(Config.debug_mode){
+            binding.etDOCode.setText("111");
+            binding.etWeight.setText("111");
+            binding.etQuantity.setText("111");
+            binding.etPackageNo.setText("111");
+        }
+
         if (myValidate()) {
+                if (item.getDoCode() == null || item.getDoCode().length() == 0) {
+                    //item không tồn tại, confirm do code bình thường
 
-            if(item.getDoCode() == null || item.getDoCode().length() == 0){
-                //item không tồn tại, confirm do code bình thường
-                callAPIConfirmBPBill();
-            }
-            else if(isInvalid && billScan.equalsIgnoreCase(binding.etDOCode.getText().toString())){
-                //item tồn tại và đã check do code thành công.
-                callAPIConfirmBPBill();
-            }
-            else {
-                // item tồn tại và chưa chắc do code or check rồi nhưng đã sửa thì check lại
+                    Log.e(TAG,"---------------- if (item.getDoCode() == null " );
 
-                checkDOCodeInvalid(binding.etDOCode.getText().toString(), true);
+                    callAPIConfirmBPBill();
+
+                } else if (isInvalid && billScan.equalsIgnoreCase(binding.etDOCode.getText().toString())) {
+                    //item tồn tại và đã check do code thành công.
+
+                    Log.e(TAG,"---------------- } else if (isInvalid && billScan " );
+
+                    callAPIConfirmBPBill();
+
+                } else {
+                    // item tồn tại và chưa chắc do code or check rồi nhưng đã sửa thì check lại
+
+                    Log.e(TAG,"---------------- else { " );
+                    Log.e(TAG,"---------------- calling checkDOCodeInvalid " );
+
+                    checkDOCodeInvalid(binding.etDOCode.getText().toString(), true);
+                }
+            if (!ConfirmDOActivity.imagePath.equalsIgnoreCase("")) {
+
+                Log.e(TAG,"----------------   if (!ConfirmDOActivity.imagePath.equalsIgnoreCase " );
+
+                ConfirmDOActivity.confirmDOActivity.sendImage();
             }
         }
     }
@@ -152,6 +189,8 @@ public class ConfirmDOVM extends ViewModel {
 
     //region TODO: Call API_________________________
     public void callAPIConfirmBPBill(){
+        Log.e(TAG,"---------------- in  callAPIConfirmBPBill() " );
+
         ConfirmBPBillInput input = null;
         try {
             input = item.clone();
@@ -219,6 +258,12 @@ public class ConfirmDOVM extends ViewModel {
 
     @Override
     public void onSuccess() {
+        binding.etDOCode.setText("");
+        binding.etDimensionWeight.setText("");
+        binding.etPackageNo.setText("");
+        binding.etQuantity.setText("");
+        binding.etWeight.setText("");
+
         if(item.getDoCode() != null && item.getDoCode().length() > 0){
             SSQLite.getInstance(activity).updateStatusSendBill(
                     item.getDoCode(), Constants.STATUS_COMPLETED);
@@ -227,12 +272,12 @@ public class ConfirmDOVM extends ViewModel {
             b.putInt("position", position);
             i.putExtras(b);
             activity.setResult(Activity.RESULT_OK, i);
-            activity.finish();
-            activity.overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+//            activity.finish();
+//            activity.overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
         }
         else {
             SSQLite.getInstance(activity).deleteConfirmBill(item.getDoCode());
-            activity.onBackPressed();
+//            activity.onBackPressed();
         }
     }
 

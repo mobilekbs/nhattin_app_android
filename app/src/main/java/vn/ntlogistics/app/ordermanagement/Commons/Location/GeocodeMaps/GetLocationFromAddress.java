@@ -1,5 +1,6 @@
 package vn.ntlogistics.app.ordermanagement.Commons.Location.GeocodeMaps;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.Log;
 
@@ -32,7 +33,7 @@ public class GetLocationFromAddress {
         final boolean[] finish = {false};
         final String url = getURL(address);
         Log.d("URL GEOCODE", url);
-        GeocodeAPI api = new GeocodeAPI(url){
+        @SuppressLint("StaticFieldLeak") GeocodeAPI api = new GeocodeAPI(url){
             @Override
             public void onPost(String s) {
                 try {

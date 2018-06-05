@@ -59,6 +59,7 @@ public class Bill extends Observable implements Serializable, Cloneable {
                 String length, String width, String height, String weight,
                 String cod, String ship, String service, String status,
                 String sendDate, String senderProvinceID, String otpCode, String emsBpbillID) {
+
         this.billID = billID;
         this.senderNumberPhone = senderNumberPhone;
         this.senderAddress = senderAddress;

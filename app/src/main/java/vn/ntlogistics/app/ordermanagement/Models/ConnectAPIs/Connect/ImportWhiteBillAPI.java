@@ -19,6 +19,9 @@ public class ImportWhiteBillAPI extends BaseConnectAPI {
 
     public ImportWhiteBillAPI(Context context, String data) {
         super(context, ConstantURLs.IMPORT_WHITE_BILL, data, true, Method.POST);
+
+        Log.e("TAG","////////////////////////         ImportWhiteBillAPI   ");
+
         initDialogWithTitle(context.getString(R.string.sending),false);
         Log.e("ImportWhiteBillAPI", data);
     }
@@ -40,6 +43,9 @@ public class ImportWhiteBillAPI extends BaseConnectAPI {
 
     @Override
     public void onPost(JsonObject result) {
+
+        Log.d("TAG","------------ ///////////////////// import white bill result = " + result);
+
         try {
             ((BaseActivity) context).onSuccess();
         } catch (Exception e) {

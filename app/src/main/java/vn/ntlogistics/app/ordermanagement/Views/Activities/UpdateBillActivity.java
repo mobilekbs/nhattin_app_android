@@ -18,6 +18,7 @@ public class UpdateBillActivity extends BaseActivity {
 
     public static void startIntentActivity(Context context, Bundle b,
                                            Integer requestCode, boolean isFinish){
+
         Intent intent = new Intent(context, UpdateBillActivity.class);
         if(b == null)
             b = new Bundle();

@@ -102,6 +102,22 @@ public class Variables {
 	//public static final String SB_BPBILL_ID = "setEmsBpbillID";
 	//TODO: Version 4 _____________________________________End/
 
+	// Table: Congo
+	public static final String TBL_CONGO   = "tblcongo";
+	public static final String CONGO_TYPE  = "congo_type";
+	public static final String CONGO_MSG   = "congo_msg";
+	public static final String CONGO_FROM  = "congo_from";
+	public static final String CONGO_DATE  = "congo_date";
+	public static final String CONGO_TIME  = "congo_time";
+
+
+	// Table: Thong
+	public static final String TBL_THONG   = "tblthong";
+	public static final String THONG_TYPE  = "thong_type";
+	public static final String THONG_MSG   = "thong_msg";
+	public static final String THONG_FROM  = "thong_from";
+	public static final String THONG_DATE  = "thong_date";
+	public static final String THONG_TIME  = "thong_time";
 
 
 	// Variables Intent

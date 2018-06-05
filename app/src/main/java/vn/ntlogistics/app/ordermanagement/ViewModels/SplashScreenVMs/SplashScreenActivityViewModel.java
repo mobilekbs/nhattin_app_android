@@ -8,6 +8,7 @@ import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Models.BeanSqlite.Login.User;
 import vn.ntlogistics.app.ordermanagement.ViewModels.Base.ViewModel;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.LoginActivity;
+import vn.ntlogistics.app.ordermanagement.Views.Activities.MainActivity;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.SplashScreenActivity;
 
 
@@ -72,13 +73,18 @@ public class SplashScreenActivityViewModel extends ViewModel {
             if (user.getPublickey() != null) {
                 if(user.getLocalkey() != null) { //Have password
                     flag = 2; // Enter password
+                    MainActivity.startIntentActivity(activity);
                 }
                 else
-                    flag = 1; // Create password
+                    MainActivity.startIntentActivity(activity);
+                    flag = 2; // Create password
+            }else{
+                flag = 2;
+                LoginActivity.startIntentActivity(activity, flag);
             }
 
-            LoginActivity.startIntentActivity(activity, flag);
 
+            //MainActivity.startIntentActivity(activity);
         } catch (Exception e) {
         }
     }

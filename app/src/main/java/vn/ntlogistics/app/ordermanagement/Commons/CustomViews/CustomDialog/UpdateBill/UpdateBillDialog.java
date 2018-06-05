@@ -12,6 +12,7 @@ import android.support.annotation.StyleRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.CustomDialog.Interfaces.ICallbackAPI;
@@ -33,6 +34,10 @@ public class UpdateBillDialog extends Dialog {
     private String                          billID = null;
     private ICallbackAPI                    callback;
     private ICallback                       callbackScan;
+
+    private Context mContext;
+
+
     /**
      * 1 - Nhận hàng
      *   - Hiện 3 trạng thái 1 2 3 và không có scan
@@ -46,6 +51,9 @@ public class UpdateBillDialog extends Dialog {
                             Bill item,
                             ICallbackAPI callback) {
         super(context);
+
+        this.mContext = context;
+
         this.item = item;
         this.callback = callback;
         this.flag = flag;
@@ -113,6 +121,8 @@ public class UpdateBillDialog extends Dialog {
             public void onClick(View v) {
                 int statusId = 0;//từ chối đi lấy đơn hàng
 
+                Toast.makeText( mContext , "code in UpdateBillDialog.java  line 124", Toast.LENGTH_SHORT ).show();
+
                 switch (binding.rgMainUpdate.getCheckedRadioButtonId()){
                     case R.id.rb01Update:
                         statusId = 1;
@@ -132,12 +142,12 @@ public class UpdateBillDialog extends Dialog {
                     Commons.showToast(getContext(), getContext().getString(R.string.error_select_status_update));
                 }
                 else if(billID == null && binding.etDOCode.getText().toString().length() == 0){
+
                     Commons.showToast(getContext(), getContext().getString(R.string.error_null_bill_id));
                 }
                 else {
                     if(billID == null)
-                        billID = binding.etDOCode.getText().toString();
-                    callCreateBillResponse(statusId);
+                        billID = binding.etDOCode.getText().toString(); //todo: todo nothing, just adding mark here ;)                    callCreateBillResponse(statusId);
                 }
             }
         });

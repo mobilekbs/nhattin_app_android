@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
+import vn.ntlogistics.app.config.Config;
 import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Constants;
@@ -60,7 +63,8 @@ public class UpdateBillVM extends ViewModel {
             try {
                 item = (Bill) b.getSerializable("item");
                 position = b.getInt("position");
-                billID = item.getEmsBpbillID();
+//                billID = item.getEmsBpbillID();
+                billID = item.getBillID();
             } catch (Exception e) {
             }
         }
@@ -90,9 +94,14 @@ public class UpdateBillVM extends ViewModel {
             }
         });
 
+        //todo----
+
         binding.btnOkUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+       //         Toast.makeText( activity, "code in UpdateBillVM.java  line 101", Toast.LENGTH_SHORT ).show();
+
                 int statusId = 0;//từ chối đi lấy đơn hàng
 
                 switch (binding.rgMainUpdate.getCheckedRadioButtonId()){
@@ -112,15 +121,32 @@ public class UpdateBillVM extends ViewModel {
                         statusId = 99;
                         break;
                 }
+            //    billID="F118794161";
+                Log.e("updatebill","updatebill  " + statusId + " "+billID+"   s"+binding.etDOCode.getText().toString() + "  # " + binding.etReasonUpdate.getText().toString());
 
                 if(statusId == 0) {
                     Commons.showToast(activity, activity.getString(R.string.error_select_status_update));
                 }
-                else if(billID == null && binding.etDOCode.getText().toString().length() == 0){
-                    Commons.showToast(activity, activity.getString(R.string.error_null_bill_id));
+                else if(binding.etDOCode.getText().toString().length() == 0)  {
+
+                    Log.e("TAG","--------------------------- binding.etDOCode.getText() ");
+                    Log.e("TAG","--------------------------- bill Id = " + billID);
+
+
+//                    if(billID == null) {
+//                        && binding.etDOCode.getText().toString().length() == 0){
+
+                    if (Config.caseQyanLy && billID != null ){
+                        callCreateBillResponse(statusId);
+
+                    }else {
+                        Commons.showToast(activity, activity.getString(R.string.error_null_bill_id));
+                    }
+
                 }
+
                 else {
-                    billID = binding.etDOCode.getText().toString();
+//                    billID = binding.etDOCode.getText().toString();
                     callCreateBillResponse(statusId);
                 }
             }
@@ -182,15 +208,39 @@ public class UpdateBillVM extends ViewModel {
 
     //region TODO: Call API_________________________
     private void callCreateBillResponse(int responseStatus){
-        CreateBillResponseInput data = new CreateBillResponseInput(
-                activity,
-                billID,
-                SCurrentUser.getCurrentUser(activity).getIdStaff()+"",
-                String.format("%02d", flag),
-                String.format("%02d", responseStatus),
-                binding.etReasonUpdate.getText().toString());
+
+        Log.e("UpdateBillVM","---------- binding.etDOCode = " +  binding.etDOCode.getText().toString());
+        Log.e("UpdateBillVM","---------- binding.etReasonUpdate = " + binding.etReasonUpdate.getText().toString());
+
+        CreateBillResponseInput data;
+
+        if(Config.caseTraBaoCaoSuCo){
+
+             data = new CreateBillResponseInput(
+                    activity,
+                    binding.etDOCode.getText().toString(),
+                    SCurrentUser.getCurrentUser(activity).getIdStaff()+"",
+                    String.format("%02d", flag),
+                    String.format("%02d", responseStatus),
+                     binding.etReasonUpdate.getText().toString()
+                   );
+        }else {
+
+            Log.e("UpdateBillVM","---------- else i know ");
+
+            data = new CreateBillResponseInput(
+                    activity,
+                    billID,
+                    SCurrentUser.getCurrentUser(activity).getIdStaff()+"",
+                    String.format("%02d", flag),
+                    String.format("%02d", responseStatus),
+                    binding.etReasonUpdate.getText().toString());
+
+        }//else
+
         new CreateBillResponseAPI(activity, data, this).execute();
-    }
+
+    }//callCreateBillResponse
 
     @Override
     public void onSuccess() {

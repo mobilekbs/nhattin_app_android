@@ -1,6 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Models.Inputs;
 
 import android.content.Context;
+import android.util.Log;
 
 /**
  * Created by Zanty on 25/07/2017.
@@ -34,6 +35,14 @@ public class CreateBillResponseInput extends BaseInput {
 
     public CreateBillResponseInput(Context context, String emsBpbillID, String cBpartnerID, String doStatus, String respondStatus, String note) {
         super(context);
+
+        Log.e("TAG","-------------------- emsBpbillID "  + emsBpbillID);
+        Log.e("TAG","-------------------- cBpartnerID "  + cBpartnerID);
+        Log.e("TAG","-------------------- doStatus "  + doStatus);
+        Log.e("TAG","-------------------- respondStatus "  + respondStatus);
+        Log.e("TAG","-------------------- note "  + note);
+        
+
         this.emsBpbillID = emsBpbillID;
         this.cBpartnerID = cBpartnerID;
         this.doStatus = doStatus;

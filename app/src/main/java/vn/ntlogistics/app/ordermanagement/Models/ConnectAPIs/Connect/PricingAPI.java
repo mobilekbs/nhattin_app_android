@@ -31,6 +31,7 @@ public class PricingAPI extends BaseConnectAPI {
     public static final String REPRICING = "REPRICING";
     private PublicPriceInput input;
     ViewModel viewModel;
+
     public PricingAPI(Context context, PublicPriceInput data, ViewModel viewModel) {
         super(context, ConstantURLs.PUBLIC_PRICE, null, false, Method.POST);
         this.data = new Gson().toJson(data);
@@ -52,11 +53,14 @@ public class PricingAPI extends BaseConnectAPI {
 
     @Override
     public void doInBG() {
+        Log.e("PricingAPI","-------- doInBG ");
 
     }
 
     @Override
     public void onPost(JsonObject rootObject) {
+        Log.e("PricingAPI","-------- onPost ");
+
         //JsonObject rootObject = new JsonParser().parse(result).getAsJsonObject();
         PublicPriceOutput output = new Gson()
                 .fromJson(rootObject.get("data").getAsJsonObject(), PublicPriceOutput.class);

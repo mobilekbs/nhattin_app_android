@@ -219,6 +219,7 @@
     <string name="toast_success_update">Cập nhật thành công.</string>
     <string name="toast_success_update_bill_1">Vận đơn đã được nhập liệu.</string>
     <string name="toast_success_update_bill">Vận đơn đã được cập nhật.</string>
+    <string name="synchronized_success">Đồng bộ thành công.</string>
     <string name="toast_success_send">Gửi thành công. Bạn được cộng 300đ vào tài khoản.</string>
     <string name="toast_success_send_100">Gửi thành công. Bạn được cộng 100đ vào tài khoản.</string>
     <string name="toast_error_id_customer_stamp">Đây là mã khách vãng lai!</string>
@@ -343,6 +344,7 @@
     <string name="weight_change_1">Trọng lượng quy đổi</string>
     <string name="enter_white_bill">Nhập liên trắng</string>
     <string name="enter_pink_bill">Nhập liên hồng</string>
+    <string name="enter_green_bill">Chụp chứng từ</string>
     <string name="enter_do_bill">Nhập liên DO</string>
     <string name="old_password">Mật khẩu cũ</string>
     <string name="new_password">Mật khẩu mới</string>
@@ -392,5 +394,13 @@
     <!--TODO: ZXing Scanner-->
     <string name="turn_on_flashlight">Mở đèn flash</string>
     <string name="turn_off_flashlight">Tắt đèn flash</string>
+
+    <!--TODO: Sub Static Activity-->
+    <string name="sub_static_cong">CÔNG NỢ</string>
+    <string name="sub_static_thong">THÔNG BÁO</string>
+
+    <string name="image_error">Please capture the bill image</string>
+    <string name="notification_title_2">Công nợ:</string>
+    <string name="notification_title_3">Thông báo</string>
 
 </resources>

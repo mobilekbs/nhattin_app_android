@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -40,6 +41,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
+import vn.ntlogistics.app.ordermanagement.Commons.CameraUtil;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.CustomViews.MyTextWatcher;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
@@ -96,7 +98,8 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	String loz = "";
 	private static String saveBill;
 
-	private String 			imagePath;
+	private String imagePath = "";
+	CameraUtil cameraUtil;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +117,8 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 				onBackPressed();
 			}
 		});
+
+		cameraUtil = new CameraUtil(this);
 
 		ftpclient = new MyFTPClientFunctions();
 
@@ -153,6 +158,8 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		spinCity = (Spinner) findViewById(R.id.spinCity);
 		spinDistrict = (Spinner) findViewById(R.id.spinDistrict);
 		cbNNTTS = (CheckBox) findViewById(R.id.cbNNTTS);
+
+
 		if (cbNNTTS.isChecked()) {
 			tvhardmakh.setVisibility(View.VISIBLE);
 			edtMaKh.setVisibility(View.VISIBLE);
@@ -161,7 +168,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		changeBox();
 
 		btnScan.setOnClickListener(this);
-		//btnPicBill.setOnClickListener(this);
+		btnPicBill.setOnClickListener(this);
 
 		getData();
 		getDataBillFail();
@@ -176,7 +183,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
+										 boolean isChecked) {
 				// TODO Auto-generated method stub
 				if (isChecked) {
 					tvhardmakh.setVisibility(View.VISIBLE);
@@ -192,6 +199,17 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		});
 	}
 
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+		switch (requestCode) {
+			case CameraUtil.REQUEST_ID_CAMERA_PERMISSIONS:
+				cameraUtil.getImageFromCamera(tvAccountPink.getText().toString().concat("^").concat(edtBill.getText().toString()));
+				break;
+		}
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -204,11 +222,15 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 							.concat(saveBill).concat(".jpg"));
 					Variables.LST_ItemBill.clear();
 					break;
-				case REQUEST_CODE_TAKE_PICTURE:
+				case CameraUtil.RESULT_LOAD_CAMERA_IMAGE:
+					cameraUtil.performcamCrop();
+					break;
+				case CameraUtil.RESULT_CROP_IMAGE:
+					imagePath = cameraUtil.setCroopedImage();
+					cameraUtil.deleteOrgPic();
 					layoutSaveImg.setVisibility(View.VISIBLE);
 					tvNameImg.setText(tvAccountPink.getText().toString().concat("^")
 							.concat(saveBill).concat(".jpg"));
-
 					break;
 			}
 			try {
@@ -222,6 +244,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 				e.getMessage();
 			}
 		}
+
 	}
 
 	public String formatMoney(String input) {
@@ -313,7 +336,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	}
 
 	public void getDTfromLV(String bill, String tkh, String money,
-			String moneyCOD, String mkh) {
+							String moneyCOD, String mkh) {
 		edtBill.setText(bill);
 		edtNameKh.setText(tkh);
 		edtMoney.setText(money);
@@ -530,6 +553,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	private void sendImage() {
 		if (isOnline(this)) {
 			Log.d("NETWORK", "Net Fine");
+			Log.d("NETWORK", "Net Fine");
 			connectFTP();
 		} else {
 			Log.d("NETWORK", "Net Fail");
@@ -550,9 +574,9 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 		final String desDirectory = "";
 		final String desFileName = "billupload/"
 				+ tvAccountPink.getText().toString().concat("^")
-						.concat(edtBill.getText().toString()).concat(".jpg");
+				.concat(edtBill.getText().toString()).concat(".jpg");
 		String des[] = { host, username, password, port,
-                imagePath, desFileName, desDirectory };
+				imagePath, desFileName, desDirectory };
 		// final File fdelete = new File(srcFilePath);
 
 		new SendImageBill().execute(des);
@@ -577,6 +601,9 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 			ScanNew();
 		}
 		else if (v.getId() == R.id.btnPicBill) {
+
+			Log.e("TAG","---------------- btn pic bill, send bill activity ");
+
 			String bill = edtBill.getText().toString();
 			if (bill.equalsIgnoreCase("")) {
 				Message.makeToastWarning(this,
@@ -589,10 +616,13 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 				ItemBill itemBill = new ItemBill();
 				itemBill.setBill(send.toString());
 				Variables.LST_ItemBill.add(itemBill);
+				StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+				StrictMode.setVmPolicy(builder.build());
+				cameraUtil.getImageFromCamera(send);
 				//getImage();
-				Intent take = Commons.takeAPicture(this, send);
-				imagePath = take.getExtras().get("pathImage").toString();
-				startActivityForResult(take, REQUEST_CODE_TAKE_PICTURE);
+//				Intent take = Commons.takeAPicture(this, send);
+//				imagePath = take.getExtras().get("pathImage").toString();
+//				startActivityForResult(take, REQUEST_CODE_TAKE_PICTURE);
 			}
 
 		}
@@ -608,17 +638,20 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 				}
 			} else {
 				if (checkBill()) {
-					if(Commons.hasConnection(this)){
-						callAPIUpdatePinkBill();
+						if (Commons.hasConnection(this)) {
+							callAPIUpdatePinkBill();
+
+						} else {
+							//Lưu vào Sqlite
+							dataUnSend();
+						}
+						//NetAsync(v);
+					if(!imagePath.equalsIgnoreCase("")) {
+						sendImage();
 					}
-					else {
-						//Lưu vào Sqlite
-						dataUnSend();
-					}
-					//NetAsync(v);
 				}
 			}
-			// sendImage();
+
 		}
 	}
 
@@ -663,16 +696,16 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 	private void callAPIUpdatePinkBill(){
 		try {
 			UpdatePinkBillInput input = new UpdatePinkBillInput(
-                    this,
-                    edtBill.getText().toString(),
-                    edtMaKh.getText().toString(),
-                    edtNameKh.getText().toString().trim(),
-                    null,
-                    formatMoney(edtMoney.getText().toString()),
-                    formatMoney(edtMoneyCod.getText().toString()),
-                    mListCity.get(spinCity.getSelectedItemPosition()).getAreacode()+"",
-                    mListDis.get(spinDistrict.getSelectedItemPosition()).getValue()+""
-            );
+					this,
+					edtBill.getText().toString(),
+					edtMaKh.getText().toString(),
+					edtNameKh.getText().toString().trim(),
+					null,
+					formatMoney(edtMoney.getText().toString()),
+					formatMoney(edtMoneyCod.getText().toString()),
+					mListCity.get(spinCity.getSelectedItemPosition()).getAreacode()+"",
+					mListDis.get(spinDistrict.getSelectedItemPosition()).getValue()+""
+			);
 
 			String data = new Gson().toJson(input);
 
@@ -808,6 +841,10 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 
 		@Override
 		protected void onProgressUpdate(Integer... values) {
+
+			Log.e("TAG","////////////////////////         onProgressUpdate   ");
+
+
 			btnSend.setText("Đang gửi...");
 
 		}
@@ -851,6 +888,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 						Toast.LENGTH_LONG).show();
 				layoutSaveImg.setVisibility(View.GONE);
 				tvNameImg.setText("");
+				imagePath = "";
 				ftpclient.ftpDisconnect();
 			} else {
 				Toast.makeText(getApplicationContext(), "Không gửi được ảnh",
@@ -1023,7 +1061,7 @@ public class SendBillActivity extends BaseActivity implements OnClickListener,
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
-			long id) {
+							   long id) {
 		// TODO Auto-generated method stub
 		if (parent.getId() == R.id.spinCity) {
 			/*TextView areacode = (TextView) view.findViewById(R.id.tv_areacode);

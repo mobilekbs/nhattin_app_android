@@ -59,7 +59,9 @@ public class ConfirmBPBillAPI extends BaseConnectAPI {
         this.activity = activity;
         Log.e(TAG, this.url + "\n" + this.data);
         try {
-             initDialogWithTitle(context.getString(R.string.sending),false);
+            Log.e("TAG","////////////////////////         ConfirmBPBillAPI   ");
+
+            initDialogWithTitle(context.getString(R.string.sending),false);
         } catch (Exception e) {
         }
     }

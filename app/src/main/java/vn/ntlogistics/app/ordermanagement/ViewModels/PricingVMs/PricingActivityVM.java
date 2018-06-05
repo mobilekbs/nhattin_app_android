@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import vn.ntlogistics.app.config.Config;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
@@ -82,17 +83,15 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
         if (spinner.getId() == binding.spinFromDis.getId()) {
             mListDistrictForm.clear();
             mListDistrictForm.addAll(SSQLite.getInstance(activity).getListDistrictByCidyID(id + ""));
-            setupSpinner(
-                    spinner,
-                    mListDistrictForm
+            setupSpinner(spinner, mListDistrictForm
             );
         } else if (spinner.getId() == binding.spinToDis.getId()) {
             mListDistrictTo.clear();
+
             mListDistrictTo.addAll(SSQLite.getInstance(activity).getListDistrictByCidyID(id + ""));
-            setupSpinner(
-                    spinner,
-                    mListDistrictTo
-            );
+
+            setupSpinner(spinner, mListDistrictTo);
+
         }
     }
 
@@ -179,24 +178,36 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
             et.setError(null);
             return true;
         }
-    }
+
+    }//checkNullEdittext
+
 
     private void callAPIPricing() {
+
         PublicPriceInput input = new PublicPriceInput(activity);
         //TODO: Add City
-        int posFromCity = binding.spinFromCity.getSelectedItemPosition();
+          int posFromCity = binding.spinFromCity.getSelectedItemPosition();
         int posToCity = binding.spinToCity.getSelectedItemPosition();
+
+        Config.toCityPos = posToCity;
+
         input.setSenderProvince(mListCity.get(posFromCity).getAreacode() + "");
         input.setReceiverProvince(mListCity.get(posToCity).getAreacode() + "");
 
         //TODO: Add District
-        int posFromDis = binding.spinFromDis.getSelectedItemPosition();
+          int posFromDis = binding.spinFromDis.getSelectedItemPosition();
         int posToDis = binding.spinToDis.getSelectedItemPosition();
+
+        Config.toDistrictPos = posToDis;
+
         input.setSenderDistrict(mListDistrictForm.get(posFromDis).getValue() + "");
         input.setReceiverDistrict(mListDistrictTo.get(posToDis).getValue() + "");
 
         //TODO: Add Service
         int posService = binding.spinService.getSelectedItemPosition();
+
+        Config.servicePos = posService;
+
         input.setService(mListService.get(posService).getValue() + "");
 
         //TODO: Add Others
@@ -209,23 +220,23 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
         } catch (NumberFormatException e) {
         }
         try {
-            input.setDimensionWeight(Double.parseDouble(binding.edtcTLQD.getText().toString()));
+                      input.setDimensionWeight(Double.parseDouble(binding.edtcTLQD.getText().toString()));
         } catch (NumberFormatException e) {
         }
         try {
-            input.setPackageLong(Long.parseLong(binding.edtLong.getText().toString()));
+                     input.setPackageLong(Long.parseLong(binding.edtLong.getText().toString()));
         } catch (NumberFormatException e) {
         }
         try {
-            input.setWide(Double.parseDouble(binding.edtLarge.getText().toString()));
+                     input.setWide(Double.parseDouble(binding.edtLarge.getText().toString()));
         } catch (NumberFormatException e) {
         }
         try {
-            input.setHigh(Double.parseDouble(binding.edtHeight.getText().toString()));
+                    input.setHigh(Double.parseDouble(binding.edtHeight.getText().toString()));
         } catch (NumberFormatException e) {
         }
         try {
-            input.setItemQty(Integer.parseInt(binding.edtSLKD.getText().toString()));
+                     input.setItemQty(Integer.parseInt(binding.edtSLKD.getText().toString()));
         } catch (NumberFormatException e) {
         }
         input.setCodAmt(0);
@@ -233,6 +244,7 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
         //String json = new Gson().toJson(input);
         new PricingAPI(activity, input, this).execute();
     }
+
 
     @Override
     public void onSuccess(String action, boolean b) {
@@ -267,3 +279,5 @@ public class PricingActivityVM extends ViewModel implements AdapterView.OnItemSe
                 InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 }
+
+//todo: nothing to do, just a mark for this activity.

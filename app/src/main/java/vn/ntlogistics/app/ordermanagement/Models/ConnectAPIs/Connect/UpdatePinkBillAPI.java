@@ -1,6 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.Connect;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.JsonObject;
 
@@ -41,6 +42,8 @@ public class UpdatePinkBillAPI extends BaseConnectAPI {
         this.bill = bill;
         this.isMultiCall = isMultiCall;
         if(!isMultiCall){
+            Log.e("TAG","////////////////////////         UpdatePinkBillAPI   ");
+
             initDialogWithTitle(context.getString(R.string.sending),false);
         }
     }

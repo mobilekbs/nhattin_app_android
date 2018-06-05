@@ -100,20 +100,36 @@ public abstract class BaseConnectAPI extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
+        Log.e("BaseConnectAPI","-------- doInBackground ");
+
         String response = null;
         try {
             getJsonFromUrl = new GetJsonFromUrl(url, data);
             switch (method) {
                 case GET:
+                    Log.e("BaseConnectAPI","--------  case GET ");
+
                     response = getJsonFromUrl.getResponseStringGET();
+
+                    Log.e("BaseConnectAPI","--------  response " + response);
+
                     break;
                 case POST:
+                    Log.e("BaseConnectAPI","--------  case POST ");
+
                     response = getJsonFromUrl.getResponseStringPOST();
+                    Log.e("BaseConnectAPI","--------  response " + response);
                     break;
                 case DELETE:
+                    Log.e("BaseConnectAPI","--------  case DELETE ");
+
                     response = getJsonFromUrl.getResponseStringDELETE();
+                    Log.e("BaseConnectAPI","--------  response " + response);
                     break;
                 case PUT:
+                    Log.e("BaseConnectAPI","--------  case PUT ");
+                    Log.e("BaseConnectAPI","--------  response " + response);
+
                     //response = getJsonFromUrl.get();
                     break;
             }

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import vn.ntlogistics.app.config.Config;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseActivity;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
@@ -23,6 +24,7 @@ import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.ViewModels.MainVMs.MainActivityVM;
 import vn.ntlogistics.app.ordermanagement.databinding.ActivityMainBinding;
 
+//onceSendAllPriceFields
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding         binding;
     private MainActivityVM              viewModel;
@@ -45,14 +47,23 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(binding.toolbarMain);
         binding.setViewModel(viewModel);
 
-        //Call api check version
-        CheckVersionAPI.execute(this);
+        if (!Config.debug_mode) {
+            //Call api check version
+            CheckVersionAPI.execute(this);
+        }
+
+        Config.caseQyanLy = false;
+        Config.caseTraBaoCaoSuCo = false;
+        Config.onceSendAllPriceFields = false;
 
         binding.btnOrderMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Commons.setEnabledButton(v);
                 OrderManagementActivity.startIntentActivity(MainActivity.this);
+
+                Config.caseQyanLy = true;
+
             }
         });
         binding.btnPricingMain.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +83,7 @@ public class MainActivity extends BaseActivity {
         binding.btnReturnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Config.caseTraBaoCaoSuCo = true;
                 Commons.setEnabledButton(v);
                 InputManagementActivity.startIntentActivity(MainActivity.this, 1);
             }
@@ -80,7 +92,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Commons.setEnabledButton(v);
-                ProductivityStatisticsActivity.startIntentActivity(MainActivity.this);
+                SubStaticActivity.startIntentActivity(MainActivity.this);
             }
         });
     }

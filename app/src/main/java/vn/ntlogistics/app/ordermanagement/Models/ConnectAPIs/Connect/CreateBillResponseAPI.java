@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import vn.ntlogistics.app.config.Config;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.BaseConnect.BaseConnectAPI;
 import vn.ntlogistics.app.ordermanagement.Models.ConnectAPIs.BaseConnect.Method;
@@ -24,8 +25,7 @@ public class CreateBillResponseAPI extends BaseConnectAPI {
     private ViewModel viewModel;
     public CreateBillResponseAPI(Context context, CreateBillResponseInput data, ViewModel viewModel) {
         super(context, ConstantURLs.CREATE_BILL_RESPONSE, null, false, Method.POST);
-        CommonInput<CreateBillResponseInput> input =
-                new CommonInput<CreateBillResponseInput>(data);
+        CommonInput<CreateBillResponseInput> input = new CommonInput<CreateBillResponseInput>(data);
         this.data = new Gson().toJson(input);
         this.viewModel = viewModel;
         Log.e(TAG, this.data);

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,16 +12,18 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import vn.ntlogistics.app.config.Config;
 import vn.ntlogistics.app.ordermanagement.Commons.AbstractClass.BaseFragment;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.Message;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Commons.Sqlite.Variables;
 import vn.ntlogistics.app.ordermanagement.Models.Outputs.OrderDetail.Bill;
+import vn.ntlogistics.app.ordermanagement.Olds.Activities.ManagerBillGreenActivity;
+import vn.ntlogistics.app.ordermanagement.Olds.Activities.ManagerBillWhiteActivity;
 import vn.ntlogistics.app.ordermanagement.Olds.Activities.SendBillActivity;
 import vn.ntlogistics.app.ordermanagement.R;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.ConfirmDOActivity;
-import vn.ntlogistics.app.ordermanagement.Views.Activities.PricingActivity;
 import vn.ntlogistics.app.ordermanagement.Views.Activities.UpdateBillActivity;
 import vn.ntlogistics.app.ordermanagement.databinding.FragmentPinkBillBinding;
 
@@ -30,6 +33,7 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
     private View                        view;
 
     private int                         flag;
+    public static android.support.v7.widget.CardView greenCardView;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -41,15 +45,20 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
         Bundle b = getActivity().getIntent().getExtras();
 
         flag = b.getInt("flag");
+        greenCardView = (CardView) view.findViewById( R.id.btnGreenBill );
 
         if (flag == 0) {
             binding.btnPinkBill.setVisibility(View.GONE);
             binding.btnErrorReport.setVisibility(View.GONE);
+            greenCardView.setVisibility( View.GONE );
         }
         else  {
             binding.btnWhiteBill.setVisibility(View.GONE);
             binding.btnDOBill.setVisibility(View.GONE);
+            greenCardView.setVisibility( View.VISIBLE );
         }
+
+        greenCardView.setOnClickListener(this);
 
         binding.btnWhiteBill.setOnClickListener(this);
         binding.btnPinkBill.setOnClickListener(this);
@@ -57,6 +66,7 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
         binding.btnErrorReport.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                //F118794161
                 Commons.setEnabledButton(v);
                 Bundle b = new Bundle();
                 b.putInt("flag", 2);
@@ -70,17 +80,27 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
+
+        boolean flagExists = false;
+
+        if (Config.debug_mode){
+            flagExists = true;
+        }else {
+            flagExists = existsUser();
+        }
+
         switch (v.getId()){
+
             case R.id.btnPinkBill:
-                if (existsUser()) {
+                if (flagExists) {
                     Intent intent = new Intent(getActivity(), SendBillActivity.class);
                     startActivity(intent);
                 }
                 break;
             case R.id.btnWhiteBill:
-                if (existsUser()) {
-                    Intent a = new Intent(getActivity(), PricingActivity.class);
+
+                if (flagExists) {
+                    Intent a = new Intent(getActivity(), ManagerBillWhiteActivity.class);
                     Bundle b = new Bundle();
                     b.putInt("menu", Variables.THISISMENU);
                     a.putExtras(b);
@@ -88,15 +108,33 @@ public class PinkBillFragment extends BaseFragment implements OnClickListener {
                     //getActivity().finish();
                 }
                 break;
+
+            case R.id.btnGreenBill:
+
+                if (flagExists) {
+                    Intent a = new Intent(getActivity(), ManagerBillGreenActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("menu", Variables.THISISMENU);
+                    a.putExtras(b);
+                    startActivity(a);
+                    //getActivity().finish();
+                }
+
+                break;
+
             case R.id.btnDOBill:
-                if (existsUser()) {
+
+                if (flagExists) {
                     /*Intent i = new Intent(getActivity(), BillDOActivity.class);
                     startActivity(i);*/
                     ConfirmDOActivity.startIntentActivity(getContext(), null, null, null, false);
                     //getActivity().finish();
                 }
+
                 break;
+
         }
+
         /*if (v.getId() == R.id.btnIr) {
             if (existsUser()) {
                 Intent intent = new Intent(getActivity(), SendBillActivity.class);

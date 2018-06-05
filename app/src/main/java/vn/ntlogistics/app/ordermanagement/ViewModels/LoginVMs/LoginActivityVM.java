@@ -1,13 +1,14 @@
 package vn.ntlogistics.app.ordermanagement.ViewModels.LoginVMs;
 
 import android.databinding.ObservableInt;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import vn.ntlogistics.app.ordermanagement.Commons.Animations.IAnimationCallback;
 import vn.ntlogistics.app.ordermanagement.Commons.Animations.MyAnimation;
 import vn.ntlogistics.app.ordermanagement.Commons.Commons;
 import vn.ntlogistics.app.ordermanagement.Commons.MaterialTapTargetPrompt.MaterialTapTargetPrompt;
@@ -85,6 +86,7 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
         binding.btnKeyPublic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("TAG", "onClick: ");
                 onClickActive(v);
             }
         });
@@ -128,10 +130,12 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
 
     public void onClickActive(View view){
         Commons.setEnabledButton(view);
-        if(flag.get() == 0) {
+        Log.e("TAG", "onClickActive: "+flag.get());
+        if(flag.get() == 0||flag.get() == 2) {
             if (validateNullFields(binding.edtKeyPublic,
                     activity.getString(R.string.val_your_key_null))) {
                 //onSuccess(CheckPublicKeyAPI.ACTION,true);
+                Log.e("TAG", "onClickActive: "+binding.edtKeyPublic.getText().toString() );
                 callAPICheckPublicKey(binding.edtKeyPublic.getText().toString());
             }
         }
@@ -208,8 +212,11 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
     public void onSuccess(String action, boolean b) {
         if(action.equals(CheckPublicKeyAPI.ACTION)) {
             if (b) {
-                flag.set(1);
-                MyAnimation.setVisibilityAnimationSlide(
+               // flag.set(1);
+
+
+                MainActivity.startIntentActivity(activity);
+                /*MyAnimation.setVisibilityAnimationSlide(
                         binding.lnActiveAccountLogin, false, 200,
                         new IAnimationCallback(){
 
@@ -222,7 +229,7 @@ public class LoginActivityVM extends ViewModel implements TextView.OnEditorActio
                 showFullscreenRectPrompt(binding.edtPass,
                         MySharedPreference.CREATE_PWD_PROMPT,
                         activity.getString(R.string.prompt_create_pwd_title),
-                        activity.getString(R.string.prompt_create_pwd_content));
+                        activity.getString(R.string.prompt_create_pwd_content));*/
             } else {
 
             }

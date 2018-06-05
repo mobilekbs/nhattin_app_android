@@ -9,6 +9,7 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SCurrentUser;
 import vn.ntlogistics.app.ordermanagement.Commons.Singleton.SSQLite;
@@ -104,7 +105,7 @@ public class SQLiteManager {
             return false;
         }
     }
-    
+
     public void deleteUser(){
         DeleteDataOfTable(Variables.TBL_STAFF, null, null);
     }
@@ -443,6 +444,7 @@ public class SQLiteManager {
             //c = getAllDataFromTable(Variables.TBL_SENDER_BILL);
             if (c.moveToFirst()) {
                 do {
+                    Log.e("updatebi","updatebi"+c.getString(1)+" "+c.getString(21));
                     Bill item = new Bill(
                             c.getString(1),
                             c.getString(2),
@@ -670,7 +672,8 @@ public class SQLiteManager {
             else {
                 db.delete(tableName, null, null);
                 //Bảng sqlite_sequence xét id tự tăng, xóa để về lại 0
-                db.delete(TAG, "name=?", new String[]{tableName});
+              //  db.delete(TAG, "name=?", new String[]{tableName});
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -737,6 +740,112 @@ public class SQLiteManager {
         String sql = "select " + _id + " _id,* from " + tblname + " where "
                 + condition;
         return db.rawQuery(sql, null);
+    }
+
+
+    public boolean insertOrUpdateCongoNoti(String type, String msg, String from, String date, String time){
+        try {
+            //SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            Cursor c = null;
+            try {
+                values.put(Variables.CONGO_TYPE, type);
+                values.put(Variables.CONGO_MSG,  msg);
+                values.put(Variables.CONGO_FROM, from);
+                values.put(Variables.CONGO_DATE, date);
+                values.put(Variables.CONGO_TIME, time);
+
+                db.insert(Variables.TBL_CONGO, null, values);
+
+                c.close();
+                return true;
+            } catch (Exception e) {
+                Log.d(TAG, "insertCongo ------------------- 1");
+                e.printStackTrace();
+                return false;
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "insertCongo ------------------- 2");
+            return false;
+        }
+    }
+
+    public boolean insertOrUpdateThongNoti(String type, String msg, String from, String date, String time){
+        try {
+            //SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            Cursor c = null;
+            try {
+                values.put(Variables.THONG_TYPE, type);
+                values.put(Variables.THONG_MSG,  msg);
+                values.put(Variables.THONG_FROM, from);
+                values.put(Variables.THONG_DATE, date);
+                values.put(Variables.THONG_TIME, time);
+
+                db.insert(Variables.TBL_THONG, null, values);
+
+                c.close();
+                return true;
+            } catch (Exception e) {
+                Log.d(TAG, "insertThong ------------------- 1");
+                e.printStackTrace();
+                return false;
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "insertThong ------------------- 2");
+            return false;
+        }
+    }
+
+    public ArrayList<HashMap<String, String>> getListCongThong(String type){
+        ArrayList<HashMap<String, String>> mList = new ArrayList<>();
+        //SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = null;
+        try {
+            if(type.equalsIgnoreCase("2")) {
+                c = getAllDataFromTable(Variables.TBL_CONGO);
+            } else if(type.equalsIgnoreCase("3")) {
+                c = getAllDataFromTable(Variables.TBL_THONG);
+            }
+            if (c.moveToFirst()) {
+                Log.e("columns","columns"+c.getColumnName(0));
+                do {
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put("type", c.getString(1));
+                    hashMap.put("msg", c.getString(2));
+                    hashMap.put("from", c.getString(3));
+                    hashMap.put("date", c.getString(4));
+                    hashMap.put("time", c.getString(5));
+
+                    Log.e("columns","columns"+c.getString(0));
+
+                    mList.add(hashMap);
+
+                } while (c.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Không thể getdata getListService");
+        }
+        return mList;
+    }
+
+
+    public boolean deleteCongThong(int id, String type){
+        try {
+            int deletid = (id+1);
+            //SQLiteDatabase db = this.getWritableDatabase();
+            Log.e("valueclick","valueclick"+id+" "+type);
+            if(type.equalsIgnoreCase("2")) {
+                db.delete(Variables.TBL_CONGO, "_id=?", new String[]{String.valueOf(deletid)});
+            } else  if(type.equalsIgnoreCase("3")) {
+                db.delete(Variables.TBL_THONG, "_id=?", new String[]{String.valueOf(deletid)});
+            }
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "deleteSenderBill");
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /*public List<Lonlat> readAllLocation() {

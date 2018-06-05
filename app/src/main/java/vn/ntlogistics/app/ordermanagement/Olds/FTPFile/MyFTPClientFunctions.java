@@ -1,6 +1,7 @@
 package vn.ntlogistics.app.ordermanagement.Olds.FTPFile;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.apache.commons.net.ftp.FTP;
@@ -10,7 +11,6 @@ import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
 
 public class MyFTPClientFunctions {
 
@@ -22,15 +22,23 @@ public class MyFTPClientFunctions {
 	// Method to connect to FTP server:
 	public boolean ftpConnect(String host, String username, String password,
 			int port) {
+
 		try {
 			mFTPClient = new FTPClient();
 			// connecting to the host
 			mFTPClient.connect(host, port);
 
+			Log.e(TAG,"---------------- inside ftpConnect " );
+
 			// now check the reply code, if positive mean connection success
 			if (FTPReply.isPositiveCompletion(mFTPClient.getReplyCode())) {
 				// login using username & password
+
+				Log.e(TAG,"---------------- inside if (FTPReply.isPositiveComple " );
+
 				boolean status = mFTPClient.login(username, password);
+
+				Log.e(TAG,"---------------- status " + status );
 
 				/*
 				 * Set File Transfer Mode
@@ -46,6 +54,8 @@ public class MyFTPClientFunctions {
 				return status;
 			}
 		} catch (Exception e) {
+			Log.e(TAG,"---------------- Exception " + e );
+
 			Log.d(TAG, "Error: could not connect to host " + host);
 		}
 
@@ -206,16 +216,65 @@ public class MyFTPClientFunctions {
 			String desDirectory, Context context) {
 		boolean status = false;
 		try {
-			FileInputStream srcFileStream = new FileInputStream(srcFilePath);
-			status = mFTPClient.storeFile(desFileName, srcFileStream);
-			srcFileStream.close();
 
-			return status;
+			Log.e(TAG,"----------- srcFilePath = " + srcFilePath);
+
+			//todo: as client said, file transfer should be optional right now, so doing below stuff in case user don't send file! (Block "Nhận" >> "Nhập liên trắng")
+			if (TextUtils.isEmpty(srcFilePath)){
+				return true;
+			}else {
+				FileInputStream srcFileStream = new FileInputStream(srcFilePath);
+				status = mFTPClient.storeFile(desFileName, srcFileStream);
+				srcFileStream.close();
+
+				return status;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			Log.d(TAG, "upload failed: " + e);
 		}
 
 		return status;
-	}
-}
+
+	}//ftpUpload
+
+
+	// Method to upload a file to FTP server:
+
+	/**
+	 * mFTPClient: FTP client connection object (see FTP connection example)
+	 * srcFilePath: source file path in sdcard desFileName: file name to be
+	 * stored in FTP server desDirectory: directory path where the file should
+	 * be upload to
+	 */
+	public boolean ftpUploadForBillWhite(String srcFilePath, String desFileName,
+			String desDirectory, Context context) {
+
+		boolean status = false;
+		try {
+
+			Log.e(TAG,"----------- srcFilePath = " + srcFilePath);
+
+			//todo: as client said, file transfer should be optional right now, so doing below stuff in case user don't send file! (Block "Nhận" >> "Nhập liên trắng")
+			if (TextUtils.isEmpty(srcFilePath)){
+
+				return true;
+			}else {
+				FileInputStream srcFileStream = new FileInputStream(srcFilePath);
+				status = mFTPClient.storeFile(desFileName, srcFileStream);
+				srcFileStream.close();
+
+				return status;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.d(TAG, "upload failed: " + e);
+		}
+
+		return status;
+
+	}//ftpUploadForBillWhite
+
+}//MyFTPClientFunctions

@@ -96,6 +96,41 @@
                         android:background="@drawable/btnchong" />-->
                 </android.support.v7.widget.CardView>
 
+
+                <!--- nitish work start -->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/btnGreenBill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/whitebill" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:background="@drawable/bgr_item_bill"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="1"
+                        android:text="@string/enter_green_bill"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:textSize="@dimen/so_99"
+                        android:textStyle="bold" />
+                </android.support.v7.widget.CardView>
+                <!--- nitish work end -->
+
+
                 <android.support.v7.widget.CardView
                     android:id="@+id/btnDOBill"
                     android:layout_width="match_parent"
